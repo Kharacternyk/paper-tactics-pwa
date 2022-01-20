@@ -1,35 +1,61 @@
 import styled from "styled-components"
-import { BsXLg, BsFillSquareFill, BsCircle, BsApp, BsAppIndicator } from "react-icons/bs"
+import { BsXLg } from "react-icons/bs"
 
 const Td = styled.td`
-    text-align: center;
-    vertical-align: middle;
-    color: ${({mine, opponent, unit}) => {
+    & > div {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    color: ${({mine, opponent, unit, wall}) => {
         if (unit) {
             if (mine) {
-                return "var(--bs-blue)"
+                return "var(--bs-primary)"
             }
             if (opponent) {
-                return "var(--bs-red)"
+                return "var(--bs-danger)"
             }
         }
-        return "var(--bs-light)"
+        if (wall) {
+            if (mine) {
+                return "var(--bs-danger)"
+            }
+            if (opponent) {
+                return "var(--bs-primary)"
+            }
+        }
+        return "transparent"
     }};
     background-color: ${({mine, opponent, wall}) => {
         if (wall) {
             if (mine) {
-                return "var(--bs-blue)"
+                return "var(--bs-primary) !important"
             }
             if (opponent) {
-                return "var(--bs-red)"
+                return "var(--bs-danger) !important"
             }
         }
-        return "var(--bs-light)"
-    }} !important;
+    }};
+    background: ${({reachableByMe, reachableByOpponent}) => {
+        const createGradient = color => (
+            `radial-gradient(
+                rgba(var(--bs-${color}-rgb), 0.5),
+                var(--bs-table-bg) 20%
+            ) !important`
+        )
+        if (reachableByMe && reachableByOpponent) {
+            return createGradient("secondary")
+        }
+        if (reachableByMe) {
+            return createGradient("primary")
+        }
+        if (reachableByOpponent) {
+            return createGradient("danger")
+        }
+    }};
 `
 
 export const GameMapCell = (props) => {
-    const icon = props.unit || props.wall ? <BsXLg /> : <BsCircle />
-    
-    return <Td {...props}>{icon}</Td>
+    return <Td {...props}><div><BsXLg /></div></Td>
 }
