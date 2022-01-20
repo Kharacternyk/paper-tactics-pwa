@@ -17,23 +17,31 @@ export const App = () => {
     let gameView = <Badge bg="warning" text="dark">No current game</Badge>
 
     if (game) {
-        const gameMap = Array(10).fill().map(() => {
+        const cellProps = Array(10).fill().map(() => {
             return Array(10).fill().map(() => ({}))
         })
 
-        game.me.units.forEach(([x, y]) => gameMap[y-1][x-1].unit = gameMap[y-1][x-1].mine = true)
-        game.me.walls.forEach(([x, y]) => gameMap[y-1][x-1].wall = gameMap[y-1][x-1].mine = true)
-        game.me.reachable.forEach(([x, y]) => gameMap[y-1][x-1].onClick = () => {
-            sendJsonMessage({action: "make-turn", gameId: game.gameId, cell: [x, y]})
-        })
-        game.opponent.units.forEach(([x, y]) => {
-            gameMap[y-1][x-1].unit = gameMap[y-1][x-1].opponent = true
-        })
-        game.opponent.walls.forEach(([x, y]) => {
-            gameMap[y-1][x-1].wall = gameMap[y-1][x-1].opponent = true
-        })
+        const setPropsForEach = (array, props, propsFactory) => {
+            array.forEach(([x, y]) => {
+                Object.assign(cellProps[y - 1][x - 1], props)
+                if (propsFactory) {
+                    Object.assign(cellProps[y - 1][x - 1], propsFactory(x, y))
+                }
+            })
+        }
 
-        const renderedRows = gameMap.map((row, y) => {
+        setPropsForEach(game.opponent.units, { unit: true, opponent: true })
+        setPropsForEach(game.opponent.walls, { wall: true, opponent: true })
+        setPropsForEach(game.opponent.reachable, { reachableByOpponent: true })
+        setPropsForEach(game.me.units, { unit: true, mine: true })
+        setPropsForEach(game.me.walls, { wall: true, mine: true })
+        setPropsForEach(game.me.reachable, { reachableByMe: true }, (x, y) => ({
+            onClick: () => {
+                sendJsonMessage({action: "make-turn", gameId: game.gameId, cell: [x, y]})
+            }
+        }))
+
+        const renderedRows = cellProps.map((row, y) => {
             const renderedRow = row.map((props, x) => {
                 return <GameMapCell {...props} key={x} />
             })
