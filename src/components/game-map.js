@@ -5,7 +5,6 @@ import { GameMapCell } from "./game-map-cell"
 const StyledTable = styled(Table)`
     width: ${({size}) => 3 * size}em;
     height: ${({size}) => 3 * size}em;
-    align-self: center;
 `
 
 export const GameMap = ({game, onTurnMade}) => {
