@@ -27,7 +27,7 @@ const Td = styled.td`
         }
         return "transparent"
     }};
-    background-color: ${({mine, opponent, wall}) => {
+    background: ${({wall, mine, opponent, reachableByMe, reachableByOpponent}) => {
         if (wall) {
             if (mine) {
                 return "var(--bs-primary) !important"
@@ -36,8 +36,6 @@ const Td = styled.td`
                 return "var(--bs-danger) !important"
             }
         }
-    }};
-    background: ${({reachableByMe, reachableByOpponent}) => {
         const createGradient = color => (
             `radial-gradient(
                 rgba(var(--bs-${color}-rgb), 0.5),
@@ -54,6 +52,18 @@ const Td = styled.td`
             return createGradient("danger")
         }
     }};
+    &:hover {
+        color: ${({reachableByMe, unit}) => {
+            if (reachableByMe && !unit) {
+                return "rgba(var(--bs-primary-rgb), 0.5)"
+            }
+        }};
+        background: ${({reachableByMe, unit}) => {
+            if (reachableByMe && unit) {
+                return "rgba(var(--bs-primary-rgb), 0.5) !important"
+            }
+        }};
+    }
 `
 
 export const GameMapCell = (props) => {
