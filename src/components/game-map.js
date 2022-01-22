@@ -2,11 +2,6 @@ import styled from "styled-components"
 import Table from "react-bootstrap/Table"
 import { GameMapCell } from "./game-map-cell"
 
-const StyledTable = styled(Table)`
-    width: ${({size}) => 3 * size}em;
-    height: ${({size}) => 3 * size}em;
-`
-
 export const GameMap = ({game, onTurnMade}) => {
     const cellProps = Array(10).fill().map(() => {
         return Array(10).fill().map(() => ({}))
@@ -39,8 +34,8 @@ export const GameMap = ({game, onTurnMade}) => {
     })
 
     return (
-        <StyledTable bordered size={game.size}>
+        <Table bordered size={game.size}>
             <tbody>{renderedRows}</tbody>
-        </StyledTable>
+        </Table>
     )
 }
