@@ -13,13 +13,16 @@ export const App = () => {
 
     return (
         <Stack gap={3}>
-            <Navbar bg="success" variant="dark">
+            <Navbar expand="lg" bg="success" variant="dark">
                 <Container>
                     <Navbar.Brand>Paper Tactics</Navbar.Brand>
-                    <Nav defaultActiveKey="how-to" onSelect={setEventKey}>
-                        <Nav.Link eventKey="how-to">How to play</Nav.Link>
-                        <Nav.Link eventKey="new-pvp">Play vs other people</Nav.Link>
-                    </Nav>
+                    <Navbar.Toggle aria-controls="main-navbar" />
+                    <Navbar.Collapse id="main-navbar">
+                        <Nav defaultActiveKey="how-to" onSelect={setEventKey}>
+                            <Nav.Link eventKey="how-to">How to play</Nav.Link>
+                            <Nav.Link eventKey="new-pvp">Play vs other people</Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
                 </Container>
             </Navbar>
             {eventKey === "how-to" && <Alert variant="success"> Coming soon… </Alert>}
