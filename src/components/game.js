@@ -2,14 +2,9 @@ import { useEffect, useState } from "react"
 import { GameMap } from "./game-map"
 import Card from "react-bootstrap/Card"
 import ProgressBar from "react-bootstrap/ProgressBar"
-import Spinner from "react-bootstrap/Spinner"
 import Badge from "react-bootstrap/Badge"
-import styled from "styled-components"
+import Paper from "@mui/material/Paper"
 import useWebSocket from "react-use-websocket"
-
-const CenteredCard = styled(Card)`
-    align-self: center;
-`
 
 const getBarProps = game => {
     if (game.me.reachable.length == 0) {
@@ -64,7 +59,7 @@ export const Game = ({apiUrl}) => {
     }
 
     return game ? (
-        <CenteredCard>
+        <Paper elevation={8} sx={{alignSelf: "center"}}>
             <Card.Header>
                 <ProgressBar {...getBarProps(game)} />
             </Card.Header>
@@ -76,15 +71,15 @@ export const Game = ({apiUrl}) => {
                     Game ID: {game.id}
                 </Badge>
             </Card.Footer>
-        </CenteredCard>
+        </Paper>
     ) : (
-        <CenteredCard>
+        <Paper elevation={8} sx={{alignSelf: "center"}}>
             <Card.Header>
                 <ProgressBar variant="success" animated now={100} />
             </Card.Header>
             <Card.Body>
                 Waiting for someone else to connect…
             </Card.Body>
-        </CenteredCard>
+        </Paper>
     )
 }

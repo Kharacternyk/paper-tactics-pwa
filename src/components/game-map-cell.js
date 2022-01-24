@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { BsXLg } from "react-icons/bs"
+import Close from "@mui/icons-material/Close"
 
 const Td = styled.td`
     & > div {
@@ -67,5 +67,5 @@ const Td = styled.td`
 `
 
 export const GameMapCell = (props) => {
-    return <Td {...props}><div><BsXLg /></div></Td>
+    return <Td {...props}><div><Close /></div></Td>
 }
