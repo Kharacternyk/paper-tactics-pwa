@@ -2,8 +2,9 @@ import { useEffect, useState } from "react"
 import { GameMap } from "./game-map"
 import Card from "react-bootstrap/Card"
 import ProgressBar from "react-bootstrap/ProgressBar"
-import Badge from "react-bootstrap/Badge"
 import Paper from "@mui/material/Paper"
+import Chip from "@mui/material/Chip"
+import LinearProgress from "@mui/material/LinearProgress"
 import useWebSocket from "react-use-websocket"
 
 const getBarProps = game => {
@@ -67,15 +68,13 @@ export const Game = ({apiUrl}) => {
                 <GameMap game={game} onTurnMade={onTurnMade} />
             </Card.Body>
             <Card.Footer>
-                <Badge bg="secondary">
-                    Game ID: {game.id}
-                </Badge>
+                <Chip label={`Game ID: ${game.id}`} color="primary"/>
             </Card.Footer>
         </Paper>
     ) : (
         <Paper elevation={8} sx={{alignSelf: "center"}}>
             <Card.Header>
-                <ProgressBar variant="success" animated now={100} />
+                <LinearProgress />
             </Card.Header>
             <Card.Body>
                 Waiting for someone else to connect…
