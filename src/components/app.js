@@ -1,5 +1,5 @@
 import { useState } from "react"
-import Alert from "react-bootstrap/Alert"
+import Alert from "@mui/material/Alert"
 import AppBar from "@mui/material/AppBar"
 import Button from "@mui/material/Button"
 import Toolbar from "@mui/material/Toolbar"
@@ -27,7 +27,7 @@ export const App = () => {
                     </Button>
                 </Toolbar>
             </AppBar>
-            {currentPage === "how-to" && <Alert variant="success"> Coming soon… </Alert>}
+            {currentPage === "how-to" && <Alert severity="warning"> Coming soon… </Alert>}
             {currentPage === "new-pvp" && <Game apiUrl={apiUrl} />}
         </Stack>
     )

@@ -1,47 +1,14 @@
 import { useEffect, useState } from "react"
 import { GameMap } from "./game-map"
-import Card from "react-bootstrap/Card"
-import ProgressBar from "react-bootstrap/ProgressBar"
+import Alert from "@mui/material/Alert"
+import Stack from "@mui/material/Stack"
 import Paper from "@mui/material/Paper"
 import Chip from "@mui/material/Chip"
 import LinearProgress from "@mui/material/LinearProgress"
+import Stepper from "@mui/material/Stepper"
+import Step from "@mui/material/Step"
+import StepLabel from "@mui/material/StepLabel"
 import useWebSocket from "react-use-websocket"
-
-const getBarProps = game => {
-    if (game.me.reachable.length == 0) {
-        return {
-            label: "You lost!",
-            variant: "danger",
-            now: 100,
-            animated: true,
-        }
-    }
-    if (game.opponent.reachable.length == 0) {
-        return {
-            label: "You won!",
-            variant: "success",
-            now: 100,
-            animated: true,
-        }
-    }
-    if (game.myTurn) {
-        return {
-            label: "Your turn",
-            variant: "primary",
-            min: 0,
-            max: 3,
-            now: game.turnsLeft,
-        }
-    }
-    return {
-        label: "Opponent's turn",
-        variant: "danger",
-        min: 0,
-        max: 3,
-        now: game.turnsLeft,
-    }
-}
-
 
 export const Game = ({apiUrl}) => {
     const { sendJsonMessage, lastJsonMessage } = useWebSocket(apiUrl)
@@ -61,24 +28,28 @@ export const Game = ({apiUrl}) => {
 
     return game ? (
         <Paper elevation={8} sx={{alignSelf: "center"}}>
-            <Card.Header>
-                <ProgressBar {...getBarProps(game)} />
-            </Card.Header>
-            <Card.Body>
+            <Stack spacing={2} sx={{p: 1}}>
+                <Stepper activeStep={3 - game.turnsLeft}>
+                    <Step key={1}>
+                        <StepLabel />
+                    </Step>
+                    <Step key={2}>
+                        <StepLabel />
+                    </Step>
+                    <Step key={3}>
+                        <StepLabel />
+                    </Step>
+                </Stepper>
                 <GameMap game={game} onTurnMade={onTurnMade} />
-            </Card.Body>
-            <Card.Footer>
                 <Chip label={`Game ID: ${game.id}`} color="primary"/>
-            </Card.Footer>
+            </Stack>
         </Paper>
     ) : (
         <Paper elevation={8} sx={{alignSelf: "center"}}>
-            <Card.Header>
-                <LinearProgress />
-            </Card.Header>
-            <Card.Body>
+            <Alert severity="info">
                 Waiting for someone else to connect…
-            </Card.Body>
+                <LinearProgress />
+            </Alert>
         </Paper>
     )
 }
