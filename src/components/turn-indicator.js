@@ -31,7 +31,7 @@ export const TurnIndicator = ({game}) => {
 
     return (
         <Alert severity={color} icon={progress}>
-            <AlertTitle sx={{display: "flext", alignItems: "center", height: "100%", m: 0}}>
+            <AlertTitle sx={{display: "flex", alignItems: "center", height: "100%", m: 0}}>
                 {message}
             </AlertTitle>
         </Alert>

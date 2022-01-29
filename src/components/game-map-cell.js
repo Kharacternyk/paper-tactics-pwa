@@ -9,7 +9,7 @@ export const GameMapCell = (props) => {
             sx={getStyle(props)}
         >
             <Box
-                p={1}
+                p={0.5}
                 display="flex"
                 height="100%"
                 justifyContent="center"
