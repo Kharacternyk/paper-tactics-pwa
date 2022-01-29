@@ -2,12 +2,14 @@ import CircularProgress from "@mui/material/CircularProgress"
 import Alert from "@mui/material/Alert"
 import AlertTitle from "@mui/material/AlertTitle"
 import Box from "@mui/material/Box"
+import Badge from "@mui/material/Badge"
 import Edit from "@mui/icons-material/Edit"
 import EditOff from "@mui/icons-material/EditOff"
 
 export const TurnIndicator = ({game}) => {
     const color = game.myTurn ? "success" : "error"
-    const icon = game.myTurn ? <Edit color={color} /> : <EditOff color={color} />
+    const iconProps = {color, sx: {transform: "scale(-1, 1)"}}
+    const icon = game.myTurn ? <Edit {...iconProps} /> : <EditOff {...iconProps} />
     const message = game.myTurn ? "Your turn!" : "Opponent's turn…"
     const value = game.turnsLeft * 100 / 3
 
@@ -24,7 +26,9 @@ export const TurnIndicator = ({game}) => {
                 bottom={0}
                 right={0}
             >
-                {icon}
+                <Badge badgeContent={game.turnsLeft} color={color}>
+                    {icon}
+                </Badge>
             </Box>
         </Box>
     )
