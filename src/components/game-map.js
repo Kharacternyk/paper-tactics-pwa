@@ -1,6 +1,7 @@
-import styled from "styled-components"
-import Table from "react-bootstrap/Table"
 import { GameMapCell } from "./game-map-cell"
+import Table from "@mui/material/Table"
+import TableBody from "@mui/material/TableBody"
+import TableRow from "@mui/material/TableRow"
 
 export const GameMap = ({game, onTurnMade}) => {
     const cellProps = Array(10).fill().map(() => {
@@ -30,12 +31,14 @@ export const GameMap = ({game, onTurnMade}) => {
             return <GameMapCell {...props} key={x} />
         })
 
-        return <tr key={y}>{renderedRow}</tr>
+        return <TableRow key={y}>{renderedRow}</TableRow>
     })
 
     return (
-        <Table bordered size={game.size}>
-            <tbody>{renderedRows}</tbody>
+        <Table >
+            <TableBody sx={{borderTop: 1, borderLeft: 1, borderColor: "text.disabled"}}>
+                {renderedRows}
+            </TableBody>
         </Table>
     )
 }

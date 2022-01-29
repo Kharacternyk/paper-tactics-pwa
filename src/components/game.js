@@ -26,7 +26,7 @@ export const Game = ({apiUrl}) => {
 
     return game ? (
         <Paper elevation={8} sx={{alignSelf: "center"}}>
-            <Stack spacing={2} sx={{p: 1}}>
+            <Stack spacing={1} sx={{p: 1}}>
                 <TurnIndicator game={game} />
                 <GameMap game={game} onTurnMade={onTurnMade} />
                 <Chip label={`Game ID: ${game.id}`} color="primary"/>
