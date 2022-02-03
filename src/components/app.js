@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Alert from "@mui/material/Alert"
 import AppBar from "@mui/material/AppBar"
-import Toolbar from "@mui/material/Toolbar"
+import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import Stack from "@mui/material/Stack"
 import BottomNavigation from "@mui/material/BottomNavigation"
@@ -22,23 +22,28 @@ export const App = () => {
             <CssBaseline />
             <Stack spacing={2}>
                 <AppBar position="sticky" color="transparent">
-                    <Toolbar>
-                        <Typography component="h1" sx={{flexGrow: 1}}>
+                    <Box p={1} display="flex" justifyContent="center">
+                        <Typography
+                            component="h1"
+                            color="primary"
+                            fontSize="1.5rem"
+                            fontStyle="italic"
+                            fontWeight="bold"
+                            letterSpacing="0.2em"
+                            textTransform="uppercase"
+                        >
                             Paper Tactics
                         </Typography>
-                        <BottomNavigation
-                            showLabels
-                            value={currentPage}
-                            onChange={(event, page) => setCurrentPage(page)}
-                        >
-                            <BottomNavigationAction label="Learn" icon={<LearnIcon />} />
-                            <BottomNavigationAction label="Play" icon={<PlayIcon />} />
-                            <BottomNavigationAction
-                                label="Practice"
-                                icon={<PracticeIcon />}
-                            />
-                        </BottomNavigation>
-                    </Toolbar>
+                    </Box>
+                    <BottomNavigation
+                        showLabels
+                        value={currentPage}
+                        onChange={(event, page) => setCurrentPage(page)}
+                    >
+                        <BottomNavigationAction label="Learn" icon={<LearnIcon />} />
+                        <BottomNavigationAction label="Play" icon={<PlayIcon />} />
+                        <BottomNavigationAction label="Practice" icon={<PracticeIcon />} />
+                    </BottomNavigation>
                 </AppBar>
                 {currentPage === 0 && <Alert severity="warning"> Coming soon… </Alert>}
                 {currentPage === 1 && <Game apiUrl={apiUrl} />}
