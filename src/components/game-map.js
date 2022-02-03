@@ -3,7 +3,7 @@ import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 import TableRow from "@mui/material/TableRow"
 
-export const GameMap = ({game, onTurnMade}) => {
+export const GameMap = ({game, onTurnMade, icon}) => {
     const cellProps = Array(10).fill().map(() => {
         return Array(10).fill().map(() => ({}))
     })
@@ -28,7 +28,7 @@ export const GameMap = ({game, onTurnMade}) => {
 
     const renderedRows = cellProps.map((row, y) => {
         const renderedRow = row.map((props, x) => {
-            return <GameMapCell {...props} key={x} />
+            return <GameMapCell {...props} icon={icon} key={x} />
         })
 
         return <TableRow key={y}>{renderedRow}</TableRow>

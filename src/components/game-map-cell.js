@@ -1,6 +1,5 @@
 import TableCell from "@mui/material/TableCell"
 import Box from "@mui/material/Box"
-import Close from "@mui/icons-material/Close"
 
 export const GameMapCell = (props) => {
     return (
@@ -15,7 +14,7 @@ export const GameMapCell = (props) => {
                 justifyContent="center"
                 alignItems="center"
             >
-                <Close />
+                {props.icon}
             </Box>
         </TableCell>
     )
