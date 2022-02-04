@@ -1,4 +1,5 @@
 import { GameMapCell } from "./game-map-cell"
+import { Section } from "./section"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 import TableRow from "@mui/material/TableRow"
@@ -35,10 +36,12 @@ export const GameMap = ({game, onTurnMade, icon}) => {
     })
 
     return (
-        <Table >
-            <TableBody>
-                {renderedRows}
-            </TableBody>
-        </Table>
+        <Section>
+            <Table >
+                <TableBody>
+                    {renderedRows}
+                </TableBody>
+            </Table>
+        </Section>
     )
 }

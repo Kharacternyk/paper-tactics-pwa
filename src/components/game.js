@@ -2,11 +2,8 @@ import { useEffect, useState } from "react"
 import { GameMap } from "./game-map"
 import { TurnIndicator } from "./turn-indicator"
 import { Section } from "./section"
-import Alert from "@mui/material/Alert"
-import Stack from "@mui/material/Stack"
-import Paper from "@mui/material/Paper"
-import Chip from "@mui/material/Chip"
-import LinearProgress from "@mui/material/LinearProgress"
+import { BadgeAlert } from "./badge-alert"
+import WaitIcon from "@mui/icons-material/ConnectWithoutContact"
 import useWebSocket from "react-use-websocket"
 
 export const Game = ({apiUrl, icon}) => {
@@ -27,19 +24,12 @@ export const Game = ({apiUrl, icon}) => {
 
     return game ? (
         <>
-            <Section>
-                <TurnIndicator game={game} />
-            </Section>
-            <Section>
-                <GameMap game={game} onTurnMade={onTurnMade} icon={icon} />
-            </Section>
+            <TurnIndicator game={game} />
+            <GameMap game={game} onTurnMade={onTurnMade} icon={icon} />
         </>
     ) : (
-        <Section>
-            <Alert severity="info">
-                Waiting for someone else to connect…
-                <LinearProgress variant="query"/>
-            </Alert>
-        </Section>
+        <BadgeAlert icon={<WaitIcon color="success" />} color="success">
+            Waiting for someone else to connect…
+        </BadgeAlert>
     )
 }
