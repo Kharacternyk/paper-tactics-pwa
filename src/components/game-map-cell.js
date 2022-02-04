@@ -13,6 +13,12 @@ export const GameMapCell = (props) => {
                 height="100%"
                 justifyContent="center"
                 alignItems="center"
+                sx={{
+                    "& .MuiSvgIcon-root": {
+                        width: "100%",
+                        height: "100%",
+                    }
+                }}
             >
                 {props.icon}
             </Box>
@@ -23,9 +29,10 @@ export const GameMapCell = (props) => {
 const getStyle = (props) => {
     return {
         p: 0,
-        borderRight: 1,
-        borderBottom: 1,
-        borderColor: "text.disabled",
+        ".MuiTableCell-root + &": {
+            borderLeft: 1,
+            borderLeftColor: "grey.300"
+        },
         ":hover": getHoverColors(props),
         ...getColors(props),
     }

@@ -36,7 +36,7 @@ export const GameMap = ({game, onTurnMade, icon}) => {
 
     return (
         <Table >
-            <TableBody sx={{borderTop: 1, borderLeft: 1, borderColor: "text.disabled"}}>
+            <TableBody>
                 {renderedRows}
             </TableBody>
         </Table>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { GameMap } from "./game-map"
 import { TurnIndicator } from "./turn-indicator"
+import { Section } from "./section"
 import Alert from "@mui/material/Alert"
 import Stack from "@mui/material/Stack"
 import Paper from "@mui/material/Paper"
@@ -25,19 +26,20 @@ export const Game = ({apiUrl, icon}) => {
     }
 
     return game ? (
-        <Paper elevation={8} sx={{alignSelf: "center"}}>
-            <Stack spacing={1} sx={{p: 1}}>
+        <>
+            <Section>
                 <TurnIndicator game={game} />
+            </Section>
+            <Section>
                 <GameMap game={game} onTurnMade={onTurnMade} icon={icon} />
-                <Chip label={`Game ID: ${game.id}`} color="primary"/>
-            </Stack>
-        </Paper>
+            </Section>
+        </>
     ) : (
-        <Paper elevation={8} sx={{alignSelf: "center"}}>
+        <Section>
             <Alert severity="info">
                 Waiting for someone else to connect…
                 <LinearProgress variant="query"/>
             </Alert>
-        </Paper>
+        </Section>
     )
 }
