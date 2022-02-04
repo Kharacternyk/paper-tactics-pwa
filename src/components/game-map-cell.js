@@ -14,7 +14,7 @@ export const GameMapCell = (props) => {
                 justifyContent="center"
                 alignItems="center"
                 sx={{
-                    "& .MuiSvgIcon-root": {
+                    "& svg": {
                         width: "100%",
                         height: "100%",
                     }
@@ -29,9 +29,12 @@ export const GameMapCell = (props) => {
 const getStyle = (props) => {
     return {
         p: 0,
-        ".MuiTableCell-root + &": {
+        "td + &": {
             borderLeft: 1,
             borderLeftColor: "grey.300"
+        },
+        "tr:last-child &": {
+            borderBottom: 0
         },
         ":hover": getHoverColors(props),
         ...getColors(props),
