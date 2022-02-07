@@ -43,7 +43,7 @@ export const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <AppBar position="sticky" color="transparent">
+            <AppBar position="sticky" color="inherit">
                 <Box p={1} display="flex" justifyContent="center">
                     <Typography
                         component="h1"
