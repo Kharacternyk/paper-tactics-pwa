@@ -1,4 +1,5 @@
 import { Section } from "./section"
+import { GameUnitIcon } from "./game-unit-icon"
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
 import ToggleButton from "@mui/material/ToggleButton"
 import CrossIcon from "@mui/icons-material/Close"
@@ -23,8 +24,10 @@ export const icons = [
 
 export const Settings = ({onIconChanged, iconIndex}) => {
     const iconButtons = icons.map((icon, index) => (
-        <ToggleButton key={index} value={index} sx={{flexGrow: 1}}>
-            {icons[index]}
+        <ToggleButton key={index} value={index} sx={{flexGrow: 1, p: 0}}>
+            <GameUnitIcon>
+                {icons[index]}
+            </GameUnitIcon>
         </ToggleButton>
     ))
 

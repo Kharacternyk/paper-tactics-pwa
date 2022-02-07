@@ -1,5 +1,5 @@
+import { GameUnitIcon } from "./game-unit-icon"
 import TableCell from "@mui/material/TableCell"
-import Box from "@mui/material/Box"
 
 export const GameMapCell = (props) => {
     return (
@@ -7,21 +7,9 @@ export const GameMapCell = (props) => {
             onClick={props.onClick}
             sx={getStyle(props)}
         >
-            <Box
-                p={0.5}
-                display="flex"
-                height="100%"
-                justifyContent="center"
-                alignItems="center"
-                sx={{
-                    "& svg": {
-                        width: "100%",
-                        height: "100%",
-                    }
-                }}
-            >
+            <GameUnitIcon>
                 {props.icon}
-            </Box>
+            </GameUnitIcon>
         </TableCell>
     )
 }
