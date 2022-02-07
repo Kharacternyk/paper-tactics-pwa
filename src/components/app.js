@@ -18,7 +18,7 @@ import useCookie from "react-use-cookie"
 
 const theme = createTheme({
     typography: {
-        fontSize: 16,
+        fontSize: 18,
         fontFamily: [
             '-apple-system',
             'BlinkMacSystemFont',
@@ -48,7 +48,7 @@ export const App = () => {
                     <Typography
                         component="h1"
                         color="primary"
-                        fontSize="1.5rem"
+                        fontSize="2rem"
                         fontStyle="italic"
                         fontWeight="bold"
                         letterSpacing="0.2em"
