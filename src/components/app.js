@@ -17,7 +17,21 @@ import SettingsIcon from "@mui/icons-material/Settings"
 import useCookie from "react-use-cookie"
 
 const theme = createTheme({
-    spacing: x => `${0.5 * x}rem`
+    typography: {
+        fontSize: 16,
+        fontFamily: [
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+        ].join(',')
+    }
 })
 
 const apiUrl = "wss://az7ndrlaxk.execute-api.eu-central-1.amazonaws.com/rolling"
