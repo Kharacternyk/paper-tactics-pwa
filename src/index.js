@@ -1,3 +1,4 @@
+import "@fontsource/roboto/latin.css"
 import ReactDOM from "react-dom";
 import { App } from "./components/app";
 
