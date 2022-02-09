@@ -1,5 +1,6 @@
 import { Game } from "./game"
 import { Settings, icons } from "./settings"
+import { MainNavigation } from "./main-navigation"
 import { useState } from "react"
 import { ThemeProvider, createTheme } from "@mui/material/styles"
 import Alert from "@mui/material/Alert"
@@ -7,13 +8,7 @@ import AppBar from "@mui/material/AppBar"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import Stack from "@mui/material/Stack"
-import Tabs from "@mui/material/Tabs"
-import Tab from "@mui/material/Tab"
 import CssBaseline from "@mui/material/CssBaseline"
-import LearnIcon from "@mui/icons-material/School"
-import PlayIcon from "@mui/icons-material/SportsEsports"
-import PracticeIcon from "@mui/icons-material/TrackChanges"
-import SettingsIcon from "@mui/icons-material/Settings"
 import useCookie from "react-use-cookie"
 
 const theme = createTheme({ })
@@ -27,30 +22,23 @@ export const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <AppBar position="sticky" color="inherit">
-                <Box p={1} display="flex" justifyContent="center">
-                    <Typography
-                        variant="h4"
-                        component="h1"
-                        color="primary"
-                        fontStyle="italic"
-                        fontWeight="bold"
-                        letterSpacing="0.2em"
-                        textTransform="uppercase"
-                    >
-                        Paper Tactics
-                    </Typography>
-                </Box>
-                <Tabs
-                    centered
+            <AppBar position="sticky" color="inherit" sx={{alignItems: "center"}}>
+                <Typography
+                    variant="h4"
+                    component="h1"
+                    color="primary"
+                    fontStyle="italic"
+                    fontWeight="bold"
+                    letterSpacing="0.2em"
+                    textTransform="uppercase"
+                    m={0.5}
+                >
+                    Paper Tactics
+                </Typography>
+                <MainNavigation
                     value={currentPage}
                     onChange={(event, page) => setCurrentPage(page)}
-                >
-                    <Tab label="Learn" icon={<LearnIcon />} />
-                    <Tab label="Play" icon={<PlayIcon />} />
-                    <Tab label="Practice" icon={<PracticeIcon />} />
-                    <Tab label="Settings" icon={<SettingsIcon />} />
-                </Tabs>
+                />
             </AppBar>
             <Stack gap={2} alignItems="center" px={2} pt={2}>
                 {currentPage === 0 && <Alert severity="warning"> Coming soon… </Alert>}
