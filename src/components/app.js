@@ -7,8 +7,8 @@ import AppBar from "@mui/material/AppBar"
 import Box from "@mui/material/Box"
 import Typography from "@mui/material/Typography"
 import Stack from "@mui/material/Stack"
-import BottomNavigation from "@mui/material/BottomNavigation"
-import BottomNavigationAction from "@mui/material/BottomNavigationAction"
+import Tabs from "@mui/material/Tabs"
+import Tab from "@mui/material/Tab"
 import CssBaseline from "@mui/material/CssBaseline"
 import LearnIcon from "@mui/icons-material/School"
 import PlayIcon from "@mui/icons-material/SportsEsports"
@@ -57,16 +57,16 @@ export const App = () => {
                         Paper Tactics
                     </Typography>
                 </Box>
-                <BottomNavigation
-                    showLabels
+                <Tabs
+                    centered
                     value={currentPage}
                     onChange={(event, page) => setCurrentPage(page)}
                 >
-                    <BottomNavigationAction label="Learn" icon={<LearnIcon />} />
-                    <BottomNavigationAction label="Play" icon={<PlayIcon />} />
-                    <BottomNavigationAction label="Practice" icon={<PracticeIcon />} />
-                    <BottomNavigationAction label="Settings" icon={<SettingsIcon />} />
-                </BottomNavigation>
+                    <Tab label="Learn" icon={<LearnIcon />} />
+                    <Tab label="Play" icon={<PlayIcon />} />
+                    <Tab label="Practice" icon={<PracticeIcon />} />
+                    <Tab label="Settings" icon={<SettingsIcon />} />
+                </Tabs>
             </AppBar>
             <Stack gap={2} alignItems="center" px={2} pt={2}>
                 {currentPage === 0 && <Alert severity="warning"> Coming soon… </Alert>}
