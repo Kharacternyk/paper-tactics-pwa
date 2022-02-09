@@ -8,6 +8,7 @@ export const BadgeAlert = ({children, icon, color, progress}) => {
     const badge = (
         <Box position="relative" display="inline-flex" alignItems="center">
             <CircularProgress
+                size="2.5rem"
                 variant={progress === undefined ? "indeterminate" : "determinate"}
                 value={progress}
                 color={color}

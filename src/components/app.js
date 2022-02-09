@@ -16,23 +16,7 @@ import PracticeIcon from "@mui/icons-material/TrackChanges"
 import SettingsIcon from "@mui/icons-material/Settings"
 import useCookie from "react-use-cookie"
 
-const theme = createTheme({
-    typography: {
-        fontSize: 18,
-        fontFamily: [
-            '-apple-system',
-            'BlinkMacSystemFont',
-            '"Segoe UI"',
-            'Roboto',
-            '"Helvetica Neue"',
-            'Arial',
-            'sans-serif',
-            '"Apple Color Emoji"',
-            '"Segoe UI Emoji"',
-            '"Segoe UI Symbol"',
-        ].join(',')
-    }
-})
+const theme = createTheme({ })
 
 const apiUrl = "wss://az7ndrlaxk.execute-api.eu-central-1.amazonaws.com/rolling"
 
@@ -46,9 +30,9 @@ export const App = () => {
             <AppBar position="sticky" color="inherit">
                 <Box p={1} display="flex" justifyContent="center">
                     <Typography
+                        variant="h4"
                         component="h1"
                         color="primary"
-                        fontSize="2rem"
                         fontStyle="italic"
                         fontWeight="bold"
                         letterSpacing="0.2em"
