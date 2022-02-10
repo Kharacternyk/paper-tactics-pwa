@@ -29,7 +29,7 @@ const getStyle = (props) => {
     }
 }
 
-const getColors = ({mine, opponent, unit, wall}) => {
+const getColors = ({mine, opponent, unit, wall, reachableByMe}) => {
     const variants = {
         mine: {
             unit: {
@@ -42,7 +42,8 @@ const getColors = ({mine, opponent, unit, wall}) => {
         },
         opponent: {
             unit: {
-                color: "error.main"
+                color: "error.main",
+                bgcolor: reachableByMe && "grey.100"
             },
             wall: {
                 color: "success.light",
@@ -56,7 +57,7 @@ const getColors = ({mine, opponent, unit, wall}) => {
     }
 
     return {
-        color: "rgba(0, 0, 0, 0)"
+        color: reachableByMe ? "grey.100" : "rgba(0, 0, 0, 0)"
     }
 }
 
