@@ -5,8 +5,6 @@ import { useState } from "react"
 import { ThemeProvider, createTheme } from "@mui/material/styles"
 import Alert from "@mui/material/Alert"
 import AppBar from "@mui/material/AppBar"
-import Box from "@mui/material/Box"
-import Typography from "@mui/material/Typography"
 import Stack from "@mui/material/Stack"
 import CssBaseline from "@mui/material/CssBaseline"
 import useCookie from "react-use-cookie"
@@ -23,18 +21,6 @@ export const App = () => {
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <AppBar position="sticky" color="inherit" sx={{alignItems: "center"}}>
-                <Typography
-                    variant="h4"
-                    component="h1"
-                    color="primary"
-                    fontStyle="italic"
-                    fontWeight="bold"
-                    letterSpacing="0.2em"
-                    textTransform="uppercase"
-                    m={0.5}
-                >
-                    Paper Tactics
-                </Typography>
                 <MainNavigation
                     value={currentPage}
                     onChange={(event, page) => setCurrentPage(page)}
