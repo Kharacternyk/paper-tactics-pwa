@@ -33,21 +33,21 @@ const getColors = ({mine, opponent, unit, wall, reachableByMe}) => {
     const variants = {
         mine: {
             unit: {
-                color: "success.main"
+                color: "primary.main"
             },
             wall: {
-                color: "error.light",
-                bgcolor: "success.main",
+                color: "primary.dark",
+                bgcolor: "primary.main",
             }
         },
         opponent: {
             unit: {
-                color: "error.main",
+                color: "secondary.main",
                 bgcolor: reachableByMe && "grey.100"
             },
             wall: {
-                color: "success.light",
-                bgcolor: "error.main",
+                color: "secondary.dark",
+                bgcolor: "secondary.main",
             }
         }
     }
@@ -65,11 +65,11 @@ const getHoverColors= ({reachableByMe, unit}) => {
     if (reachableByMe) {
         if (unit) {
             return {
-                bgcolor: "success.light"
+                bgcolor: "primary.light"
             }
         } else {
             return {
-                color: "success.light"
+                color: "primary.light"
             }
         }
     }

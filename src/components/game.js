@@ -28,7 +28,7 @@ export const Game = ({apiUrl, icon}) => {
             <GameMap game={game} onTurnMade={onTurnMade} icon={icon} />
         </>
     ) : (
-        <BadgeAlert icon={<WaitIcon color="success" />} color="success">
+        <BadgeAlert icon={<WaitIcon color="primary" />} color="primary">
             Waiting for someone else to connect…
         </BadgeAlert>
     )

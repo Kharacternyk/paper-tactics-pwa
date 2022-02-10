@@ -30,7 +30,7 @@ export const BadgeAlert = ({children, icon, color, progress}) => {
 
     return (
         <Section>
-            <Alert severity={color} icon={badge}>
+            <Alert color={color} icon={badge}>
                 <AlertTitle sx={{
                     display: "flex",
                     alignItems: "center",

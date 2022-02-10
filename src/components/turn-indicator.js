@@ -4,7 +4,7 @@ import MyTurnIcon from "@mui/icons-material/Edit"
 import OpponentsTurnIcon from "@mui/icons-material/EditOff"
 
 export const TurnIndicator = ({game}) => {
-    const color = game.myTurn ? "success" : "error"
+    const color = game.myTurn ? "primary" : "secondary"
     const iconProps = {color, sx: {transform: "scale(-1, 1)"}}
     const message = game.myTurn ? "Your turn!" : "Opponent's turn…"
     const progress = game.turnsLeft * 100 / 3
