@@ -2,7 +2,7 @@ import {useEffect, useState} from "react"
 import {icons} from "./settings"
 import {GameMap} from "./game-map"
 import {TurnIndicator} from "./turn-indicator"
-import {GameInfo} from "./game-info"
+import {GameFooter} from "./game-footer"
 import {BadgeAlert} from "./badge-alert"
 import WaitIcon from "@mui/icons-material/ConnectWithoutContact"
 import useWebSocket from "react-use-websocket"
@@ -31,7 +31,7 @@ export const Game = ({apiUrl, iconIndex}) => {
         <>
             <TurnIndicator game={game} />
             <GameMap game={game} onTurnMade={onTurnMade} icons={gameIcons} />
-            <GameInfo game={game} />
+            <GameFooter game={game} />
         </>
     ) : (
         <BadgeAlert icon={<WaitIcon color="primary" />} color="primary">

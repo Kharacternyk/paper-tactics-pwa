@@ -3,7 +3,7 @@ import OpponentIcon from "@mui/icons-material/ConnectWithoutContact"
 import IdIcon from "@mui/icons-material/Fingerprint"
 import {match, T} from "babel-plugin-proposal-pattern-matching/match"
 
-export const GameInfo = ({game}) => {
+export const GameFooter = ({game}) => {
     const [region, city] = fixTimeZone(game.opponent.viewData.timeZone)?.split("/")
     const opponent = match({region, city})(
         ({region = T.string, city = T.string}) => (
