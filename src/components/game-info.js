@@ -33,5 +33,7 @@ export const GameInfo = ({game}) => {
 
 const fixTimeZone = timeZone => timeZone?.replace("Kiev", "Kyiv")?.replace("_", " ")
 const breakId = id => (
-    [[0, 8], [8, 16], [16, 24], [24, 32]].map(([x, y]) => id.slice(x, y)).join(" ")
+    [[0, 8], [8, 16], [16, 24], [24, 32]]
+    .map(([x, y]) => id.slice(x, y))
+    .join(" ").toUpperCase()
 )
