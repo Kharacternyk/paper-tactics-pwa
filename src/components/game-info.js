@@ -6,7 +6,9 @@ import {match, T} from "babel-plugin-proposal-pattern-matching/match"
 export const GameInfo = ({game}) => {
     const [region, city] = fixTimeZone(game.opponent.viewData.timeZone)?.split("/")
     const opponent = match({region, city})(
-        ({region = T.string, city = T.string}) => `Someone near ${city} (${region})`,
+        ({region = T.string, city = T.string}) => (
+            `Someone in the ${city} (${region}) time zone`
+        ),
         _ => "Someone in the world"
     )
     return (
