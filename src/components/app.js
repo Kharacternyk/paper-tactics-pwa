@@ -1,5 +1,5 @@
 import { Game } from "./game"
-import { Settings, icons } from "./settings"
+import { Settings } from "./settings"
 import { MainNavigation } from "./main-navigation"
 import { useState } from "react"
 import { ThemeProvider, createTheme } from "@mui/material/styles"
@@ -43,7 +43,7 @@ export const App = () => {
             </AppBar>
             <Stack gap={2} alignItems="center" px={2} pt={2}>
                 {currentPage === 0 && <Alert severity="warning"> Coming soon… </Alert>}
-                {currentPage === 1 && <Game apiUrl={apiUrl} icon={icons[iconIndex]} />}
+                {currentPage === 1 && <Game apiUrl={apiUrl} iconIndex={iconIndex} />}
                 {currentPage === 2 && (
                     <Settings onIconChanged={setIconIndex} iconIndex={Number(iconIndex)}/>
                 )}

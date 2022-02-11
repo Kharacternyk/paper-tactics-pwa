@@ -2,7 +2,7 @@ import { GameUnitIcon } from "./game-unit-icon"
 import TableCell from "@mui/material/TableCell"
 import match from "babel-plugin-proposal-pattern-matching/match"
 
-export const GameMapCell = ({mine, opponent, unit, wall, reachable, onClick, icon}) => {
+export const GameMapCell = ({mine, opponent, unit, wall, reachable, onClick, icons}) => {
     const sx = {
         p: 0,
         "td + &": {
@@ -33,6 +33,12 @@ export const GameMapCell = ({mine, opponent, unit, wall, reachable, onClick, ico
             _ => ({color: "rgba(0, 0, 0, 0)"})
         )
     }
+
+    const icon = match({opponent, mine, wall, unit})(
+        ({mine = true, wall = true}) => icons.opponent,
+        ({opponent = true, unit = true}) => icons.opponent,
+        _ => icons.me,
+    )
 
     return (
         <TableCell onClick={onClick} sx={sx}>
