@@ -4,11 +4,9 @@ import IdIcon from "@mui/icons-material/Fingerprint"
 import {match, T} from "babel-plugin-proposal-pattern-matching/match"
 
 export const GameInfo = ({game}) => {
-    const [region, city] = game.opponent.viewData.timeZone?.split("/")
+    const [region, city] = fixTimeZone(game.opponent.viewData.timeZone)?.split("/")
     const opponent = match({region, city})(
-        ({region = T.string, city = T.string}) => (
-            `Someone near ${fix(city)} (${fix(region)})`
-        ),
+        ({region = T.string, city = T.string}) => `Someone near ${city} (${region})`,
         _ => "Someone in the world"
     )
     return (
@@ -27,10 +25,13 @@ export const GameInfo = ({game}) => {
                 progress={100}
                 icon={<IdIcon color="primary"/>}
             >
-                {game.id}
+                {breakId(game.id)}
             </BadgeAlert>
         </>
     )
 }
 
-const fix = string => string.replace("Kiev", "Kyiv").replace("_", " ")
+const fixTimeZone = timeZone => timeZone?.replace("Kiev", "Kyiv")?.replace("_", " ")
+const breakId = id => (
+    [[0, 8], [8, 16], [16, 24], [24, 32]].map(([x, y]) => id.slice(x, y)).join(" ")
+)
