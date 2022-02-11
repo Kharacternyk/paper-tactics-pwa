@@ -39,14 +39,12 @@ export const Settings = ({onIconChanged, iconIndex}) => {
         </ToggleButton>
     ))
 
-    console.log(iconIndex)
-
     return  (
         <Section>
             <ToggleButtonGroup
                 color="primary"
                 exclusive
-                value={iconIndex}
+                value={Number(iconIndex)}
                 onChange={(event, iconIndex) => onIconChanged(iconIndex)}
                 sx={{display: "flex"}}
             >

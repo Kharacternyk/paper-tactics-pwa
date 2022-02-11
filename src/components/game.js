@@ -12,7 +12,10 @@ export const Game = ({apiUrl, iconIndex}) => {
 
     useEffect(() => {
         const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
-        sendJsonMessage({action: "create-game", viewData: {iconIndex, timeZone}})
+        sendJsonMessage({
+            action: "create-game",
+            viewData: {iconIndex: String(iconIndex), timeZone}
+        })
     }, [])
 
     const onTurnMade = (x, y) => {

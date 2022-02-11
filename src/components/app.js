@@ -45,7 +45,7 @@ export const App = () => {
                 {currentPage === 0 && <Alert severity="warning"> Coming soon… </Alert>}
                 {currentPage === 1 && <Game apiUrl={apiUrl} iconIndex={iconIndex} />}
                 {currentPage === 2 && (
-                    <Settings onIconChanged={setIconIndex} iconIndex={Number(iconIndex)}/>
+                    <Settings onIconChanged={setIconIndex} iconIndex={iconIndex}/>
                 )}
             </Stack>
         </ThemeProvider>
