@@ -1,8 +1,9 @@
-import { Game } from "./game"
-import { Settings } from "./settings"
-import { MainNavigation } from "./main-navigation"
-import { useState } from "react"
-import { ThemeProvider, createTheme } from "@mui/material/styles"
+import {Game} from "./game"
+import {Settings} from "./settings"
+import {MainNavigation} from "./main-navigation"
+import {Footer} from "./footer"
+import {useState} from "react"
+import {ThemeProvider, createTheme} from "@mui/material/styles"
 import primary from "@mui/material/colors/teal"
 import secondary from "@mui/material/colors/red"
 import Alert from "@mui/material/Alert"
@@ -47,6 +48,7 @@ export const App = () => {
                 {currentPage === 2 && (
                     <Settings onIconChanged={setIconIndex} iconIndex={iconIndex}/>
                 )}
+                <Footer />
             </Stack>
         </ThemeProvider>
     )
