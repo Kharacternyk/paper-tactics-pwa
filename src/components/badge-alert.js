@@ -4,7 +4,7 @@ import CircularProgress from "@mui/material/CircularProgress"
 import Alert from "@mui/material/Alert"
 import AlertTitle from "@mui/material/AlertTitle"
 
-export const BadgeAlert = ({children, icon, color, progress}) => {
+export const BadgeAlert = ({children, subtitle, icon, color, progress}) => {
     const badge = (
         <Box position="relative" display="inline-flex" alignItems="center">
             <CircularProgress
@@ -31,7 +31,7 @@ export const BadgeAlert = ({children, icon, color, progress}) => {
     return (
         <Section>
             <Alert color={color} icon={badge}>
-                <AlertTitle sx={{
+                <AlertTitle sx={subtitle ? {} : {
                     display: "flex",
                     alignItems: "center",
                     height: "100%",
@@ -39,6 +39,7 @@ export const BadgeAlert = ({children, icon, color, progress}) => {
                 }}>
                     {children}
                 </AlertTitle>
+                {subtitle}
             </Alert>
         </Section>
     )
