@@ -1,21 +1,9 @@
 import { GameUnitIcon } from "./game-unit-icon"
 import TableCell from "@mui/material/TableCell"
+import match from "babel-plugin-proposal-pattern-matching/match"
 
-export const GameMapCell = (props) => {
-    return (
-        <TableCell
-            onClick={props.onClick}
-            sx={getStyle(props)}
-        >
-            <GameUnitIcon>
-                {props.icon}
-            </GameUnitIcon>
-        </TableCell>
-    )
-}
-
-const getStyle = (props) => {
-    return {
+export const GameMapCell = ({mine, opponent, unit, wall, reachable, onClick, icon}) => {
+    const sx = {
         p: 0,
         "td + &": {
             borderLeft: 1,
@@ -24,54 +12,31 @@ const getStyle = (props) => {
         "tr:last-child &": {
             borderBottom: 0
         },
-        ":hover": getHoverColors(props),
-        ...getColors(props),
-    }
-}
-
-const getColors = ({mine, opponent, unit, wall, reachableByMe}) => {
-    const variants = {
-        mine: {
-            unit: {
-                color: "primary.main"
-            },
-            wall: {
-                color: "primary.dark",
-                bgcolor: "primary.main",
-            }
-        },
-        opponent: {
-            unit: {
+        ...match({mine, opponent, unit, wall, reachable})(
+            ({mine = true, unit = true}) => ({color: "primary.main"}),
+            ({mine = true, wall = true}) => ({
+                color: "primary.dark", bgcolor: "primary.main"
+            }),
+            ({opponent = true, unit = true, reachable = true}) => ({
                 color: "secondary.main",
-                bgcolor: reachableByMe && "grey.100"
-            },
-            wall: {
-                color: "secondary.dark",
-                bgcolor: "secondary.main",
-            }
-        }
+                bgcolor: "grey.100",
+                ":hover": {bgcolor: "primary.light"}
+            }),
+            ({opponent = true, unit = true}) => ({ color: "secondary.main" }),
+            ({opponent = true, wall = true}) => ({
+                color: "secondary.dark", bgcolor: "secondary.main"
+            }),
+            ({reachable = true}) => ({
+                color: "grey.100",
+                ":hover": {color: "primary.light"}
+            }),
+            _ => ({color: "rgba(0, 0, 0, 0)"})
+        )
     }
 
-    if (mine || opponent) {
-        return variants[mine ? "mine" : "opponent"][unit ? "unit" : "wall"]
-    }
-
-    return {
-        color: reachableByMe ? "grey.100" : "rgba(0, 0, 0, 0)"
-    }
-}
-
-const getHoverColors= ({reachableByMe, unit}) => {
-    if (reachableByMe) {
-        if (unit) {
-            return {
-                bgcolor: "primary.light"
-            }
-        } else {
-            return {
-                color: "primary.light"
-            }
-        }
-    }
-    return {}
+    return (
+        <TableCell onClick={onClick} sx={sx}>
+            <GameUnitIcon>{icon}</GameUnitIcon>
+        </TableCell>
+    )
 }
