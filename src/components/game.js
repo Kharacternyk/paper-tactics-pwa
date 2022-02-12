@@ -8,8 +8,27 @@ import WaitIcon from "@mui/icons-material/ConnectWithoutContact"
 import useWebSocket from "react-use-websocket"
 
 export const Game = ({apiUrl, iconIndex}) => {
-    const { sendJsonMessage, lastJsonMessage: game } = useWebSocket(apiUrl)
+    const [game, setGame] = useState()
 
+    // It is important to have this cleanup fired before the web socket is closed
+    useEffect(() => {
+        const concede = () => sendJsonMessage({
+            action: "concede",
+            gameId: game.id
+        })
+
+        if (game) {
+            window.addEventListener("beforeunload", concede)
+            return () => {
+                window.removeEventListener("beforeunload", concede)
+                concede()
+            }
+        }
+    }, [game?.id])
+
+    const {sendJsonMessage, lastJsonMessage} = useWebSocket(apiUrl)
+
+    useEffect(() => setGame(lastJsonMessage), [lastJsonMessage])
     useEffect(() => {
         const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
         sendJsonMessage({
