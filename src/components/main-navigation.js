@@ -2,7 +2,7 @@ import Tabs from "@mui/material/Tabs"
 import Tab from "@mui/material/Tab"
 import LearnIcon from "@mui/icons-material/School"
 import PlayIcon from "@mui/icons-material/SportsEsports"
-import SettingsIcon from "@mui/icons-material/Settings"
+import CustomizeIcon from "@mui/icons-material/Brush"
 
 export const MainNavigation = ({value, onChange}) => {
     const tabSx = {
@@ -18,7 +18,7 @@ export const MainNavigation = ({value, onChange}) => {
         >
             <Tab label="Learn" icon={<LearnIcon />} sx={tabSx}/>
             <Tab label="Play" icon={<PlayIcon />} sx={tabSx}/>
-            <Tab label="Settings" icon={<SettingsIcon />} sx={tabSx}/>
+            <Tab label="Customize" icon={<CustomizeIcon />} sx={tabSx}/>
         </Tabs>
     )
 }
