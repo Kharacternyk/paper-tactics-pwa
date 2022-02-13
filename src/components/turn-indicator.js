@@ -7,26 +7,38 @@ import LostIcon from "@mui/icons-material/MoodBad"
 import match from 'babel-plugin-proposal-pattern-matching/match'
 
 export const TurnIndicator = ({
-    game: {me: {hasLost: iLost}, opponent: {hasLost: iWon}, myTurn, turnsLeft}
+    game: {
+        me: {
+            isDefeated: opponentWon
+        },
+        opponent: {
+            isDefeated: opponentLost,
+            isGone: opponentGone
+        },
+        myTurn,
+        turnsLeft
+    }
 }) => {
-    const [color, message] = match({iLost, iWon, myTurn})(
-        ({iLost = true}) => ["secondary", "Opponent won!"],
-        ({iWon = true}) => ["primary", "You won!"],
+    const [color, message] = match({opponentWon, opponentLost, opponentGone, myTurn})(
+        ({opponentWon = true}) => ["secondary", "You are defeated!"],
+        ({opponentLost = true}) => ["primary", "Your opponent is defeated!"],
+        ({opponentGone = true}) => ["primary", "Your opponent has conceded!"],
         ({myTurn = true}) => ["primary", "Your turn"],
-        _ => ["secondary", "Opponent's turn"]
+        _ => ["secondary", "Your opponent's turn"]
     )
 
     const iconProps = {color, sx: {transform: "scale(-1, 1)"}}
 
-    const icon = match({iLost, iWon, myTurn})(
-        ({iLost = true}) => <LostIcon {...iconProps} />,
-        ({iWon = true}) => <WonIcon {...iconProps} />,
+    const icon = match({opponentWon, opponentLost, opponentGone})(
+        ({opponentWon = true}) => <LostIcon {...iconProps} />,
+        ({opponentLost = true}) => <WonIcon {...iconProps} />,
+        ({opponentGone = true}) => <WonIcon {...iconProps} />,
         ({myTurn = true}) => <MyTurnIcon {...iconProps} />,
         _ => <OpponentsTurnIcon {...iconProps} />,
     )
 
-    const [decoratedIcon, progress] = match({iLost, iWon})(
-        ({iLost = false, iWon = false}) => [
+    const [decoratedIcon, progress] = match({opponentWon, opponentLost, opponentGone})(
+        ({opponentWon = false, opponentGone = false, opponentLost = false}) => [
             <Badge badgeContent={turnsLeft} color={color}>
                 {icon}
             </Badge>,
