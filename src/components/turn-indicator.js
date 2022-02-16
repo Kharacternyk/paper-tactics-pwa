@@ -29,7 +29,7 @@ export const TurnIndicator = ({
 
     const iconProps = {color, sx: {transform: "scale(-1, 1)"}}
 
-    const icon = match({opponentWon, opponentLost, opponentGone})(
+    const icon = match({opponentWon, opponentLost, opponentGone, myTurn})(
         ({opponentWon = true}) => <LostIcon {...iconProps} />,
         ({opponentLost = true}) => <WonIcon {...iconProps} />,
         ({opponentGone = true}) => <WonIcon {...iconProps} />,
