@@ -1,19 +1,17 @@
 import {BadgeAlert} from "./badge-alert"
 import Link from "@mui/material/Link"
-import ThanksIcon from "@mui/icons-material/SentimentSatisfiedAlt"
+import ContactIcon from "@mui/icons-material/Mail"
 
 export const Footer = () => {
     return (
         <BadgeAlert
-            subtitle="It will make my day!"
+            subtitle="Bug reports, feature requests, or just thanks"
             color="primary"
             progress={100}
-            icon={<ThanksIcon color="primary"/>}
+            icon={<ContactIcon color="primary"/>}
         >
             You can
-            {" "}<Link href="https://saythanks.io/to/Kharacternyk">say thanks</Link>{" "}
-            to the
-            {" "}<Link href="https://vinnich.uk">sole developer</Link>
+            {" "}<Link href="https://vinnich.uk">contact the developer</Link>{" "}
         </BadgeAlert>
     )
 }
