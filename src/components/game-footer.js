@@ -5,12 +5,18 @@ import {match, T} from "babel-plugin-proposal-pattern-matching/match"
 
 export const GameFooter = ({game}) => {
     const [region, city] = fixTimeZone(game.opponent.viewData.timeZone)?.split("/")
-    const opponent = match({region, city})(
-        ({region = T.string, city = T.string}) => (
+    const os = game.opponent.viewData.os
+
+    const opponent = match({region, city, os})(
+        ({region = T.string, city = T.string, os = T.nullish}) => (
             `Someone in the ${city} (${region}) time zone`
+        ),
+        ({region = T.string, city = T.string}) => (
+            `Someone on ${os} in the ${city} (${region}) time zone`
         ),
         _ => "Someone in the world"
     )
+
     return (
         <>
             <BadgeAlert

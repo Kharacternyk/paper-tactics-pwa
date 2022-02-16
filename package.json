@@ -16,6 +16,7 @@
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "babel-plugin-proposal-pattern-matching": "^1.0.2",
+    "bowser": "^2.11.0",
     "parcel": "^2.2.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",

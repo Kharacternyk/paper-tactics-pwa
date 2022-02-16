@@ -6,6 +6,7 @@ import {GameFooter} from "./game-footer"
 import {BadgeAlert} from "./badge-alert"
 import WaitIcon from "@mui/icons-material/ConnectWithoutContact"
 import useWebSocket from "react-use-websocket"
+import Bowser from "bowser"
 
 export const Game = ({apiUrl, iconIndex}) => {
     const [game, setGame] = useState()
@@ -31,9 +32,11 @@ export const Game = ({apiUrl, iconIndex}) => {
     useEffect(() => setGame(lastJsonMessage), [lastJsonMessage])
     useEffect(() => {
         const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+        const os = Bowser.getParser(window.navigator.userAgent).getOSName()
+
         sendJsonMessage({
             action: "create-game",
-            viewData: {iconIndex: String(iconIndex), timeZone}
+            viewData: {iconIndex: String(iconIndex), timeZone, os}
         })
     }, [])
 
