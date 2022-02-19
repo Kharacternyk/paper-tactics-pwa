@@ -43,11 +43,8 @@ export const App = () => {
                 />
             </AppBar>
             <Stack gap={2} alignItems="center" px={2} pt={2}>
-                {currentPage === 0 && <Alert severity="warning"> Coming soon… </Alert>}
-                {currentPage === 1 && <Game apiUrl={apiUrl} iconIndex={iconIndex} />}
-                {currentPage === 2 && (
-                    <Settings onIconChanged={setIconIndex} iconIndex={iconIndex}/>
-                )}
+                {currentPage === 1 && <Alert severity="warning"> Coming soon… </Alert>}
+                {currentPage === 2 && <Game apiUrl={apiUrl} iconIndex={iconIndex} />}
                 <Footer />
             </Stack>
         </ThemeProvider>
