@@ -1,4 +1,6 @@
-import { BadgeAlert } from "./badge-alert";
+import {BadgeAlert} from "./badge-alert";
+import {Section} from "./section";
+import Button from "@mui/material/Button"
 import Badge from "@mui/material/Badge"
 import MyTurnIcon from "@mui/icons-material/Edit"
 import OpponentsTurnIcon from "@mui/icons-material/EditOff"
@@ -17,7 +19,8 @@ export const TurnIndicator = ({
         },
         myTurn,
         turnsLeft
-    }
+    },
+    onQuit
 }) => {
     const [color, message] = match({opponentWon, opponentLost, opponentGone, myTurn})(
         ({opponentWon = true}) => ["secondary", "You are defeated!"],
@@ -37,19 +40,44 @@ export const TurnIndicator = ({
         _ => <OpponentsTurnIcon {...iconProps} />,
     )
 
-    const [decoratedIcon, progress] = match({opponentWon, opponentLost, opponentGone})(
+    const [decoratedIcon, progress, topButton] = match({
+        opponentWon, opponentLost, opponentGone
+    })(
         ({opponentWon = false, opponentGone = false, opponentLost = false}) => [
             <Badge badgeContent={turnsLeft} color={color}>
                 {icon}
             </Badge>,
-            turnsLeft * 100 / 3
+            turnsLeft * 100 / 3,
+            <Button
+                color="secondary"
+                variant="contained"
+                disableElevation
+                onClick={onQuit}
+            >
+                Concede
+            </Button>
         ],
-        _ => [icon, 100]
+        _ => [
+            icon,
+            100,
+            <Button
+                variant="contained"
+                disableElevation
+                onClick={onQuit}
+            >
+                New game
+            </Button>
+        ]
     )
 
     return (
-        <BadgeAlert icon={decoratedIcon} color={color} progress={progress}>
-            {message}
-        </BadgeAlert>
+        <>
+            <Section>
+                {topButton}
+            </Section>
+            <BadgeAlert icon={decoratedIcon} color={color} progress={progress}>
+                {message}
+            </BadgeAlert>
+        </>
     )
 }

@@ -9,7 +9,7 @@ import useWebSocket from "react-use-websocket"
 import Bowser from "bowser"
 import match from "babel-plugin-proposal-pattern-matching/match"
 
-export const Game = ({apiUrl, iconIndex, icons}) => {
+export const Game = ({apiUrl, iconIndex, icons, onQuit}) => {
     const [game, setGame] = useState()
 
     // It is important to have this cleanup fired before the web socket is closed
@@ -56,7 +56,7 @@ export const Game = ({apiUrl, iconIndex, icons}) => {
 
     return game ? (
         <>
-            <TurnIndicator game={game} />
+            <TurnIndicator game={game} onQuit={onQuit}/>
             <Section>
                 <GameMap game={game} onTurnMade={onTurnMade} icons={gameIcons} />
             </Section>

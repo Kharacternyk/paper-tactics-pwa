@@ -30,7 +30,12 @@ export const GameLobby = () => {
     ))
 
     return awaiting ? (
-        <Game apiUrl={apiUrl} iconIndex={Number(iconIndex)} icons={icons} />
+        <Game
+            apiUrl={apiUrl}
+            iconIndex={Number(iconIndex)}
+            icons={icons}
+            onQuit={() => setAwaiting(false)}
+        />
     ) : (
         <>
             <Section>
@@ -39,7 +44,7 @@ export const GameLobby = () => {
                     disableElevation
                     onClick={() => setAwaiting(true)}
                 >
-                    Create game
+                    Play against other people
                 </Button>
             </Section>
             <Section>
