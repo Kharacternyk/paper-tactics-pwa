@@ -8,7 +8,7 @@ import WonIcon from "@mui/icons-material/Mood"
 import LostIcon from "@mui/icons-material/MoodBad"
 import match from 'babel-plugin-proposal-pattern-matching/match'
 
-export const TurnIndicator = ({
+export const GameHeader = ({
     game: {
         me: {
             isDefeated: opponentWon
@@ -50,7 +50,6 @@ export const TurnIndicator = ({
             turnsLeft * 100 / 3,
             <Button
                 color="secondary"
-                variant="contained"
                 disableElevation
                 onClick={onQuit}
             >

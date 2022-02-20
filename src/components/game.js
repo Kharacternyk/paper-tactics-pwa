@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react"
 import {GameMap} from "./game-map"
-import {TurnIndicator} from "./turn-indicator"
+import {GameHeader} from "./game-header"
 import {GameFooter} from "./game-footer"
 import {BadgeAlert} from "./badge-alert"
 import {Section} from "./section"
@@ -56,7 +56,7 @@ export const Game = ({apiUrl, iconIndex, icons, onQuit}) => {
 
     return game ? (
         <>
-            <TurnIndicator game={game} onQuit={onQuit}/>
+            <GameHeader game={game} onQuit={onQuit}/>
             <Section>
                 <GameMap game={game} onTurnMade={onTurnMade} icons={gameIcons} />
             </Section>
