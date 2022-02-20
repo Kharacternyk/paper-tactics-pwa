@@ -7,6 +7,7 @@ import {Section} from "./section"
 import WaitIcon from "@mui/icons-material/ConnectWithoutContact"
 import useWebSocket from "react-use-websocket"
 import Bowser from "bowser"
+import match from "babel-plugin-proposal-pattern-matching/match"
 
 export const Game = ({apiUrl, iconIndex, icons}) => {
     const [game, setGame] = useState()
@@ -46,7 +47,11 @@ export const Game = ({apiUrl, iconIndex, icons}) => {
 
     const gameIcons = game && {
         me: icons[iconIndex],
-        opponent: icons[game.opponent.viewData.iconIndex] || icons[0]
+        opponent: match({opponentIndex: Number(game.opponent.viewData.iconIndex), iconIndex})(
+            ({opponentIndex = 0, iconIndex = 0}) => icons[1],
+            ({opponentIndex = iconIndex}) => icons[0],
+            ({opponentIndex}) => icons[opponentIndex],
+        )
     }
 
     return game ? (

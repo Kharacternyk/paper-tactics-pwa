@@ -34,7 +34,7 @@ export const GameMap = ({game, onTurnMade, icons}) => {
     })
 
     return (
-        <Table >
+        <Table>
             <TableBody>
                 {renderedRows}
             </TableBody>

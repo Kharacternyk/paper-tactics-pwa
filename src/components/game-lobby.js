@@ -30,7 +30,7 @@ export const GameLobby = () => {
     ))
 
     return awaiting ? (
-        <Game apiUrl={apiUrl} iconIndex={iconIndex} icons={icons} />
+        <Game apiUrl={apiUrl} iconIndex={Number(iconIndex)} icons={icons} />
     ) : (
         <>
             <Section>
