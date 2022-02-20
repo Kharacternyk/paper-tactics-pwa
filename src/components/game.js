@@ -4,6 +4,7 @@ import {GameMap} from "./game-map"
 import {TurnIndicator} from "./turn-indicator"
 import {GameFooter} from "./game-footer"
 import {BadgeAlert} from "./badge-alert"
+import {Section} from "./section"
 import WaitIcon from "@mui/icons-material/ConnectWithoutContact"
 import useWebSocket from "react-use-websocket"
 import Bowser from "bowser"
@@ -52,7 +53,9 @@ export const Game = ({apiUrl, iconIndex}) => {
     return game ? (
         <>
             <TurnIndicator game={game} />
-            <GameMap game={game} onTurnMade={onTurnMade} icons={gameIcons} />
+            <Section>
+                <GameMap game={game} onTurnMade={onTurnMade} icons={gameIcons} />
+            </Section>
             <GameFooter game={game} />
         </>
     ) : (

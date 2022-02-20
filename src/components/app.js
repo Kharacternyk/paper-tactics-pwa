@@ -36,15 +36,15 @@ export const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <AppBar position="sticky" color="inherit" sx={{alignItems: "center"}}>
+            <AppBar position="sticky" color="inherit" sx={{justifyContent: "center"}}>
                 <MainNavigation
                     value={currentPage}
                     onChange={(event, page) => setCurrentPage(page)}
                 />
             </AppBar>
             <Stack gap={2} alignItems="center" px={2} pt={2}>
-                {currentPage === 1 && <Alert severity="warning"> Coming soon… </Alert>}
-                {currentPage === 2 && <Game apiUrl={apiUrl} iconIndex={iconIndex} />}
+                {currentPage === 0 && <Alert severity="warning"> Coming soon… </Alert>}
+                {currentPage === 1 && <Game apiUrl={apiUrl} iconIndex={iconIndex} />}
                 <Footer />
             </Stack>
         </ThemeProvider>

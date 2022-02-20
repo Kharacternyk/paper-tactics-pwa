@@ -1,12 +1,11 @@
 import { GameMapCell } from "./game-map-cell"
-import { Section } from "./section"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 import TableRow from "@mui/material/TableRow"
 
 export const GameMap = ({game, onTurnMade, icons}) => {
-    const cellProps = Array(10).fill().map(() => {
-        return Array(10).fill().map(() => ({}))
+    const cellProps = Array(game.size).fill().map(() => {
+        return Array(game.size).fill().map(() => ({}))
     })
 
     const setPropsForEach = (array, props, propsFactory) => {
@@ -35,12 +34,10 @@ export const GameMap = ({game, onTurnMade, icons}) => {
     })
 
     return (
-        <Section>
-            <Table >
-                <TableBody>
-                    {renderedRows}
-                </TableBody>
-            </Table>
-        </Section>
+        <Table >
+            <TableBody>
+                {renderedRows}
+            </TableBody>
+        </Table>
     )
 }
