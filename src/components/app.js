@@ -1,5 +1,4 @@
-import {Game} from "./game"
-import {Settings} from "./settings"
+import {GameLobby} from "./game-lobby"
 import {MainNavigation} from "./main-navigation"
 import {Footer} from "./footer"
 import {useState} from "react"
@@ -10,7 +9,6 @@ import Alert from "@mui/material/Alert"
 import AppBar from "@mui/material/AppBar"
 import Stack from "@mui/material/Stack"
 import CssBaseline from "@mui/material/CssBaseline"
-import useCookie from "react-use-cookie"
 
 const theme = createTheme({
     palette: {
@@ -27,11 +25,8 @@ const theme = createTheme({
     }
 })
 
-const apiUrl = "wss://az7ndrlaxk.execute-api.eu-central-1.amazonaws.com/rolling"
-
 export const App = () => {
-    const [ currentPage, setCurrentPage ] = useState(0)
-    const [ iconIndex, setIconIndex ] = useCookie("icon", 0)
+    const [currentPage, setCurrentPage] = useState(0)
 
     return (
         <ThemeProvider theme={theme}>
@@ -44,7 +39,7 @@ export const App = () => {
             </AppBar>
             <Stack gap={2} alignItems="center" px={2} pt={2}>
                 {currentPage === 0 && <Alert severity="warning"> Coming soon… </Alert>}
-                {currentPage === 1 && <Game apiUrl={apiUrl} iconIndex={iconIndex} />}
+                {currentPage === 1 && <GameLobby />}
                 <Footer />
             </Stack>
         </ThemeProvider>

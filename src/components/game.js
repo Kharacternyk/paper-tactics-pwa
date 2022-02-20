@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react"
-import {icons} from "./settings"
 import {GameMap} from "./game-map"
 import {TurnIndicator} from "./turn-indicator"
 import {GameFooter} from "./game-footer"
@@ -9,7 +8,7 @@ import WaitIcon from "@mui/icons-material/ConnectWithoutContact"
 import useWebSocket from "react-use-websocket"
 import Bowser from "bowser"
 
-export const Game = ({apiUrl, iconIndex}) => {
+export const Game = ({apiUrl, iconIndex, icons}) => {
     const [game, setGame] = useState()
 
     // It is important to have this cleanup fired before the web socket is closed
