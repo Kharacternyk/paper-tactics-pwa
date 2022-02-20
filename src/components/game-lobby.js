@@ -7,14 +7,14 @@ import ToggleButton from "@mui/material/ToggleButton"
 import Button from "@mui/material/Button"
 import CrossIcon from "@mui/icons-material/Close"
 import CircleIcon from "@mui/icons-material/FiberManualRecordOutlined"
-import FlakeIcon from "@mui/icons-material/AcUnit"
-import AnchorIcon from "@mui/icons-material/Anchor"
-import FlowerIcon from "@mui/icons-material/LocalFlorist"
-import StarsIcon from "@mui/icons-material/AutoAwesome"
-import RocketIcon from "@mui/icons-material/RocketLaunch"
-import BeerIcon from "@mui/icons-material/SportsBar"
-import BakeryIcon from "@mui/icons-material/BakeryDining"
-import BulbIcon from "@mui/icons-material/EmojiObjects"
+import HashIcon from "@mui/icons-material/TagOutlined"
+import FlagIcon from "@mui/icons-material/FlagOutlined"
+import MusicIcon from "@mui/icons-material/MusicNoteOutlined"
+import StarsIcon from "@mui/icons-material/AutoAwesomeOutlined"
+import RocketIcon from "@mui/icons-material/RocketLaunchOutlined"
+import BeerIcon from "@mui/icons-material/SportsBarOutlined"
+import BakeryIcon from "@mui/icons-material/BakeryDiningOutlined"
+import BulbIcon from "@mui/icons-material/EmojiObjectsOutlined"
 import useCookie from "react-use-cookie"
 
 export const GameLobby = () => {
@@ -65,14 +65,14 @@ export const GameLobby = () => {
 const icons = [
     <CrossIcon />,
     <CircleIcon />,
-    <FlakeIcon />,
-    <AnchorIcon />,
-    <FlowerIcon />,
-    <BulbIcon />,
+    <HashIcon />,
+    <FlagIcon />,
     <StarsIcon />,
     <RocketIcon />,
     <BeerIcon />,
+    <MusicIcon />,
     <BakeryIcon />,
+    <BulbIcon />,
 ]
 
 const apiUrl = "wss://az7ndrlaxk.execute-api.eu-central-1.amazonaws.com/rolling"
