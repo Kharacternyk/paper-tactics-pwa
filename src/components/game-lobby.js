@@ -6,7 +6,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
 import ToggleButton from "@mui/material/ToggleButton"
 import Button from "@mui/material/Button"
 import CrossIcon from "@mui/icons-material/Close"
-import TriangleIcon from "@mui/icons-material/ChangeHistory"
+import CircleIcon from "@mui/icons-material/FiberManualRecordOutlined"
 import FlakeIcon from "@mui/icons-material/AcUnit"
 import AnchorIcon from "@mui/icons-material/Anchor"
 import FlowerIcon from "@mui/icons-material/LocalFlorist"
@@ -64,7 +64,7 @@ export const GameLobby = () => {
 
 const icons = [
     <CrossIcon />,
-    <TriangleIcon />,
+    <CircleIcon />,
     <FlakeIcon />,
     <AnchorIcon />,
     <FlowerIcon />,

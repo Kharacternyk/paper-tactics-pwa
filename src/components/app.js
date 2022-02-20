@@ -1,12 +1,11 @@
 import {GameLobby} from "./game-lobby"
-import {MainNavigation} from "./main-navigation"
+import {Header} from "./header"
 import {Footer} from "./footer"
 import {useState} from "react"
 import {ThemeProvider, createTheme} from "@mui/material/styles"
 import primary from "@mui/material/colors/teal"
 import secondary from "@mui/material/colors/red"
 import Alert from "@mui/material/Alert"
-import AppBar from "@mui/material/AppBar"
 import Stack from "@mui/material/Stack"
 import CssBaseline from "@mui/material/CssBaseline"
 
@@ -31,12 +30,10 @@ export const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-            <AppBar position="sticky" color="inherit" sx={{justifyContent: "center"}}>
-                <MainNavigation
+                <Header
                     value={currentPage}
                     onChange={(event, page) => setCurrentPage(page)}
                 />
-            </AppBar>
             <Stack gap={2} alignItems="center" px={2} pt={2}>
                 {currentPage === 0 && <Alert severity="warning"> Coming soon… </Alert>}
                 {currentPage === 1 && <GameLobby />}
