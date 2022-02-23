@@ -50,7 +50,6 @@ export const GameHeader = ({
             turnsLeft * 100 / 3,
             <Button
                 color="secondary"
-                disableElevation
                 onClick={onQuit}
             >
                 Concede

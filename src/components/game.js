@@ -4,6 +4,7 @@ import {GameHeader} from "./game-header"
 import {GameFooter} from "./game-footer"
 import {BadgeAlert} from "./badge-alert"
 import {Section} from "./section"
+import Button from "@mui/material/Button"
 import WaitIcon from "@mui/icons-material/ConnectWithoutContact"
 import useWebSocket from "react-use-websocket"
 import Bowser from "bowser"
@@ -63,8 +64,15 @@ export const Game = ({apiUrl, iconIndex, icons, onQuit}) => {
             <GameFooter game={game} />
         </>
     ) : (
-        <BadgeAlert icon={<WaitIcon color="primary" />} color="primary">
-            Waiting for someone else to connect…
-        </BadgeAlert>
+        <>
+            <Section>
+                <Button onClick={onQuit}>
+                    Cancel
+                </Button>
+            </Section>
+            <BadgeAlert icon={<WaitIcon color="primary" />} color="primary">
+                Waiting for someone else to connect…
+            </BadgeAlert>
+        </>
     )
 }
