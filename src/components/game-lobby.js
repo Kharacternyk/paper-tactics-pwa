@@ -5,6 +5,7 @@ import {useState} from "react"
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
 import ToggleButton from "@mui/material/ToggleButton"
 import Button from "@mui/material/Button"
+import PeopleIcon from "@mui/icons-material/ConnectWithoutContact"
 import CrossIcon from "@mui/icons-material/Close"
 import CircleIcon from "@mui/icons-material/FiberManualRecordOutlined"
 import HashIcon from "@mui/icons-material/TagOutlined"
@@ -43,6 +44,7 @@ export const GameLobby = () => {
                     variant="contained"
                     disableElevation
                     onClick={() => setAwaiting(true)}
+                    startIcon={<PeopleIcon />}
                 >
                     Play against other people
                 </Button>
