@@ -85,6 +85,10 @@ const servers = [
     {
         label: "Frankfurt",
         url: "wss://az7ndrlaxk.execute-api.eu-central-1.amazonaws.com/rolling"
+    },
+    {
+        label: "Local Test",
+        url: "ws://localhost:8001"
     }
 ]
 
