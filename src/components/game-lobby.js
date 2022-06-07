@@ -2,6 +2,8 @@ import {Section} from "./section"
 import {GameUnitIcon} from "./game-unit-icon"
 import {Game} from "./game"
 import {useState} from "react"
+import Autocomplete from "@mui/material/Autocomplete"
+import TextField from "@mui/material/TextField"
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
 import ToggleButton from "@mui/material/ToggleButton"
 import Button from "@mui/material/Button"
@@ -21,6 +23,7 @@ import useCookie from "react-use-cookie"
 export const GameLobby = () => {
     const [iconIndex, setIconIndex] = useCookie("icon", 0)
     const [awaiting, setAwaiting] = useState(false)
+    const [apiUrl, setApiUrl] = useState(servers[0].url)
 
     const iconButtons = icons.map((icon, index) => (
         <ToggleButton key={index} value={index} sx={{flexGrow: 1, p: 0}}>
@@ -60,9 +63,30 @@ export const GameLobby = () => {
                     {iconButtons}
                 </ToggleButtonGroup>
             </Section>
+            <Section>
+                <Autocomplete
+                    freeSolo
+                    options={servers}
+                    defaultValue={servers[0]}
+                    onInputChange={(event, value) => {
+                        const server = servers.find(server => server.label == value)
+                        setApiUrl(server?.url ?? value)
+                    }}
+                    renderInput={
+                        params => <TextField {...params} label="Server" variant="filled"/>
+                    }
+                />
+            </Section>
         </>
     )
 }
+
+const servers = [
+    {
+        label: "Frankfurt",
+        url: "wss://az7ndrlaxk.execute-api.eu-central-1.amazonaws.com/rolling"
+    }
+]
 
 const icons = [
     <CrossIcon />,
@@ -76,5 +100,3 @@ const icons = [
     <BakeryIcon />,
     <BulbIcon />,
 ]
-
-const apiUrl = "wss://az7ndrlaxk.execute-api.eu-central-1.amazonaws.com/rolling"
