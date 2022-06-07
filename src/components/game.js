@@ -9,6 +9,7 @@ import WaitIcon from "@mui/icons-material/ConnectWithoutContact"
 import useWebSocket from "react-use-websocket"
 import Bowser from "bowser"
 import match from "babel-plugin-proposal-pattern-matching/match"
+import camelcaseKeys from "camelcase-keys"
 
 export const Game = ({apiUrl, iconIndex, icons, onQuit}) => {
     const [game, setGame] = useState()
@@ -31,7 +32,7 @@ export const Game = ({apiUrl, iconIndex, icons, onQuit}) => {
 
     const {sendJsonMessage, lastJsonMessage} = useWebSocket(apiUrl)
 
-    useEffect(() => setGame(lastJsonMessage), [lastJsonMessage])
+    useEffect(() => setGame(camelcaseKeys(lastJsonMessage, {deep: true})), [lastJsonMessage])
     useEffect(() => {
         const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
         const os = Bowser.getParser(window.navigator.userAgent).getOSName()
