@@ -30,7 +30,8 @@ export const GameMapCell = ({mine, opponent, unit, wall, reachable, onClick, ico
                 color: "grey.100",
                 ":hover": {color: "primary.light"}
             }),
-            _ => ({color: "rgba(0, 0, 0, 0)"})
+            ({visible = true}) => ({color: "rgba(0, 0, 0, 0)"}),
+            _ => ({bgcolor: "grey.300", color: "rgba(0, 0, 0, 0)"})
         )
     }
 

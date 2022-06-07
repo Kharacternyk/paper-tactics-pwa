@@ -17,6 +17,7 @@ export const Header = ({value, onChange}) => {
         me: {
             units: [[1, 1]],
             walls: [[1, 2]],
+            visible: [[2, 2], [2, 1]],
             reachable: []
         },
         opponent: {
