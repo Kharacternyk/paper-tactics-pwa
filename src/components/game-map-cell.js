@@ -19,19 +19,19 @@ export const GameMapCell = ({mine, opponent, unit, wall, reachable, onClick, ico
             }),
             ({opponent = true, unit = true, reachable = true}) => ({
                 color: "secondary.main",
-                bgcolor: "grey.100",
                 ":hover": {bgcolor: "primary.light"}
             }),
-            ({opponent = true, unit = true}) => ({ color: "secondary.main" }),
+            ({opponent = true, unit = true}) => ({
+                color: "secondary.main", bgcolor: "grey.200"
+            }),
             ({opponent = true, wall = true}) => ({
                 color: "secondary.dark", bgcolor: "secondary.main"
             }),
             ({reachable = true}) => ({
-                color: "grey.100",
+                color: "rgba(0, 0, 0, 0)",
                 ":hover": {color: "primary.light"}
             }),
-            ({visible = true}) => ({color: "rgba(0, 0, 0, 0)"}),
-            _ => ({bgcolor: "grey.300", color: "rgba(0, 0, 0, 0)"})
+            _ => ({bgcolor: "grey.200", color: "rgba(0, 0, 0, 0)"})
         )
     }
 

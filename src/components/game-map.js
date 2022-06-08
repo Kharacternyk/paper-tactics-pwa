@@ -21,7 +21,6 @@ export const GameMap = ({game, onTurnMade, icons}) => {
     setPropsForEach(game.opponent.walls, { wall: true, opponent: true })
     setPropsForEach(game.me.units, { unit: true, mine: true })
     setPropsForEach(game.me.walls, { wall: true, mine: true })
-    setPropsForEach(game.me.visible, { visible: true })
     setPropsForEach(game.me.reachable, { reachable: true }, (x, y) => ({
         onClick: () => onTurnMade(x, y)
     }))
