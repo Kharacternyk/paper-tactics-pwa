@@ -18,6 +18,16 @@ import RocketIcon from "@mui/icons-material/RocketLaunchOutlined"
 import BeerIcon from "@mui/icons-material/SportsBarOutlined"
 import BakeryIcon from "@mui/icons-material/BakeryDiningOutlined"
 import BulbIcon from "@mui/icons-material/EmojiObjectsOutlined"
+import AnchorIcon from "@mui/icons-material/AnchorOutlined"
+import ArchitectureIcon from "@mui/icons-material/ArchitectureOutlined"
+import BellIcon from "@mui/icons-material/NotificationsNoneOutlined"
+import BeachIcon from "@mui/icons-material/BeachAccessOutlined"
+import HeartIcon from "@mui/icons-material/FavoriteBorderOutlined"
+import StarIcon from "@mui/icons-material/GradeOutlined"
+import HiveIcon from "@mui/icons-material/HiveOutlined"
+import CartIcon from "@mui/icons-material/LocalGroceryStoreOutlined"
+import MoonIcon from "@mui/icons-material/NightsStayOutlined"
+import FootballIcon from "@mui/icons-material/SportsFootballOutlined"
 import useCookie from "react-use-cookie"
 
 export const GameLobby = () => {
@@ -60,7 +70,18 @@ export const GameLobby = () => {
                     onChange={(event, iconIndex) => setIconIndex(iconIndex)}
                     sx={{display: "flex"}}
                 >
-                    {iconButtons}
+                    {iconButtons.slice(0, 10)}
+                </ToggleButtonGroup>
+            </Section>
+            <Section>
+                <ToggleButtonGroup
+                    color="primary"
+                    exclusive
+                    value={Number(iconIndex)}
+                    onChange={(event, iconIndex) => setIconIndex(iconIndex)}
+                    sx={{display: "flex"}}
+                >
+                    {iconButtons.slice(10)}
                 </ToggleButtonGroup>
             </Section>
             <Section>
@@ -103,4 +124,14 @@ const icons = [
     <MusicIcon />,
     <BakeryIcon />,
     <BulbIcon />,
+    <HeartIcon />,
+    <StarIcon />,
+    <HiveIcon />,
+    <CartIcon />,
+    <MoonIcon />,
+    <FootballIcon />,
+    <AnchorIcon />,
+    <ArchitectureIcon />,
+    <BellIcon />,
+    <BeachIcon />,
 ]
