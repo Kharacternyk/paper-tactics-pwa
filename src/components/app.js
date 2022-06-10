@@ -1,3 +1,4 @@
+import {Tutorial} from "./tutorial"
 import {GameLobby} from "./game-lobby"
 import {Header} from "./header"
 import {Footer} from "./footer"
@@ -35,7 +36,7 @@ export const App = () => {
                     onChange={(event, page) => setCurrentPage(page)}
                 />
             <Stack gap={2} alignItems="center" px={2} pt={2}>
-                {currentPage === 0 && <Alert severity="warning"> Coming soon… </Alert>}
+                {currentPage === 0 && <Tutorial />}
                 {currentPage === 1 && <GameLobby />}
                 <Footer />
             </Stack>
