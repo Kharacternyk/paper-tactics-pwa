@@ -3,10 +3,13 @@ import {GameUnitIcon} from "./game-unit-icon"
 import {Game} from "./game"
 import {useState} from "react"
 import Autocomplete from "@mui/material/Autocomplete"
+import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
+import Rating from "@mui/material/Rating"
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
 import ToggleButton from "@mui/material/ToggleButton"
 import Button from "@mui/material/Button"
+import TurnIcon from "@mui/icons-material/Edit"
 import PeopleIcon from "@mui/icons-material/ConnectWithoutContact"
 import CrossIcon from "@mui/icons-material/Close"
 import CircleIcon from "@mui/icons-material/FiberManualRecordOutlined"
@@ -35,6 +38,8 @@ export const GameLobby = () => {
     const [awaiting, setAwaiting] = useState(false)
     const [apiUrl, setApiUrl] = useState(servers[0].url)
     const [gamePreferences, setGamePreferences] = useState({
+        size: 10,
+        turn_count: 3,
         is_visibility_applied: false
     })
 
@@ -51,6 +56,52 @@ export const GameLobby = () => {
             {isEnabled ? "Fog of War" : "Standard"}
         </ToggleButton>
     ))
+
+    const turnCountSelector = (
+        <Box display="flex" justifyContent="center">
+            <Rating
+                value={gamePreferences.turn_count}
+                onChange={(event, value) => setGamePreferences({
+                    ...gamePreferences,
+                    turn_count: value
+                })}
+                max={7}
+                icon={<TurnIcon />}
+                emptyIcon={<TurnIcon />}
+                sx={{
+                    "& .MuiRating-iconFilled": {
+                        color: 'primary.main',
+                    },
+                    "& .MuiRating-iconHover": {
+                        color: 'primary.light',
+                    },
+                }}
+            />
+        </Box>
+    )
+
+    const gameSizeSelector = (
+        <Box display="flex" justifyContent="center">
+            <Rating
+                value={gamePreferences.size}
+                onChange={(event, value) => setGamePreferences({
+                    ...gamePreferences,
+                    size: value
+                })}
+                max={20}
+                icon={<ArchitectureIcon />}
+                emptyIcon={<ArchitectureIcon />}
+                sx={{
+                    "& .MuiRating-iconFilled": {
+                        color: 'primary.main',
+                    },
+                    "& .MuiRating-iconHover": {
+                        color: 'primary.light',
+                    },
+                }}
+            />
+        </Box>
+    )
 
     return awaiting ? (
         <Game
@@ -85,6 +136,12 @@ export const GameLobby = () => {
                 >
                     {visibilityPreferenceButtons}
                 </ToggleButtonGroup>
+            </Section>
+            <Section>
+                {turnCountSelector}
+            </Section>
+            <Section>
+                {gameSizeSelector}
             </Section>
             <Section>
                 <ToggleButtonGroup
