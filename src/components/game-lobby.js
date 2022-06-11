@@ -53,7 +53,7 @@ export const GameLobby = () => {
 
     const visibilityPreferenceButtons = [false, true].map(isEnabled => (
         <ToggleButton key={isEnabled} value={isEnabled} sx={{flexGrow: 1, p: 0}}>
-            {isEnabled ? "Fog of War" : "Standard"}
+            {isEnabled ? "With visibility rules" : "Classic"}
         </ToggleButton>
     ))
 
