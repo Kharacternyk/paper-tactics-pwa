@@ -88,7 +88,7 @@ export const GameLobby = () => {
                     ...gamePreferences,
                     size: value
                 })}
-                max={20}
+                max={12}
                 icon={<ArchitectureIcon />}
                 emptyIcon={<ArchitectureIcon />}
                 sx={{
