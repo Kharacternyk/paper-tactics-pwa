@@ -14,13 +14,13 @@ import camelcaseKeys from "camelcase-keys"
 export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
     const [game, setGame] = useState()
 
+    const concede = () => sendJsonMessage({
+        action: "concede",
+        gameId: game.id
+    })
+
     // It is important to have this cleanup fired before the web socket is closed
     useEffect(() => {
-        const concede = () => sendJsonMessage({
-            action: "concede",
-            gameId: game.id
-        })
-
         if (game) {
             window.addEventListener("beforeunload", concede)
             return () => {
@@ -59,7 +59,12 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
 
     return game ? (
         <>
-            <GameHeader game={game} gamePreferences={gamePreferences} onQuit={onQuit} />
+            <GameHeader
+                game={game}
+                gamePreferences={gamePreferences}
+                onQuit={onQuit}
+                concede={concede}
+            />
             <Section>
                 <GameMap
                     game={game}
