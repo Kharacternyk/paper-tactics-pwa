@@ -22,6 +22,7 @@ import BeerIcon from "@mui/icons-material/SportsBarOutlined"
 import BakeryIcon from "@mui/icons-material/BakeryDiningOutlined"
 import BulbIcon from "@mui/icons-material/EmojiObjectsOutlined"
 import AnchorIcon from "@mui/icons-material/AnchorOutlined"
+import CelebrationIcon from "@mui/icons-material/CelebrationOutlined"
 import ArchitectureIcon from "@mui/icons-material/ArchitectureOutlined"
 import BellIcon from "@mui/icons-material/NotificationsNoneOutlined"
 import BeachIcon from "@mui/icons-material/BeachAccessOutlined"
@@ -212,7 +213,7 @@ const icons = [
     <MoonIcon />,
     <FootballIcon />,
     <AnchorIcon />,
-    <ArchitectureIcon />,
+    <CelebrationIcon />,
     <BellIcon />,
     <BeachIcon />,
 ]
