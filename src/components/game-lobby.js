@@ -34,6 +34,9 @@ export const GameLobby = () => {
     const [iconIndex, setIconIndex] = useCookie("icon", 0)
     const [awaiting, setAwaiting] = useState(false)
     const [apiUrl, setApiUrl] = useState(servers[0].url)
+    const [gamePreferences, setGamePreferences] = useState({
+        is_visibility_applied: false
+    })
 
     const iconButtons = icons.map((icon, index) => (
         <ToggleButton key={index} value={index} sx={{flexGrow: 1, p: 0}}>
@@ -43,9 +46,16 @@ export const GameLobby = () => {
         </ToggleButton>
     ))
 
+    const visibilityPreferenceButtons = [false, true].map(isEnabled => (
+        <ToggleButton key={isEnabled} value={isEnabled} sx={{flexGrow: 1, p: 0}}>
+            {isEnabled ? "Fog of War" : "Standard"}
+        </ToggleButton>
+    ))
+
     return awaiting ? (
         <Game
             apiUrl={apiUrl}
+            gamePreferences={gamePreferences}
             iconIndex={Number(iconIndex)}
             icons={icons}
             onQuit={() => setAwaiting(false)}
@@ -61,6 +71,20 @@ export const GameLobby = () => {
                 >
                     Play against other people
                 </Button>
+            </Section>
+            <Section>
+                <ToggleButtonGroup
+                    color="primary"
+                    exclusive
+                    value={gamePreferences.is_visibility_applied}
+                    onChange={(event, isVisibilityApplied) => setGamePreferences({
+                        ...gamePreferences,
+                        is_visibility_applied: isVisibilityApplied
+                    })}
+                    sx={{display: "flex"}}
+                >
+                    {visibilityPreferenceButtons}
+                </ToggleButtonGroup>
             </Section>
             <Section>
                 <ToggleButtonGroup

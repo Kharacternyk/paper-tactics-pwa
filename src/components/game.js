@@ -11,7 +11,7 @@ import Bowser from "bowser"
 import match from "babel-plugin-proposal-pattern-matching/match"
 import camelcaseKeys from "camelcase-keys"
 
-export const Game = ({apiUrl, iconIndex, icons, onQuit}) => {
+export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
     const [game, setGame] = useState()
 
     // It is important to have this cleanup fired before the web socket is closed
@@ -39,7 +39,8 @@ export const Game = ({apiUrl, iconIndex, icons, onQuit}) => {
 
         sendJsonMessage({
             action: "create-game",
-            viewData: {iconIndex: String(iconIndex), timeZone, os}
+            viewData: {iconIndex: String(iconIndex), timeZone, os},
+            preferences: gamePreferences
         })
     }, [])
 
