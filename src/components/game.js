@@ -59,9 +59,14 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
 
     return game ? (
         <>
-            <GameHeader game={game} onQuit={onQuit}/>
+            <GameHeader game={game} gamePreferences={gamePreferences} onQuit={onQuit} />
             <Section>
-                <GameMap game={game} onTurnMade={onTurnMade} icons={gameIcons} />
+                <GameMap
+                    game={game}
+                    onTurnMade={onTurnMade}
+                    icons={gameIcons}
+                    gamePreferences={gamePreferences}
+                />
             </Section>
             <GameFooter game={game} />
         </>

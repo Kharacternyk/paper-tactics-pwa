@@ -13,7 +13,6 @@ import OpponentIcon from "@mui/icons-material/FiberManualRecordOutlined"
 
 export const Header = ({value, onChange}) => {
     const logoGame = {
-        size: 2,
         me: {
             units: [[1, 1]],
             walls: [[1, 2]],
@@ -41,7 +40,7 @@ export const Header = ({value, onChange}) => {
         <AppBar position="sticky" color="inherit" sx={sx}>
             <Stack direction="row" maxWidth="30rem" width="100%" alignItems="center">
                 <Paper elevation={2} square sx={{width: "2.5rem", flex: "initial"}}>
-                    <GameMap game={logoGame} icons={logoIcons} />
+                    <GameMap game={logoGame} icons={logoIcons} gamePreferences={{size: 2}} />
                 </Paper>
                 <Typography
                     component="h1"

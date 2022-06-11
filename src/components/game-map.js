@@ -3,9 +3,9 @@ import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 import TableRow from "@mui/material/TableRow"
 
-export const GameMap = ({game, onTurnMade, icons}) => {
-    const cellProps = Array(game.size).fill().map(() => {
-        return Array(game.size).fill().map(() => ({}))
+export const GameMap = ({game, gamePreferences, onTurnMade, icons}) => {
+    const cellProps = Array(gamePreferences.size).fill().map(() => {
+        return Array(gamePreferences.size).fill().map(() => ({}))
     })
 
     const setPropsForEach = (array, props, propsFactory) => {

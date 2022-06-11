@@ -20,6 +20,7 @@ export const GameHeader = ({
         myTurn,
         turnsLeft
     },
+    gamePreferences,
     onQuit
 }) => {
     const [color, message] = match({opponentWon, opponentLost, opponentGone, myTurn})(
@@ -47,7 +48,7 @@ export const GameHeader = ({
             <Badge badgeContent={turnsLeft} color={color}>
                 {icon}
             </Badge>,
-            turnsLeft * 100 / 3,
+            turnsLeft * 100 / gamePreferences.turn_count,
             <Button
                 color="secondary"
                 onClick={onQuit}
