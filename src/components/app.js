@@ -15,14 +15,14 @@ const theme = createTheme({
         primary: {
             light: primary[300],
             main: primary[600],
-            dark: primary[900]
+            dark: primary[900],
         },
         secondary: {
             light: secondary[300],
             main: secondary[600],
-            dark: secondary[900]
-        }
-    }
+            dark: secondary[900],
+        },
+    },
 })
 
 export const App = () => {
@@ -31,10 +31,10 @@ export const App = () => {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-                <Header
-                    value={currentPage}
-                    onChange={(event, page) => setCurrentPage(page)}
-                />
+            <Header
+                value={currentPage}
+                onChange={(event, page) => setCurrentPage(page)}
+            />
             <Stack gap={2} alignItems="center" px={2} pt={2}>
                 {currentPage === 0 && <Tutorial />}
                 {currentPage === 1 && <GameLobby />}

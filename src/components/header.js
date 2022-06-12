@@ -16,31 +16,44 @@ export const Header = ({value, onChange}) => {
         me: {
             units: [[1, 1]],
             walls: [[1, 2]],
-            reachable: [[2, 2]]
+            reachable: [[2, 2]],
         },
         opponent: {
             units: [[2, 2]],
             walls: [[2, 1]],
             reachable: [],
-        }
+        },
     }
 
     const logoIcons = {
         me: <MyIcon />,
-        opponent: <OpponentIcon />
+        opponent: <OpponentIcon />,
     }
 
     const sx = {
         display: "flex",
         alignItems: "center",
-        px: 2
+        px: 2,
     }
 
     return (
         <AppBar position="sticky" color="inherit" sx={sx}>
-            <Stack direction="row" maxWidth="30rem" width="100%" alignItems="center">
-                <Paper elevation={2} square sx={{width: "2.5rem", flex: "initial"}}>
-                    <GameMap game={logoGame} icons={logoIcons} gamePreferences={{size: 2}} />
+            <Stack
+                direction="row"
+                maxWidth="30rem"
+                width="100%"
+                alignItems="center"
+            >
+                <Paper
+                    elevation={2}
+                    square
+                    sx={{width: "2.5rem", flex: "initial"}}
+                >
+                    <GameMap
+                        game={logoGame}
+                        icons={logoIcons}
+                        gamePreferences={{size: 2}}
+                    />
                 </Paper>
                 <Typography
                     component="h1"
@@ -52,7 +65,7 @@ export const Header = ({value, onChange}) => {
                     pl={1}
                     flex="auto"
                 >
-                    Paper <br/>
+                    Paper <br />
                     Tactics
                 </Typography>
                 <Tabs value={value} onChange={onChange} flex="initial">

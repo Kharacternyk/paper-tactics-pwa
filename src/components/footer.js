@@ -8,10 +8,9 @@ export const Footer = () => {
             subtitle="Bug reports, feature requests, or just thanks"
             color="primary"
             progress={100}
-            icon={<ContactIcon color="primary"/>}
+            icon={<ContactIcon color="primary" />}
         >
-            You can
-            {" "}<Link href="https://vinnich.uk">contact the developer</Link>{" "}
+            You can <Link href="https://vinnich.uk">contact the developer</Link>{" "}
         </BadgeAlert>
     )
 }

@@ -5,16 +5,11 @@ export const GameUnitIcon = ({children}) => {
         "& svg": {
             width: "100%",
             height: "100%",
-        }
+        },
     }
 
     return (
-        <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            sx={sx}
-        >
+        <Box display="flex" justifyContent="center" alignItems="center" sx={sx}>
             {children}
         </Box>
     )

@@ -40,18 +40,23 @@ export const GameLobby = () => {
     const [apiUrl, setApiUrl] = useState(servers[0].url)
     const [gameSize, setGameSize] = useCookie("game-size", "10")
     const [turnCount, setTurnCount] = useCookie("turn-count", "3")
-    const [isVisibilityApplied, setIsVisibilityApplied] = useCookie("visibility", "")
+    const [isVisibilityApplied, setIsVisibilityApplied] = useCookie(
+        "visibility",
+        ""
+    )
 
     const iconButtons = icons.map((icon, index) => (
         <ToggleButton key={index} value={index} sx={{flexGrow: 1, p: 0}}>
-            <GameUnitIcon>
-                {icons[index]}
-            </GameUnitIcon>
+            <GameUnitIcon>{icons[index]}</GameUnitIcon>
         </ToggleButton>
     ))
 
     const visibilityPreferenceButtons = [false, true].map(isEnabled => (
-        <ToggleButton key={isEnabled} value={isEnabled} sx={{flexGrow: 1, p: 0}}>
+        <ToggleButton
+            key={isEnabled}
+            value={isEnabled}
+            sx={{flexGrow: 1, p: 0}}
+        >
             {isEnabled ? "With visibility rules" : "Classic"}
         </ToggleButton>
     ))
@@ -66,10 +71,10 @@ export const GameLobby = () => {
                 emptyIcon={<TurnIcon />}
                 sx={{
                     "& .MuiRating-iconFilled": {
-                        color: 'primary.main',
+                        color: "primary.main",
                     },
                     "& .MuiRating-iconHover": {
-                        color: 'primary.light',
+                        color: "primary.light",
                     },
                 }}
             />
@@ -86,10 +91,10 @@ export const GameLobby = () => {
                 emptyIcon={<ArchitectureIcon />}
                 sx={{
                     "& .MuiRating-iconFilled": {
-                        color: 'primary.main',
+                        color: "primary.main",
                     },
                     "& .MuiRating-iconHover": {
-                        color: 'primary.light',
+                        color: "primary.light",
                     },
                 }}
             />
@@ -102,7 +107,7 @@ export const GameLobby = () => {
             gamePreferences={{
                 size: Number(gameSize),
                 turn_count: Number(turnCount),
-                is_visibility_applied: Boolean(isVisibilityApplied)
+                is_visibility_applied: Boolean(isVisibilityApplied),
             }}
             iconIndex={Number(iconIndex)}
             icons={icons}
@@ -125,18 +130,16 @@ export const GameLobby = () => {
                     color="primary"
                     exclusive
                     value={Boolean(isVisibilityApplied)}
-                    onChange={(event, value) => setIsVisibilityApplied(value ? "true" : "")}
+                    onChange={(event, value) =>
+                        setIsVisibilityApplied(value ? "true" : "")
+                    }
                     sx={{display: "flex"}}
                 >
                     {visibilityPreferenceButtons}
                 </ToggleButtonGroup>
             </Section>
-            <Section>
-                {turnCountSelector}
-            </Section>
-            <Section>
-                {gameSizeSelector}
-            </Section>
+            <Section>{turnCountSelector}</Section>
+            <Section>{gameSizeSelector}</Section>
             <Section>
                 <ToggleButtonGroup
                     color="primary"
@@ -165,12 +168,18 @@ export const GameLobby = () => {
                     options={servers}
                     defaultValue={servers[0]}
                     onInputChange={(event, value) => {
-                        const server = servers.find(server => server.label == value)
+                        const server = servers.find(
+                            server => server.label == value
+                        )
                         setApiUrl(server?.url ?? value)
                     }}
-                    renderInput={
-                        params => <TextField {...params} label="Server" variant="filled"/>
-                    }
+                    renderInput={params => (
+                        <TextField
+                            {...params}
+                            label="Server"
+                            variant="filled"
+                        />
+                    )}
                 />
             </Section>
         </>
@@ -180,12 +189,12 @@ export const GameLobby = () => {
 const servers = [
     {
         label: "Frankfurt",
-        url: "wss://az7ndrlaxk.execute-api.eu-central-1.amazonaws.com/rolling"
+        url: "wss://az7ndrlaxk.execute-api.eu-central-1.amazonaws.com/rolling",
     },
     {
         label: "Localhost",
-        url: "ws://localhost:8001"
-    }
+        url: "ws://localhost:8001",
+    },
 ]
 
 const icons = [

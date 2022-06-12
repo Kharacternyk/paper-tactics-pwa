@@ -6,6 +6,7 @@
       devShell = mkShell {
         packages = [
           yarn
+          gitAndTools.pre-commit
         ];
       };
     }

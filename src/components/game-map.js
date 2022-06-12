@@ -1,12 +1,16 @@
-import { GameMapCell } from "./game-map-cell"
+import {GameMapCell} from "./game-map-cell"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 import TableRow from "@mui/material/TableRow"
 
 export const GameMap = ({game, gamePreferences, onTurnMade, icons}) => {
-    const cellProps = Array(gamePreferences.size).fill().map(() => {
-        return Array(gamePreferences.size).fill().map(() => ({}))
-    })
+    const cellProps = Array(gamePreferences.size)
+        .fill()
+        .map(() => {
+            return Array(gamePreferences.size)
+                .fill()
+                .map(() => ({}))
+        })
 
     const setPropsForEach = (array, props, propsFactory) => {
         array.forEach(([x, y]) => {
@@ -17,12 +21,12 @@ export const GameMap = ({game, gamePreferences, onTurnMade, icons}) => {
         })
     }
 
-    setPropsForEach(game.opponent.units, { unit: true, opponent: true })
-    setPropsForEach(game.opponent.walls, { wall: true, opponent: true })
-    setPropsForEach(game.me.units, { unit: true, mine: true })
-    setPropsForEach(game.me.walls, { wall: true, mine: true })
-    setPropsForEach(game.me.reachable, { reachable: true }, (x, y) => ({
-        onClick: () => onTurnMade(x, y)
+    setPropsForEach(game.opponent.units, {unit: true, opponent: true})
+    setPropsForEach(game.opponent.walls, {wall: true, opponent: true})
+    setPropsForEach(game.me.units, {unit: true, mine: true})
+    setPropsForEach(game.me.walls, {wall: true, mine: true})
+    setPropsForEach(game.me.reachable, {reachable: true}, (x, y) => ({
+        onClick: () => onTurnMade(x, y),
     }))
 
     const renderedRows = cellProps.map((row, y) => {
@@ -35,9 +39,7 @@ export const GameMap = ({game, gamePreferences, onTurnMade, icons}) => {
 
     return (
         <Table>
-            <TableBody>
-                {renderedRows}
-            </TableBody>
+            <TableBody>{renderedRows}</TableBody>
         </Table>
     )
 }

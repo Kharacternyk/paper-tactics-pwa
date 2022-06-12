@@ -1,4 +1,4 @@
-import { Section } from "./section"
+import {Section} from "./section"
 import Box from "@mui/material/Box"
 import CircularProgress from "@mui/material/CircularProgress"
 import Alert from "@mui/material/Alert"
@@ -9,7 +9,9 @@ export const BadgeAlert = ({children, subtitle, icon, color, progress}) => {
         <Box position="relative" display="inline-flex" alignItems="center">
             <CircularProgress
                 size="2.5rem"
-                variant={progress === undefined ? "indeterminate" : "determinate"}
+                variant={
+                    progress === undefined ? "indeterminate" : "determinate"
+                }
                 value={progress}
                 color={color}
             />
@@ -31,12 +33,18 @@ export const BadgeAlert = ({children, subtitle, icon, color, progress}) => {
     return (
         <Section>
             <Alert color={color} icon={badge}>
-                <AlertTitle sx={subtitle ? {} : {
-                    display: "flex",
-                    alignItems: "center",
-                    height: "100%",
-                    m: 0
-                }}>
+                <AlertTitle
+                    sx={
+                        subtitle
+                            ? {}
+                            : {
+                                  display: "flex",
+                                  alignItems: "center",
+                                  height: "100%",
+                                  m: 0,
+                              }
+                    }
+                >
                     {children}
                 </AlertTitle>
                 {subtitle}

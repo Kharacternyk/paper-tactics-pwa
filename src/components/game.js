@@ -14,10 +14,11 @@ import camelcaseKeys from "camelcase-keys"
 export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
     const [game, setGame] = useState()
 
-    const concede = () => sendJsonMessage({
-        action: "concede",
-        gameId: game.id
-    })
+    const concede = () =>
+        sendJsonMessage({
+            action: "concede",
+            gameId: game.id,
+        })
 
     // It is important to have this cleanup fired before the web socket is closed
     useEffect(() => {
@@ -32,7 +33,10 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
 
     const {sendJsonMessage, lastJsonMessage} = useWebSocket(apiUrl)
 
-    useEffect(() => setGame(camelcaseKeys(lastJsonMessage, {deep: true})), [lastJsonMessage])
+    useEffect(
+        () => setGame(camelcaseKeys(lastJsonMessage, {deep: true})),
+        [lastJsonMessage]
+    )
     useEffect(() => {
         const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
         const os = Bowser.getParser(window.navigator.userAgent).getOSName()
@@ -40,7 +44,7 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
         sendJsonMessage({
             action: "create-game",
             viewData: {iconIndex: String(iconIndex), timeZone, os},
-            preferences: gamePreferences
+            preferences: gamePreferences,
         })
     }, [])
 
@@ -50,11 +54,14 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
 
     const gameIcons = game && {
         me: icons[iconIndex],
-        opponent: match({opponentIndex: Number(game.opponent.viewData.iconIndex), iconIndex})(
+        opponent: match({
+            opponentIndex: Number(game.opponent.viewData.iconIndex),
+            iconIndex,
+        })(
             ({opponentIndex = 0, iconIndex = 0}) => icons[1],
             ({opponentIndex = iconIndex}) => icons[0],
-            ({opponentIndex}) => icons[opponentIndex],
-        )
+            ({opponentIndex}) => icons[opponentIndex]
+        ),
     }
 
     return game ? (
@@ -78,9 +85,7 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
     ) : (
         <>
             <Section>
-                <Button onClick={onQuit}>
-                    Cancel
-                </Button>
+                <Button onClick={onQuit}>Cancel</Button>
             </Section>
             <BadgeAlert icon={<WaitIcon color="primary" />} color="primary">
                 Waiting for someone else to connect…
