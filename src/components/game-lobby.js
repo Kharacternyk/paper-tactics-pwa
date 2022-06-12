@@ -38,11 +38,9 @@ export const GameLobby = () => {
     const [iconIndex, setIconIndex] = useCookie("icon", 0)
     const [awaiting, setAwaiting] = useState(false)
     const [apiUrl, setApiUrl] = useState(servers[0].url)
-    const [gamePreferences, setGamePreferences] = useState({
-        size: 10,
-        turn_count: 3,
-        is_visibility_applied: false
-    })
+    const [gameSize, setGameSize] = useCookie("game-size", "10")
+    const [turnCount, setTurnCount] = useCookie("turn-count", "3")
+    const [isVisibilityApplied, setIsVisibilityApplied] = useCookie("visibility", "")
 
     const iconButtons = icons.map((icon, index) => (
         <ToggleButton key={index} value={index} sx={{flexGrow: 1, p: 0}}>
@@ -61,11 +59,8 @@ export const GameLobby = () => {
     const turnCountSelector = (
         <Box display="flex" justifyContent="center">
             <Rating
-                value={gamePreferences.turn_count}
-                onChange={(event, value) => setGamePreferences({
-                    ...gamePreferences,
-                    turn_count: value
-                })}
+                value={Number(turnCount)}
+                onChange={(event, value) => setTurnCount(value)}
                 max={7}
                 icon={<TurnIcon />}
                 emptyIcon={<TurnIcon />}
@@ -84,11 +79,8 @@ export const GameLobby = () => {
     const gameSizeSelector = (
         <Box display="flex" justifyContent="center">
             <Rating
-                value={gamePreferences.size}
-                onChange={(event, value) => setGamePreferences({
-                    ...gamePreferences,
-                    size: value
-                })}
+                value={Number(gameSize)}
+                onChange={(event, value) => setGameSize(value)}
                 max={12}
                 icon={<ArchitectureIcon />}
                 emptyIcon={<ArchitectureIcon />}
@@ -107,7 +99,11 @@ export const GameLobby = () => {
     return awaiting ? (
         <Game
             apiUrl={apiUrl}
-            gamePreferences={gamePreferences}
+            gamePreferences={{
+                size: Number(gameSize),
+                turn_count: Number(turnCount),
+                is_visibility_applied: Boolean(isVisibilityApplied)
+            }}
             iconIndex={Number(iconIndex)}
             icons={icons}
             onQuit={() => setAwaiting(false)}
@@ -128,11 +124,8 @@ export const GameLobby = () => {
                 <ToggleButtonGroup
                     color="primary"
                     exclusive
-                    value={gamePreferences.is_visibility_applied}
-                    onChange={(event, isVisibilityApplied) => setGamePreferences({
-                        ...gamePreferences,
-                        is_visibility_applied: isVisibilityApplied
-                    })}
+                    value={Boolean(isVisibilityApplied)}
+                    onChange={(event, value) => setIsVisibilityApplied(value ? "true" : "")}
                     sx={{display: "flex"}}
                 >
                     {visibilityPreferenceButtons}
