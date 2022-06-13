@@ -11,6 +11,7 @@ import ToggleButton from "@mui/material/ToggleButton"
 import Button from "@mui/material/Button"
 import TurnIcon from "@mui/icons-material/Edit"
 import PeopleIcon from "@mui/icons-material/ConnectWithoutContact"
+import RobotIcon from "@mui/icons-material/SmartToyOutlined"
 import CrossIcon from "@mui/icons-material/Close"
 import CircleIcon from "@mui/icons-material/FiberManualRecordOutlined"
 import HashIcon from "@mui/icons-material/TagOutlined"
@@ -44,6 +45,7 @@ export const GameLobby = () => {
         "visibility",
         ""
     )
+    const [isAgainstBot, setIsAgainstBot] = useCookie("bot", "")
 
     const iconButtons = icons.map((icon, index) => (
         <ToggleButton key={index} value={index} sx={{flexGrow: 1, p: 0}}>
@@ -58,6 +60,12 @@ export const GameLobby = () => {
             sx={{flexGrow: 1, p: 0}}
         >
             {isEnabled ? "With visibility rules" : "Classic"}
+        </ToggleButton>
+    ))
+
+    const opponentSelectionButtons = [false, true].map(isBot => (
+        <ToggleButton key={isBot} value={isBot} sx={{flexGrow: 1, p: 0}}>
+            {isBot ? "Against bot" : "Against other people"}
         </ToggleButton>
     ))
 
@@ -108,6 +116,7 @@ export const GameLobby = () => {
                 size: Number(gameSize),
                 turn_count: Number(turnCount),
                 is_visibility_applied: Boolean(isVisibilityApplied),
+                is_against_bot: Boolean(isAgainstBot),
             }}
             iconIndex={Number(iconIndex)}
             icons={icons}
@@ -120,10 +129,23 @@ export const GameLobby = () => {
                     variant="contained"
                     disableElevation
                     onClick={() => setAwaiting(true)}
-                    startIcon={<PeopleIcon />}
+                    startIcon={isAgainstBot ? <RobotIcon /> : <PeopleIcon />}
                 >
-                    Play against other people
+                    Play against {isAgainstBot ? "bot" : "other people"}
                 </Button>
+            </Section>
+            <Section>
+                <ToggleButtonGroup
+                    color="primary"
+                    exclusive
+                    value={Boolean(isAgainstBot)}
+                    onChange={(event, value) =>
+                        setIsAgainstBot(value ? "true" : "")
+                    }
+                    sx={{display: "flex"}}
+                >
+                    {opponentSelectionButtons}
+                </ToggleButtonGroup>
             </Section>
             <Section>
                 <ToggleButtonGroup

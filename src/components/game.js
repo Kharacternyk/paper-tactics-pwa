@@ -55,7 +55,7 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
     const gameIcons = game && {
         me: icons[iconIndex],
         opponent: match({
-            opponentIndex: Number(game.opponent.viewData.iconIndex),
+            opponentIndex: Number(game.opponent.viewData.iconIndex ?? 0),
             iconIndex,
         })(
             ({opponentIndex = 0, iconIndex = 0}) => icons[1],

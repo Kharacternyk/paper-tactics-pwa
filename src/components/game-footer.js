@@ -6,7 +6,7 @@ import {match, T} from "babel-plugin-proposal-pattern-matching/match"
 export const GameFooter = ({game}) => {
     const [region, city] = fixTimeZone(game.opponent.viewData.timeZone)?.split(
         "/"
-    )
+    ) ?? [null, null]
     const os = game.opponent.viewData.os
 
     const opponent = match({region, city, os})(
