@@ -22,7 +22,7 @@ export const Tutorial = () => {
                     opponent's icon, e.g., the circle in the lower left corner
                     of the logo). Units are placed only on empty cells, while
                     walls are placed only on opponent's units. You cannot place
-                    anything on your own units or opponent's walls.
+                    anything on walls or your own units.
                 </Typography>
             </Section>
             <Section>
