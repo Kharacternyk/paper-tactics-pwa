@@ -30,6 +30,8 @@ export const GameMap = ({game, gamePreferences, onTurnMade, icons}) => {
         setPropsForEach(game.me.reachable, {reachable: true}, (x, y) => ({
             onClick: () => onTurnMade(x, y),
         }))
+    } else {
+        setPropsForEach(game.me.reachable, {reachable: true})
     }
 
     const renderedRows = cellProps.map((row, y) => {
