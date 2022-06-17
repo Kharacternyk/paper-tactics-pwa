@@ -1,0 +1,12 @@
+{
+    "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+    "name": "Paper Tactics",
+    "short_name": "Paper Tactics",
+    "description": "Learn and play online a pen-and-paper game",
+    "display": "fullscreen",
+    "background_color": "#00897b",
+    "theme_color": "#00897b",
+    "lang": "en-US",
+    "scope": "https://www.paper-tactics.com",
+    "start_url": "https://www.paper-tactics.com"
+}
