@@ -77,14 +77,7 @@ export const GameLobby = () => {
                 max={7}
                 icon={<TurnIcon />}
                 emptyIcon={<TurnIcon />}
-                sx={{
-                    "& .MuiRating-iconFilled": {
-                        color: "primary.main",
-                    },
-                    "& .MuiRating-iconHover": {
-                        color: "primary.light",
-                    },
-                }}
+                sx={countSelectorSx}
             />
         </Box>
     )
@@ -97,14 +90,7 @@ export const GameLobby = () => {
                 max={12}
                 icon={<ArchitectureIcon />}
                 emptyIcon={<ArchitectureIcon />}
-                sx={{
-                    "& .MuiRating-iconFilled": {
-                        color: "primary.main",
-                    },
-                    "& .MuiRating-iconHover": {
-                        color: "primary.light",
-                    },
-                }}
+                sx={countSelectorSx}
             />
         </Box>
     )
@@ -241,3 +227,12 @@ const icons = [
     <BellIcon />,
     <BeachIcon />,
 ]
+
+const countSelectorSx = {
+    "& .MuiRating-iconFilled": {
+        color: "primary.main",
+    },
+    "& .MuiRating-iconHover": {
+        color: "primary.light",
+    },
+}

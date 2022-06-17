@@ -20,7 +20,7 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
             gameId: game.id,
         })
 
-    // It is important to have this cleanup fired before the web socket is closed
+    // It is important to have this cleanup fired before the websocket is closed
     useEffect(() => {
         if (game) {
             window.addEventListener("beforeunload", concede)

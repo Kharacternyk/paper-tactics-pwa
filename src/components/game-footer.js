@@ -41,6 +41,7 @@ export const GameFooter = ({game}) => {
 
 const fixTimeZone = timeZone =>
     timeZone?.replace("Kiev", "Kyiv")?.replace("_", " ")
+
 const breakId = id =>
     [
         [0, 8],
