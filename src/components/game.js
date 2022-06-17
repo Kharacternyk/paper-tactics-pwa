@@ -80,7 +80,7 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
                     gamePreferences={gamePreferences}
                 />
             </Section>
-            <GameFooter game={game} />
+            <GameFooter game={game} gamePreferences={gamePreferences} />
         </>
     ) : (
         <>

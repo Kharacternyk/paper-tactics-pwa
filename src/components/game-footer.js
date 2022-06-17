@@ -1,15 +1,18 @@
 import {BadgeAlert} from "./badge-alert"
+import RobotIcon from "@mui/icons-material/SmartToyOutlined"
 import OpponentIcon from "@mui/icons-material/ConnectWithoutContact"
 import IdIcon from "@mui/icons-material/Fingerprint"
 import {match, T} from "babel-plugin-proposal-pattern-matching/match"
 
-export const GameFooter = ({game}) => {
+export const GameFooter = ({game, gamePreferences}) => {
+    const isBot = gamePreferences.is_against_bot
     const [region, city] = fixTimeZone(game.opponent.viewData.timeZone)?.split(
         "/"
     ) ?? [null, null]
     const os = game.opponent.viewData.os
 
-    const opponent = match({region, city, os})(
+    const opponent = match({region, city, os, isBot})(
+        ({isBot = true}) => "Mr. Tacticus",
         ({region = T.string, city = T.string, os = T.nullish}) =>
             `Someone in the ${city} (${region}) time zone`,
         ({region = T.string, city = T.string}) =>
@@ -23,7 +26,13 @@ export const GameFooter = ({game}) => {
                 subtitle="Your opponent"
                 color="secondary"
                 progress={100}
-                icon={<OpponentIcon color="secondary" />}
+                icon={
+                    isBot ? (
+                        <RobotIcon color="secondary" />
+                    ) : (
+                        <OpponentIcon color="secondary" />
+                    )
+                }
             >
                 {opponent}
             </BadgeAlert>
