@@ -19,11 +19,16 @@
         "babel-plugin-proposal-pattern-matching": "^1.0.2",
         "bowser": "^2.11.0",
         "camelcase-keys": "^8.0.0",
-        "parcel": "^2.2.1",
+        "parcel": "^2.6.1",
         "react": "^17.0.2",
         "react-dom": "^17.0.2",
         "react-is": "^17.0.2",
         "react-use-cookie": "^1.3.0",
         "react-use-websocket": "^2.9.1"
+    },
+    "devDependencies": {
+        "@parcel/packager-raw-url": "2.6.1",
+        "@parcel/transformer-webmanifest": "2.6.1",
+        "process": "^0.11.10"
     }
 }
