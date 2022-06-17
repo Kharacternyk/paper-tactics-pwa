@@ -35,7 +35,7 @@ export const App = () => {
                 value={currentPage}
                 onChange={(event, page) => setCurrentPage(page)}
             />
-            <Stack gap={2} alignItems="center" px={2} pt={2}>
+            <Stack gap={2} alignItems="center" px={2} py={2}>
                 {currentPage === 0 && <Tutorial />}
                 {currentPage === 1 && <GameLobby />}
                 <Footer />
