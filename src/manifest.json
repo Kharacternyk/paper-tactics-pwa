@@ -8,5 +8,11 @@
     "theme_color": "#00897b",
     "lang": "en-US",
     "scope": "https://www.paper-tactics.com",
-    "start_url": "https://www.paper-tactics.com"
+    "start_url": "https://www.paper-tactics.com",
+    "icons": [
+        {
+            "src": "images/paper-tactics.png",
+            "sizes": "512x512"
+        }
+    ]
 }
