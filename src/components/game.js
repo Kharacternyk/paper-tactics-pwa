@@ -98,7 +98,7 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
                 }
             >
                 {gamePreferences.is_against_bot
-                    ? "Waiting for the bot to connect…"
+                    ? "Waiting for a bot to connect…"
                     : "Waiting for someone else to connect…"}
             </BadgeAlert>
         </>
