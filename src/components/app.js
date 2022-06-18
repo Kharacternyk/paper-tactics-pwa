@@ -10,21 +10,6 @@ import Alert from "@mui/material/Alert"
 import Stack from "@mui/material/Stack"
 import CssBaseline from "@mui/material/CssBaseline"
 
-const theme = createTheme({
-    palette: {
-        primary: {
-            light: primary[300],
-            main: primary[600],
-            dark: primary[900],
-        },
-        secondary: {
-            light: secondary[300],
-            main: secondary[600],
-            dark: secondary[900],
-        },
-    },
-})
-
 export const App = () => {
     const [currentPage, setCurrentPage] = useState(0)
 
@@ -43,3 +28,18 @@ export const App = () => {
         </ThemeProvider>
     )
 }
+
+const theme = createTheme({
+    palette: {
+        primary: {
+            light: primary[300],
+            main: primary[600],
+            dark: primary[900],
+        },
+        secondary: {
+            light: secondary[300],
+            main: secondary[600],
+            dark: secondary[900],
+        },
+    },
+})
