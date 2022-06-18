@@ -5,7 +5,8 @@ import {GameFooter} from "./game-footer"
 import {BadgeAlert} from "./badge-alert"
 import {Section} from "./section"
 import Button from "@mui/material/Button"
-import WaitIcon from "@mui/icons-material/ConnectWithoutContact"
+import PeopleIcon from "@mui/icons-material/ConnectWithoutContact"
+import RobotIcon from "@mui/icons-material/SmartToyOutlined"
 import useWebSocket from "react-use-websocket"
 import Bowser from "bowser"
 import match from "babel-plugin-proposal-pattern-matching/match"
@@ -87,8 +88,18 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
             <Section>
                 <Button onClick={onQuit}>Cancel</Button>
             </Section>
-            <BadgeAlert icon={<WaitIcon color="primary" />} color="primary">
-                Waiting for someone else to connect…
+            <BadgeAlert
+                icon={
+                    gamePreferences.is_against_bot ? (
+                        <RobotIcon color="primary" />
+                    ) : (
+                        <PeopleIcon color="primary" />
+                    )
+                }
+            >
+                {gamePreferences.is_against_bot
+                    ? "Waiting for the bot to connect…"
+                    : "Waiting for someone else to connect…"}
             </BadgeAlert>
         </>
     )
