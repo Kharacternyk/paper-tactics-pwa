@@ -1,3 +1,4 @@
+import {useState} from "react"
 import {BadgeAlert} from "./badge-alert"
 import RobotIcon from "@mui/icons-material/SmartToyOutlined"
 import OpponentIcon from "@mui/icons-material/ConnectWithoutContact"
@@ -9,10 +10,13 @@ export const GameFooter = ({game, gamePreferences}) => {
     const [region, city] = fixTimeZone(game.opponent.viewData.timeZone)?.split(
         "/"
     ) ?? [null, null]
+    const [botName, setBotName] = useState(
+        botNames[Math.floor(Math.random() * botNames.length)]
+    )
     const os = game.opponent.viewData.os
 
     const opponent = match({region, city, os, isBot})(
-        ({isBot = true}) => "Mr. Tacticus",
+        ({isBot = true}) => botName,
         ({region = T.string, city = T.string, os = T.nullish}) =>
             `Someone in the ${city} (${region}) time zone`,
         ({region = T.string, city = T.string}) =>
@@ -61,3 +65,5 @@ const breakId = id =>
         .map(([x, y]) => id.slice(x, y))
         .join(" ")
         .toUpperCase()
+
+const botNames = ["Mr. Paperbot", "Mr. Pickle", "Mr. Tacticus", "Mr. Teapot"]
