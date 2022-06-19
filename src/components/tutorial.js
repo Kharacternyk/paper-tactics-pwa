@@ -19,12 +19,12 @@ export const Tutorial = () => {
                 units.
             </Paragraph>
             <Paragraph>
-                Units and walls can only be placed on cells that are reachable
-                for you. A cell is considered reachable by a certain player
-                either if there is a player's unit that is adjacent to the cell
-                or if there is a continuous chain of adjacent player's walls
-                that connects the cell and a player's unit. Two cells are
-                considered adjacent if they share a side or a corner.
+                Units and walls can only be placed on cells that are reachable.
+                A cell is considered reachable by a certain player either if
+                there is a player's unit that is adjacent to the cell or if
+                there is a continuous chain of adjacent player's walls that
+                connects the cell and a player's unit. Two cells are considered
+                adjacent if they share a side or a corner.
             </Paragraph>
             <Paragraph>
                 The sample below showcases how a game looks like.
