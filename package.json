@@ -29,6 +29,7 @@
     "devDependencies": {
         "@parcel/packager-raw-url": "2.6.1",
         "@parcel/transformer-webmanifest": "2.6.1",
+        "path-browserify": "^1.0.1",
         "process": "^0.11.10"
     }
 }
