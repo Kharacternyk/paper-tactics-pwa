@@ -89,6 +89,7 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
                 <Button onClick={onQuit}>Cancel</Button>
             </Section>
             <BadgeAlert
+                color="primary"
                 icon={
                     gamePreferences.is_against_bot ? (
                         <RobotIcon color="primary" />
