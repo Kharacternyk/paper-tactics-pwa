@@ -12,7 +12,7 @@
     "icons": [
         {
             "src": "images/paper-tactics.png",
-            "sizes": "512x512"
+            "sizes": "192x192"
         }
     ]
 }
