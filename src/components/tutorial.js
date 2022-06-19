@@ -64,7 +64,8 @@ export const Tutorial = () => {
                 units. You will then be connected with another player to play,
                 but remember that the more unusual your preferences (except for
                 the icon) are, the more unlikely it is that an opponent with the
-                same preferences will be found. The{" "}
+                same preferences will be found. If there are no other players to
+                play with, you can play against a bot. The{" "}
                 <b>«With visibility rules»</b> game mode is a modification where
                 players cannot see each other's units until they are reachable.
             </Paragraph>
