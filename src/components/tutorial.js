@@ -27,7 +27,7 @@ export const Tutorial = () => {
                 considered adjacent if they share a side or a corner.
             </Paragraph>
             <Paragraph>
-                The sample below showcases how a game looks like:
+                The sample below showcases how a game looks like.
                 <MyIcon sx={{verticalAlign: "bottom"}} />
                 and
                 <OpponentIcon sx={{verticalAlign: "bottom"}} />
