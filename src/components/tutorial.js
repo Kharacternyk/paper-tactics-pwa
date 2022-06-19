@@ -48,7 +48,7 @@ export const Tutorial = () => {
                     }}
                 />{" "}
                 are opponent's and your walls, respectively. Cells with a white
-                background are reachable for you, while the ones with a gray
+                background are reachable for you, while the ones with a grey
                 background are not.
             </Paragraph>
             <Section>
