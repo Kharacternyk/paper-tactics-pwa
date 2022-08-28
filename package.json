@@ -4,7 +4,7 @@
     "repository": "git@github.com:Kharacternyk/paper-tactics-pwa.git",
     "author": "Nazar Vinnichuk <nazar@vinnich.uk>",
     "license": "GPL-3.0-or-later",
-    "private": false,
+    "private": true,
     "dependencies": {
         "@babel/core": "^7.12.0",
         "@emotion/react": "^11.7.1",
