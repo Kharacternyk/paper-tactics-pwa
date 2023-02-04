@@ -2,6 +2,7 @@ import {Section} from "./section"
 import {GameUnitIcon} from "./game-unit-icon"
 import {Game} from "./game"
 import {useState} from "react"
+import useCookie from "react-use-cookie"
 import Autocomplete from "@mui/material/Autocomplete"
 import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
@@ -33,7 +34,69 @@ import HiveIcon from "@mui/icons-material/HiveOutlined"
 import CartIcon from "@mui/icons-material/LocalGroceryStoreOutlined"
 import MoonIcon from "@mui/icons-material/NightsStayOutlined"
 import FootballIcon from "@mui/icons-material/SportsFootballOutlined"
-import useCookie from "react-use-cookie"
+import Blender from "@mui/icons-material/BlenderOutlined"
+import BubbleChart from "@mui/icons-material/BubbleChartOutlined"
+import Casino from "@mui/icons-material/CasinoOutlined"
+import LunchDining from "@mui/icons-material/LunchDiningOutlined"
+import Science from "@mui/icons-material/ScienceOutlined"
+import HealthAndSafety from "@mui/icons-material/HealthAndSafetyOutlined"
+import Traffic from "@mui/icons-material/TrafficOutlined"
+import Balance from "@mui/icons-material/BalanceOutlined"
+import Diamond from "@mui/icons-material/DiamondOutlined"
+import Token from "@mui/icons-material/TokenOutlined"
+
+const icons = [
+    <CrossIcon />,
+    <CircleIcon />,
+    <HashIcon />,
+    <FlagIcon />,
+    <StarsIcon />,
+    <RocketIcon />,
+    <BeerIcon />,
+    <MusicIcon />,
+    <BakeryIcon />,
+    <BulbIcon />,
+    <HeartIcon />,
+    <StarIcon />,
+    <HiveIcon />,
+    <CartIcon />,
+    <MoonIcon />,
+    <FootballIcon />,
+    <AnchorIcon />,
+    <CelebrationIcon />,
+    <BellIcon />,
+    <BeachIcon />,
+    <Diamond />,
+    <Token />,
+    <BubbleChart />,
+    <Blender />,
+    <Casino />,
+    <Science />,
+    <LunchDining />,
+    <HealthAndSafety />,
+    <Traffic />,
+    <Balance />,
+]
+
+const servers = [
+    {
+        label: "Frankfurt",
+        url: "wss://az7ndrlaxk.execute-api.eu-central-1.amazonaws.com/rolling",
+    },
+    {
+        label: "Localhost",
+        url: "ws://localhost:8001",
+    },
+]
+
+const countSelectorSx = {
+    "& .MuiRating-iconFilled": {
+        color: "primary.main",
+    },
+    "& .MuiRating-iconHover": {
+        color: "primary.light",
+    },
+}
 
 export const GameLobby = () => {
     const [iconIndex, setIconIndex] = useCookie("icon", 0)
@@ -167,7 +230,18 @@ export const GameLobby = () => {
                     onChange={(event, iconIndex) => setIconIndex(iconIndex)}
                     sx={{display: "flex"}}
                 >
-                    {iconButtons.slice(10)}
+                    {iconButtons.slice(10, 20)}
+                </ToggleButtonGroup>
+            </Section>
+            <Section>
+                <ToggleButtonGroup
+                    color="primary"
+                    exclusive
+                    value={Number(iconIndex)}
+                    onChange={(event, iconIndex) => setIconIndex(iconIndex)}
+                    sx={{display: "flex"}}
+                >
+                    {iconButtons.slice(20)}
                 </ToggleButtonGroup>
             </Section>
             <Section>
@@ -192,47 +266,4 @@ export const GameLobby = () => {
             </Section>
         </>
     )
-}
-
-const servers = [
-    {
-        label: "Frankfurt",
-        url: "wss://az7ndrlaxk.execute-api.eu-central-1.amazonaws.com/rolling",
-    },
-    {
-        label: "Localhost",
-        url: "ws://localhost:8001",
-    },
-]
-
-const icons = [
-    <CrossIcon />,
-    <CircleIcon />,
-    <HashIcon />,
-    <FlagIcon />,
-    <StarsIcon />,
-    <RocketIcon />,
-    <BeerIcon />,
-    <MusicIcon />,
-    <BakeryIcon />,
-    <BulbIcon />,
-    <HeartIcon />,
-    <StarIcon />,
-    <HiveIcon />,
-    <CartIcon />,
-    <MoonIcon />,
-    <FootballIcon />,
-    <AnchorIcon />,
-    <CelebrationIcon />,
-    <BellIcon />,
-    <BeachIcon />,
-]
-
-const countSelectorSx = {
-    "& .MuiRating-iconFilled": {
-        color: "primary.main",
-    },
-    "& .MuiRating-iconHover": {
-        color: "primary.light",
-    },
 }
