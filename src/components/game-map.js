@@ -25,6 +25,7 @@ export const GameMap = ({game, gamePreferences, onTurnMade, icons}) => {
     setPropsForEach(game.opponent.walls, {wall: true, opponent: true})
     setPropsForEach(game.me.units, {unit: true, mine: true})
     setPropsForEach(game.me.walls, {wall: true, mine: true})
+    setPropsForEach(game.trenches, {trench: true})
 
     if (game.myTurn) {
         setPropsForEach(game.me.reachable, {reachable: true}, (x, y) => ({

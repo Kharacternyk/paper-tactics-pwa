@@ -108,6 +108,7 @@ export const GameLobby = () => {
         "visibility",
         ""
     )
+    const [trenchDensity, setTrenchDensity] = useCookie("trench-density", "0")
     const [isAgainstBot, setIsAgainstBot] = useCookie("bot", "")
 
     const iconButtons = icons.map((icon, index) => (
@@ -123,6 +124,12 @@ export const GameLobby = () => {
             sx={{flexGrow: 1, p: 0}}
         >
             {isEnabled ? "With visibility rules" : "Classic"}
+        </ToggleButton>
+    ))
+
+    const trenchDensityButtons = [0, 20, 33].map(density => (
+        <ToggleButton key={density} value={density} sx={{flexGrow: 1, p: 0}}>
+            {density ? `${density}%` : "no"} trenches
         </ToggleButton>
     ))
 
@@ -166,6 +173,7 @@ export const GameLobby = () => {
                 turn_count: Number(turnCount),
                 is_visibility_applied: Boolean(isVisibilityApplied),
                 is_against_bot: Boolean(isAgainstBot),
+                trench_density: Number(trenchDensity) / 100,
             }}
             iconIndex={Number(iconIndex)}
             icons={icons}
@@ -207,6 +215,17 @@ export const GameLobby = () => {
                     sx={{display: "flex"}}
                 >
                     {visibilityPreferenceButtons}
+                </ToggleButtonGroup>
+            </Section>
+            <Section>
+                <ToggleButtonGroup
+                    color="primary"
+                    exclusive
+                    value={Number(trenchDensity)}
+                    onChange={(event, value) => setTrenchDensity(value)}
+                    sx={{display: "flex"}}
+                >
+                    {trenchDensityButtons}
                 </ToggleButtonGroup>
             </Section>
             <Section>{turnCountSelector}</Section>

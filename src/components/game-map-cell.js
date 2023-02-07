@@ -1,4 +1,5 @@
 import {GameUnitIcon} from "./game-unit-icon"
+import TrenchIcon from "@mui/icons-material/BlurOn"
 import TableCell from "@mui/material/TableCell"
 import match from "babel-plugin-proposal-pattern-matching/match"
 
@@ -8,6 +9,7 @@ export const GameMapCell = ({
     unit,
     wall,
     reachable,
+    trench,
     onClick,
     icons,
 }) => {
@@ -20,7 +22,7 @@ export const GameMapCell = ({
         "tr:last-child &": {
             borderBottom: 0,
         },
-        ...match({mine, opponent, unit, wall, reachable})(
+        ...match({mine, opponent, unit, wall, reachable, trench})(
             ({mine = true, unit = true}) => ({color: "primary.main"}),
             ({mine = true, wall = true}) => ({
                 color: "primary.dark",
@@ -38,6 +40,17 @@ export const GameMapCell = ({
                 color: "secondary.dark",
                 bgcolor: "secondary.main",
             }),
+            ({trench = true, reachable = true}) => ({
+                color: "grey.300",
+                ":hover": {
+                    color: "primary.main",
+                    bgcolor: "primary.light",
+                },
+            }),
+            ({trench = true}) => ({
+                color: "grey.700",
+                bgcolor: "grey.200",
+            }),
             ({reachable = true}) => ({
                 color: "rgba(0, 0, 0, 0)",
                 ":hover": {color: "primary.light"},
@@ -46,9 +59,11 @@ export const GameMapCell = ({
         ),
     }
 
-    const icon = match({opponent, mine, wall, unit})(
+    const icon = match({opponent, mine, wall, unit, trench})(
+        ({mine = true, wall = true, trench = true}) => <TrenchIcon />,
         ({mine = true, wall = true}) => icons.opponent,
         ({opponent = true, unit = true}) => icons.opponent,
+        ({trench = true}) => <TrenchIcon />,
         _ => icons.me
     )
 

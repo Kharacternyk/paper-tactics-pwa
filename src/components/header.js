@@ -22,6 +22,7 @@ export const Header = ({value, onChange}) => {
             walls: [[2, 1]],
             reachable: [],
         },
+        trenches: [],
     }
 
     const logoIcons = {
