@@ -1,5 +1,5 @@
 import {GameUnitIcon} from "./game-unit-icon"
-import TrenchIcon from "@mui/icons-material/BlurOn"
+import TrenchIcon from "@mui/icons-material/AllOut"
 import TableCell from "@mui/material/TableCell"
 import match from "babel-plugin-proposal-pattern-matching/match"
 
@@ -41,7 +41,7 @@ export const GameMapCell = ({
                 bgcolor: "secondary.main",
             }),
             ({trench = true, reachable = true}) => ({
-                color: "grey.300",
+                color: "grey.400",
                 ":hover": {
                     color: "primary.main",
                     bgcolor: "primary.light",
