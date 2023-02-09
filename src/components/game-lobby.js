@@ -108,7 +108,10 @@ export const GameLobby = () => {
         "visibility",
         ""
     )
-    const [trenchDensity, setTrenchDensity] = useCookie("trench-density", "0")
+    const [trenchDensityPercent, setTrenchDensityPercent] = useCookie(
+        "trench-density",
+        "0"
+    )
     const [isAgainstBot, setIsAgainstBot] = useCookie("bot", "")
 
     const iconButtons = icons.map((icon, index) => (
@@ -173,7 +176,7 @@ export const GameLobby = () => {
                 turn_count: Number(turnCount),
                 is_visibility_applied: Boolean(isVisibilityApplied),
                 is_against_bot: Boolean(isAgainstBot),
-                trench_density: Number(trenchDensity) / 100,
+                trench_density_percent: Number(trenchDensityPercent),
             }}
             iconIndex={Number(iconIndex)}
             icons={icons}
@@ -221,8 +224,8 @@ export const GameLobby = () => {
                 <ToggleButtonGroup
                     color="primary"
                     exclusive
-                    value={Number(trenchDensity)}
-                    onChange={(event, value) => setTrenchDensity(value)}
+                    value={Number(trenchDensityPercent)}
+                    onChange={(event, value) => setTrenchDensityPercent(value)}
                     sx={{display: "flex"}}
                 >
                     {trenchDensityButtons}
