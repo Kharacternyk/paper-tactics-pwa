@@ -138,4 +138,5 @@ const exampleGame = {
         ],
         reachable: [],
     },
+    trenches: [],
 }
