@@ -14,6 +14,7 @@ export const GameMapCell = ({
     icons,
 }) => {
     const sx = {
+        position: "relative",
         p: 0,
         "td + &": {
             borderLeft: 1,
@@ -48,7 +49,7 @@ export const GameMapCell = ({
                 },
             }),
             ({trench = true}) => ({
-                color: "grey.700",
+                color: "grey.500",
                 bgcolor: "grey.200",
             }),
             ({reachable = true}) => ({
@@ -60,16 +61,22 @@ export const GameMapCell = ({
     }
 
     const icon = match({opponent, mine, wall, unit, trench})(
-        ({mine = true, wall = true, trench = true}) => <TrenchIcon />,
         ({mine = true, wall = true}) => icons.opponent,
         ({opponent = true, unit = true}) => icons.opponent,
-        ({trench = true}) => <TrenchIcon />,
         _ => icons.me
     )
+
+    const overlayIcon =
+        trench && !wall ? (
+            <GameUnitIcon sx={{position: "absolute", left: 0, top: 0}}>
+                {icons.opponent}
+            </GameUnitIcon>
+        ) : null
 
     return (
         <TableCell onClick={onClick} sx={sx}>
             <GameUnitIcon>{icon}</GameUnitIcon>
+            {overlayIcon}
         </TableCell>
     )
 }
