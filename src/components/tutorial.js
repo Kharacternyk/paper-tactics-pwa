@@ -1,9 +1,9 @@
-import {Section} from "./section"
-import {GameMap} from "./game-map"
-import Link from "@mui/material/Link"
-import Typography from "@mui/material/Typography"
 import MyIcon from "@mui/icons-material/Close"
 import OpponentIcon from "@mui/icons-material/FiberManualRecordOutlined"
+import Link from "@mui/material/Link"
+import Typography from "@mui/material/Typography"
+import {GameMap} from "./game-map"
+import {Section} from "./section"
 
 export const Tutorial = () => {
     return (
@@ -71,10 +71,10 @@ export const Tutorial = () => {
             </Paragraph>
             <Paragraph>
                 The <strong>«With visibility rules»</strong> game mode is a
-                modification where players cannot see each other's units until
-                they are reachable. <strong>«Trenches»</strong> are neutral
-                units. Anybody can place walls on these units as if they were
-                opponent's units. Trenches are always placed symmetrically.
+                modification where players cannot see trenches and each other's
+                units until they are reachable. <strong>«Trenches»</strong> are
+                neutral units. Anybody can place walls on these units as if they
+                were opponent's units. Trenches are always placed symmetrically.
                 Please note that the trench percentage defines the chance a
                 trench will spawn in a particular cell, not the overall amount
                 of trenches.
