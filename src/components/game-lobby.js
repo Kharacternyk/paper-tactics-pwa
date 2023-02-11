@@ -130,7 +130,7 @@ export const GameLobby = () => {
         </ToggleButton>
     ))
 
-    const trenchDensityButtons = [0, 20, 33].map(density => (
+    const trenchDensityButtons = [0, 15, 30, 50].map(density => (
         <ToggleButton key={density} value={density} sx={{flexGrow: 1, p: 0}}>
             {density ? `${density}%` : "no"} trenches
         </ToggleButton>
