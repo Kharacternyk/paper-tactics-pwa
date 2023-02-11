@@ -67,10 +67,17 @@ export const Tutorial = () => {
                 but remember that the more unusual your preferences (except for
                 the icon) are, the more unlikely it is that an opponent with the
                 same preferences will be found. If there are no other players to
-                play with, you can play against a bot. The{" "}
-                <strong>«With visibility rules»</strong> game mode is a
+                play with, you can play against a bot.
+            </Paragraph>
+            <Paragraph>
+                The <strong>«With visibility rules»</strong> game mode is a
                 modification where players cannot see each other's units until
-                they are reachable.
+                they are reachable. <strong>«Trenches»</strong> are neutral
+                units. Anybody can place walls on these units as if they were
+                opponent's units. Trenches are always placed symmetrically.
+                Please note that the trench percentage defines the chance a
+                trench will spawn in a particular cell, not the overall amount
+                of trenches.
             </Paragraph>
             <Paragraph>
                 This concludes the rules of the game. The source code of{" "}
