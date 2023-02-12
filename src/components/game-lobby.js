@@ -112,6 +112,7 @@ export const GameLobby = () => {
         "trench-density",
         "0"
     )
+    const [isDoubleBase, setIsDoubleBase] = useCookie("double-base", "")
     const [isAgainstBot, setIsAgainstBot] = useCookie("bot", "")
 
     const iconButtons = icons.map((icon, index) => (
@@ -132,7 +133,17 @@ export const GameLobby = () => {
 
     const trenchDensityButtons = [0, 15, 25, 35, 50, 75].map(density => (
         <ToggleButton key={density} value={density} sx={{flexGrow: 1, p: 0}}>
-            {density ? `${density}%` : "no trenches"}
+            {density ? `${density}%` : "No trenches"}
+        </ToggleButton>
+    ))
+
+    const doubleBaseSelectionButtons = [false, true].map(isDoubleBase => (
+        <ToggleButton
+            key={isDoubleBase}
+            value={isDoubleBase}
+            sx={{flexGrow: 1, p: 0}}
+        >
+            {isDoubleBase ? "Double base" : "Single base"}
         </ToggleButton>
     ))
 
@@ -177,6 +188,7 @@ export const GameLobby = () => {
                 is_visibility_applied: Boolean(isVisibilityApplied),
                 is_against_bot: Boolean(isAgainstBot),
                 trench_density_percent: Number(trenchDensityPercent),
+                is_double_base: Boolean(isDoubleBase),
             }}
             iconIndex={Number(iconIndex)}
             icons={icons}
@@ -229,6 +241,19 @@ export const GameLobby = () => {
                     sx={{display: "flex"}}
                 >
                     {trenchDensityButtons}
+                </ToggleButtonGroup>
+            </Section>
+            <Section>
+                <ToggleButtonGroup
+                    color="primary"
+                    exclusive
+                    value={Boolean(isDoubleBase)}
+                    onChange={(event, value) =>
+                        setIsDoubleBase(value ? "true" : "")
+                    }
+                    sx={{display: "flex"}}
+                >
+                    {doubleBaseSelectionButtons}
                 </ToggleButtonGroup>
             </Section>
             <Section>{turnCountSelector}</Section>
