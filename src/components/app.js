@@ -1,27 +1,27 @@
-import {Tutorial} from "./tutorial"
+import secondary from "@mui/material/colors/red"
+import primary from "@mui/material/colors/teal"
+import CssBaseline from "@mui/material/CssBaseline"
+import Stack from "@mui/material/Stack"
+import {createTheme, ThemeProvider} from "@mui/material/styles"
+import {useStorage} from "../hooks/use-storage"
+import {Footer} from "./footer"
 import {GameLobby} from "./game-lobby"
 import {Header} from "./header"
-import {Footer} from "./footer"
-import {ThemeProvider, createTheme} from "@mui/material/styles"
-import primary from "@mui/material/colors/teal"
-import secondary from "@mui/material/colors/red"
-import Stack from "@mui/material/Stack"
-import CssBaseline from "@mui/material/CssBaseline"
-import useCookie from "react-use-cookie"
+import {Tutorial} from "./tutorial"
 
 export const App = () => {
-    const [currentPage, setCurrentPage] = useCookie("tab", 0)
+    const [currentPage, setCurrentPage] = useStorage("tab", 0)
 
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
             <Header
-                value={Number(currentPage)}
+                value={currentPage}
                 onChange={(event, page) => setCurrentPage(page)}
             />
             <Stack gap={2} alignItems="center" px={2} py={2}>
-                {Number(currentPage) === 0 && <Tutorial />}
-                {Number(currentPage) === 1 && <GameLobby />}
+                {currentPage === 0 && <Tutorial />}
+                {currentPage === 1 && <GameLobby />}
                 <Footer />
             </Stack>
         </ThemeProvider>

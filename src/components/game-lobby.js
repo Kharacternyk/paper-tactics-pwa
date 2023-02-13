@@ -40,7 +40,7 @@ import TextField from "@mui/material/TextField"
 import ToggleButton from "@mui/material/ToggleButton"
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
 import {useState} from "react"
-import useCookie from "react-use-cookie"
+import {useStorage} from "../hooks/use-storage"
 import {Game} from "./game"
 import {GameUnitIcon} from "./game-unit-icon"
 import {Section} from "./section"
@@ -99,21 +99,21 @@ const countSelectorSx = {
 }
 
 export const GameLobby = () => {
-    const [iconIndex, setIconIndex] = useCookie("icon", 0)
+    const [iconIndex, setIconIndex] = useStorage("icon", 0)
     const [awaiting, setAwaiting] = useState(false)
     const [apiUrl, setApiUrl] = useState(servers[0].url)
-    const [gameSize, setGameSize] = useCookie("game-size", "10")
-    const [turnCount, setTurnCount] = useCookie("turn-count", "3")
-    const [isVisibilityApplied, setIsVisibilityApplied] = useCookie(
+    const [gameSize, setGameSize] = useStorage("game-size", 10)
+    const [turnCount, setTurnCount] = useStorage("turn-count", 3)
+    const [isVisibilityApplied, setIsVisibilityApplied] = useStorage(
         "visibility",
-        ""
+        false
     )
-    const [trenchDensityPercent, setTrenchDensityPercent] = useCookie(
+    const [trenchDensityPercent, setTrenchDensityPercent] = useStorage(
         "trench-density",
-        "0"
+        0
     )
-    const [isDoubleBase, setIsDoubleBase] = useCookie("double-base", "")
-    const [isAgainstBot, setIsAgainstBot] = useCookie("bot", "")
+    const [isDoubleBase, setIsDoubleBase] = useStorage("double-base", false)
+    const [isAgainstBot, setIsAgainstBot] = useStorage("bot", false)
 
     const iconButtons = icons.map((icon, index) => (
         <ToggleButton key={index} value={index} sx={{flexGrow: 1, p: 0}}>
@@ -156,7 +156,7 @@ export const GameLobby = () => {
     const turnCountSelector = (
         <Box display="flex" justifyContent="center">
             <Rating
-                value={Number(turnCount)}
+                value={turnCount}
                 onChange={(event, value) => setTurnCount(value)}
                 max={7}
                 icon={<TurnIcon />}
@@ -169,7 +169,7 @@ export const GameLobby = () => {
     const gameSizeSelector = (
         <Box display="flex" justifyContent="center">
             <Rating
-                value={Number(gameSize)}
+                value={gameSize}
                 onChange={(event, value) => setGameSize(value)}
                 max={12}
                 icon={<ArchitectureIcon />}
@@ -183,14 +183,14 @@ export const GameLobby = () => {
         <Game
             apiUrl={apiUrl}
             gamePreferences={{
-                size: Number(gameSize),
-                turn_count: Number(turnCount),
-                is_visibility_applied: Boolean(isVisibilityApplied),
-                is_against_bot: Boolean(isAgainstBot),
-                trench_density_percent: Number(trenchDensityPercent),
-                is_double_base: Boolean(isDoubleBase),
+                size: gameSize,
+                turn_count: turnCount,
+                is_visibility_applied: isVisibilityApplied,
+                is_against_bot: isAgainstBot,
+                trench_density_percent: trenchDensityPercent,
+                is_double_base: isDoubleBase,
             }}
-            iconIndex={Number(iconIndex)}
+            iconIndex={iconIndex}
             icons={icons}
             onQuit={() => setAwaiting(false)}
         />
@@ -210,10 +210,8 @@ export const GameLobby = () => {
                 <ToggleButtonGroup
                     color="primary"
                     exclusive
-                    value={Boolean(isAgainstBot)}
-                    onChange={(event, value) =>
-                        setIsAgainstBot(value ? "true" : "")
-                    }
+                    value={isAgainstBot}
+                    onChange={(event, value) => setIsAgainstBot(value)}
                     sx={{display: "flex"}}
                 >
                     {opponentSelectionButtons}
@@ -223,10 +221,8 @@ export const GameLobby = () => {
                 <ToggleButtonGroup
                     color="primary"
                     exclusive
-                    value={Boolean(isVisibilityApplied)}
-                    onChange={(event, value) =>
-                        setIsVisibilityApplied(value ? "true" : "")
-                    }
+                    value={isVisibilityApplied}
+                    onChange={(event, value) => setIsVisibilityApplied(value)}
                     sx={{display: "flex"}}
                 >
                     {visibilityPreferenceButtons}
@@ -236,7 +232,7 @@ export const GameLobby = () => {
                 <ToggleButtonGroup
                     color="primary"
                     exclusive
-                    value={Number(trenchDensityPercent)}
+                    value={trenchDensityPercent}
                     onChange={(event, value) => setTrenchDensityPercent(value)}
                     sx={{display: "flex"}}
                 >
@@ -247,10 +243,8 @@ export const GameLobby = () => {
                 <ToggleButtonGroup
                     color="primary"
                     exclusive
-                    value={Boolean(isDoubleBase)}
-                    onChange={(event, value) =>
-                        setIsDoubleBase(value ? "true" : "")
-                    }
+                    value={isDoubleBase}
+                    onChange={(event, value) => setIsDoubleBase(value)}
                     sx={{display: "flex"}}
                 >
                     {doubleBaseSelectionButtons}
@@ -262,7 +256,7 @@ export const GameLobby = () => {
                 <ToggleButtonGroup
                     color="primary"
                     exclusive
-                    value={Number(iconIndex)}
+                    value={iconIndex}
                     onChange={(event, iconIndex) => setIconIndex(iconIndex)}
                     sx={{display: "flex"}}
                 >
@@ -273,7 +267,7 @@ export const GameLobby = () => {
                 <ToggleButtonGroup
                     color="primary"
                     exclusive
-                    value={Number(iconIndex)}
+                    value={iconIndex}
                     onChange={(event, iconIndex) => setIconIndex(iconIndex)}
                     sx={{display: "flex"}}
                 >
@@ -284,7 +278,7 @@ export const GameLobby = () => {
                 <ToggleButtonGroup
                     color="primary"
                     exclusive
-                    value={Number(iconIndex)}
+                    value={iconIndex}
                     onChange={(event, iconIndex) => setIconIndex(iconIndex)}
                     sx={{display: "flex"}}
                 >
