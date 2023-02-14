@@ -1,16 +1,16 @@
-import {useEffect, useState} from "react"
-import {GameMap} from "./game-map"
-import {GameHeader} from "./game-header"
-import {GameFooter} from "./game-footer"
-import {BadgeAlert} from "./badge-alert"
-import {Section} from "./section"
-import Button from "@mui/material/Button"
 import PeopleIcon from "@mui/icons-material/ConnectWithoutContact"
 import RobotIcon from "@mui/icons-material/SmartToyOutlined"
-import useWebSocket from "react-use-websocket"
-import Bowser from "bowser"
+import Button from "@mui/material/Button"
 import match from "babel-plugin-proposal-pattern-matching/match"
+import Bowser from "bowser"
 import camelcaseKeys from "camelcase-keys"
+import {useEffect, useState} from "react"
+import useWebSocket from "react-use-websocket"
+import {BadgeAlert} from "./badge-alert"
+import {GameFooter} from "./game-footer"
+import {GameHeader} from "./game-header"
+import {GameMap} from "./game-map"
+import {Section} from "./section"
 
 export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
     const [game, setGame] = useState()
@@ -99,7 +99,7 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
                 }
             >
                 {gamePreferences.is_against_bot
-                    ? "Waiting for a bot to connect…"
+                    ? "Powering up the bot…"
                     : "Waiting for someone else to connect…"}
             </BadgeAlert>
         </>
