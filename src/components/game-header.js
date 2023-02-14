@@ -1,12 +1,16 @@
-import {BadgeAlert} from "./badge-alert"
-import {Section} from "./section"
-import Button from "@mui/material/Button"
-import Badge from "@mui/material/Badge"
 import MyTurnIcon from "@mui/icons-material/Edit"
 import OpponentsTurnIcon from "@mui/icons-material/EditOff"
 import WonIcon from "@mui/icons-material/Mood"
 import LostIcon from "@mui/icons-material/MoodBad"
+import Badge from "@mui/material/Badge"
+import Button from "@mui/material/Button"
+import Dialog from "@mui/material/Dialog"
+import DialogActions from "@mui/material/DialogActions"
+import DialogTitle from "@mui/material/DialogTitle"
 import match from "babel-plugin-proposal-pattern-matching/match"
+import {useState} from "react"
+import {BadgeAlert} from "./badge-alert"
+import {Section} from "./section"
 
 export const GameHeader = ({
     game: {
@@ -19,6 +23,7 @@ export const GameHeader = ({
     onQuit,
     concede,
 }) => {
+    const [isConcedeDialogOpen, setIsConcedeDialogOpen] = useState(false)
     const [color, message] = match({
         opponentWon,
         opponentWonByConceding,
@@ -70,9 +75,34 @@ export const GameHeader = ({
                 {icon}
             </Badge>,
             (turnsLeft * 100) / gamePreferences.turn_count,
-            <Button color="secondary" onClick={concede}>
-                Concede
-            </Button>,
+            <>
+                <Button
+                    color="secondary"
+                    onClick={() => setIsConcedeDialogOpen(true)}
+                >
+                    Concede
+                </Button>
+                <Dialog
+                    open={isConcedeDialogOpen}
+                    onClose={() => setIsConcedeDialogOpen(false)}
+                >
+                    <DialogTitle>Do you want to concede?</DialogTitle>
+                    <DialogActions>
+                        <Button onClick={() => setIsConcedeDialogOpen(false)}>
+                            No
+                        </Button>
+                        <Button
+                            color="secondary"
+                            onClick={() => {
+                                setIsConcedeDialogOpen(false)
+                                concede()
+                            }}
+                        >
+                            Yes
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+            </>,
         ],
         _ => [
             icon,
