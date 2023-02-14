@@ -44,7 +44,7 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
 
         sendJsonMessage({
             action: "create-game",
-            viewData: {iconIndex: String(iconIndex), timeZone, os},
+            view_data: {iconIndex: String(iconIndex), timeZone, os},
             preferences: gamePreferences,
         })
     }, [])
