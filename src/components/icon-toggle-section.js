@@ -9,6 +9,7 @@ import Casino from "@mui/icons-material/CasinoOutlined"
 import CelebrationIcon from "@mui/icons-material/CelebrationOutlined"
 import CrossIcon from "@mui/icons-material/Close"
 import Diamond from "@mui/icons-material/DiamondOutlined"
+import Cup from "@mui/icons-material/EmojiEventsOutlined"
 import BulbIcon from "@mui/icons-material/EmojiObjectsOutlined"
 import HeartIcon from "@mui/icons-material/FavoriteBorderOutlined"
 import CircleIcon from "@mui/icons-material/FiberManualRecordOutlined"
@@ -62,13 +63,15 @@ export const icons = [
     <HealthAndSafety />,
     <Traffic />,
     <Balance />,
+    <Cup />,
 ]
 
-export const IconToggleSection = ({iconIndexState}) => {
+export const IconToggleSection = ({iconIndexState, isEasterEggFound}) => {
     const rows = []
-    for (var i = 0; i * 10 < icons.length; ++i) {
+    const length = isEasterEggFound ? icons.length : icons.length - 1
+    for (var i = 0; i * 10 < length; ++i) {
         const values = []
-        for (var k = 0; k < 10; ++k) {
+        for (var k = 0; k < 10 && i * 10 + k < length; ++k) {
             values.push(i * 10 + k)
         }
         rows.push(

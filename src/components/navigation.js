@@ -16,6 +16,27 @@ import {Tutorial} from "./tutorial"
 
 export const Navigation = () => {
     const [currentPage, setCurrentPage] = useStorage("tab", 0)
+    const [isEasterEggFound, setIsEasterEggFound] = useStorage(":-)", false)
+
+    const logoGame = {
+        myTurn: true,
+        me: {
+            units: [[1, 1]],
+            walls: isEasterEggFound
+                ? [
+                      [1, 2],
+                      [2, 2],
+                  ]
+                : [[1, 2]],
+            reachable: isEasterEggFound ? [] : [[2, 2]],
+        },
+        opponent: {
+            units: isEasterEggFound ? [] : [[2, 2]],
+            walls: [[2, 1]],
+            reachable: [],
+        },
+        trenches: [],
+    }
 
     return (
         <>
@@ -35,6 +56,7 @@ export const Navigation = () => {
                             game={logoGame}
                             icons={logoIcons}
                             gamePreferences={{size: 2}}
+                            onTurnMade={() => setIsEasterEggFound(true)}
                         />
                     </Paper>
                     <Typography
@@ -62,25 +84,13 @@ export const Navigation = () => {
             </AppBar>
             <Stack gap={2} alignItems="center" px={2} py={2}>
                 {currentPage === 0 && <Tutorial />}
-                {currentPage === 1 && <GameLobby />}
+                {currentPage === 1 && (
+                    <GameLobby isEasterEggFound={isEasterEggFound} />
+                )}
                 <Footer />
             </Stack>
         </>
     )
-}
-
-const logoGame = {
-    me: {
-        units: [[1, 1]],
-        walls: [[1, 2]],
-        reachable: [[2, 2]],
-    },
-    opponent: {
-        units: [[2, 2]],
-        walls: [[2, 1]],
-        reachable: [],
-    },
-    trenches: [],
 }
 
 const logoIcons = {
