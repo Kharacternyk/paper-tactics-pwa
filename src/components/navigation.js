@@ -16,7 +16,11 @@ import {Tutorial} from "./tutorial"
 
 export const Navigation = () => {
     const [currentPage, setCurrentPage] = useStorage("tab", 0)
-    const [isEasterEggFound, setIsEasterEggFound] = useStorage(":-)", false)
+    const [isEasterEggFound, setIsEasterEggFound] = useStorage(
+        ":-)",
+        false,
+        sessionStorage
+    )
 
     const logoGame = {
         myTurn: true,
