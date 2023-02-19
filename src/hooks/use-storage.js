@@ -13,8 +13,8 @@ export const useStorage = (key, defaultValue, storage = localStorage) => {
     }
     const [value, setValue] = useState(getInitialValue)
     const setValuePersistently = newValue => {
-        setValue(newValue)
-        const serializedValue = JSON.stringify(newValue)
+        setValue(newValue ?? defaultValue)
+        const serializedValue = JSON.stringify(newValue ?? defaultValue)
         try {
             storage.setItem(key, serializedValue)
         } catch {}
