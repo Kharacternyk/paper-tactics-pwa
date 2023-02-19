@@ -1,3 +1,4 @@
+import NoInternetIcon from "@mui/icons-material/CloudOffOutlined"
 import PeopleIcon from "@mui/icons-material/ConnectWithoutContact"
 import RobotIcon from "@mui/icons-material/SmartToyOutlined"
 import Button from "@mui/material/Button"
@@ -32,7 +33,7 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
         }
     }, [game?.id])
 
-    const {sendJsonMessage, lastJsonMessage} = useWebSocket(apiUrl)
+    const {sendJsonMessage, lastJsonMessage, readyState} = useWebSocket(apiUrl)
 
     useEffect(
         () => setGame(camelcaseKeys(lastJsonMessage, {deep: true})),
@@ -49,58 +50,72 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
         })
     }, [])
 
-    const onTurnMade = (x, y) => {
-        sendJsonMessage({action: "make-turn", gameId: game.id, cell: [x, y]})
-    }
+    if (game) {
+        const onTurnMade = (x, y) => {
+            sendJsonMessage({
+                action: "make-turn",
+                gameId: game.id,
+                cell: [x, y],
+            })
+        }
 
-    const gameIcons = game && {
-        me: icons[iconIndex],
-        opponent: match({
-            opponentIndex: Number(game.opponent.viewData.iconIndex ?? 0),
-            iconIndex,
-        })(
-            ({opponentIndex = 0, iconIndex = 0}) => icons[1],
-            ({opponentIndex = iconIndex}) => icons[0],
-            ({opponentIndex}) => icons[opponentIndex]
-        ),
-    }
+        const gameIcons = {
+            me: icons[iconIndex],
+            opponent: match({
+                opponentIndex: Number(game.opponent.viewData.iconIndex ?? 0),
+                iconIndex,
+            })(
+                ({opponentIndex = 0, iconIndex = 0}) => icons[1],
+                ({opponentIndex = iconIndex}) => icons[0],
+                ({opponentIndex}) => icons[opponentIndex]
+            ),
+        }
 
-    return game ? (
-        <>
-            <GameHeader
-                game={game}
-                gamePreferences={gamePreferences}
-                onQuit={onQuit}
-                concede={concede}
-            />
-            <Section>
-                <GameMap
+        return (
+            <>
+                <GameHeader
                     game={game}
-                    onTurnMade={onTurnMade}
-                    icons={gameIcons}
                     gamePreferences={gamePreferences}
+                    onQuit={onQuit}
+                    concede={concede}
                 />
-            </Section>
-            <GameFooter game={game} gamePreferences={gamePreferences} />
-        </>
+                <Section>
+                    <GameMap
+                        game={game}
+                        onTurnMade={onTurnMade}
+                        icons={gameIcons}
+                        gamePreferences={gamePreferences}
+                    />
+                </Section>
+                <GameFooter game={game} gamePreferences={gamePreferences} />
+            </>
+        )
+    }
+
+    const isWebSocketDead = readyState === -1 || readyState === 3
+    const isAgainstBot = gamePreferences.is_against_bot
+    const color = isWebSocketDead ? "secondary" : "primary"
+    const progress = isWebSocketDead ? 100 : undefined
+    const icon = isWebSocketDead ? (
+        <NoInternetIcon color="secondary" />
+    ) : isAgainstBot ? (
+        <RobotIcon color="primary" />
     ) : (
+        <PeopleIcon color="primary" />
+    )
+    const message = isWebSocketDead
+        ? "Cannot connect to the server"
+        : isAgainstBot
+        ? "Powering up the bot…"
+        : "Waiting for someone else to connect…"
+
+    return (
         <>
             <Section>
                 <Button onClick={onQuit}>Cancel</Button>
             </Section>
-            <BadgeAlert
-                color="primary"
-                icon={
-                    gamePreferences.is_against_bot ? (
-                        <RobotIcon color="primary" />
-                    ) : (
-                        <PeopleIcon color="primary" />
-                    )
-                }
-            >
-                {gamePreferences.is_against_bot
-                    ? "Powering up the bot…"
-                    : "Waiting for someone else to connect…"}
+            <BadgeAlert color={color} icon={icon} progress={progress}>
+                {message}
             </BadgeAlert>
         </>
     )
