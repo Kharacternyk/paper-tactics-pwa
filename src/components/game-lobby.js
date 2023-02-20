@@ -77,6 +77,7 @@ export const GameLobby = ({isEasterEggFound}) => {
             <RatingSection
                 state={gameSize}
                 icon={<ArchitectureIcon />}
+                min={3}
                 max={12}
             />
             <IconToggleSection
