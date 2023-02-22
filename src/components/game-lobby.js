@@ -8,7 +8,7 @@ import TextField from "@mui/material/TextField"
 import {useState} from "react"
 import {useStorage} from "../hooks/use-storage"
 import {Game} from "./game"
-import {icons, IconToggleSection} from "./icon-toggle-section"
+import {IconToggleSection} from "./icon-toggle-section"
 import {RatingSection} from "./rating-section"
 import {Section} from "./section"
 import {ToggleSection} from "./toggle-section"
@@ -36,7 +36,6 @@ export const GameLobby = ({isEasterEggFound}) => {
                 is_double_base: isDoubleBase[0],
             }}
             iconIndex={iconIndex[0]}
-            icons={icons}
             onQuit={() => setAwaiting(false)}
         />
     ) : (

@@ -7,13 +7,14 @@ import Bowser from "bowser"
 import camelcaseKeys from "camelcase-keys"
 import {useEffect, useState} from "react"
 import useWebSocket from "react-use-websocket"
+import {icons} from "../icons"
 import {BadgeAlert} from "./badge-alert"
 import {GameFooter} from "./game-footer"
 import {GameHeader} from "./game-header"
 import {GameMap} from "./game-map"
 import {Section} from "./section"
 
-export const Game = ({apiUrl, gamePreferences, iconIndex, icons, onQuit}) => {
+export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
     const [game, setGame] = useState()
 
     const concede = () =>

@@ -1,0 +1,65 @@
+import Anchor from "@mui/icons-material/AnchorOutlined"
+import Stars from "@mui/icons-material/AutoAwesomeOutlined"
+import Bakery from "@mui/icons-material/BakeryDiningOutlined"
+import Balance from "@mui/icons-material/BalanceOutlined"
+import Beach from "@mui/icons-material/BeachAccessOutlined"
+import Blender from "@mui/icons-material/BlenderOutlined"
+import BubbleChart from "@mui/icons-material/BubbleChartOutlined"
+import Casino from "@mui/icons-material/CasinoOutlined"
+import Celebration from "@mui/icons-material/CelebrationOutlined"
+import Cross from "@mui/icons-material/Close"
+import Diamond from "@mui/icons-material/DiamondOutlined"
+import Cup from "@mui/icons-material/EmojiEventsOutlined"
+import Bulb from "@mui/icons-material/EmojiObjectsOutlined"
+import Heart from "@mui/icons-material/FavoriteBorderOutlined"
+import Circle from "@mui/icons-material/FiberManualRecordOutlined"
+import Flag from "@mui/icons-material/FlagOutlined"
+import Star from "@mui/icons-material/GradeOutlined"
+import HealthAndSafety from "@mui/icons-material/HealthAndSafetyOutlined"
+import Hive from "@mui/icons-material/HiveOutlined"
+import Cart from "@mui/icons-material/LocalGroceryStoreOutlined"
+import LunchDining from "@mui/icons-material/LunchDiningOutlined"
+import Music from "@mui/icons-material/MusicNoteOutlined"
+import Moon from "@mui/icons-material/NightsStayOutlined"
+import Bell from "@mui/icons-material/NotificationsNoneOutlined"
+import Rocket from "@mui/icons-material/RocketLaunchOutlined"
+import Science from "@mui/icons-material/ScienceOutlined"
+import Beer from "@mui/icons-material/SportsBarOutlined"
+import Football from "@mui/icons-material/SportsFootballOutlined"
+import Hash from "@mui/icons-material/TagOutlined"
+import Token from "@mui/icons-material/TokenOutlined"
+import Traffic from "@mui/icons-material/TrafficOutlined"
+
+export const icons = [
+    <Cross />,
+    <Circle />,
+    <Hash />,
+    <Flag />,
+    <Stars />,
+    <Rocket />,
+    <Beer />,
+    <Music />,
+    <Bakery />,
+    <Bulb />,
+    <Heart />,
+    <Star />,
+    <Hive />,
+    <Cart />,
+    <Moon />,
+    <Football />,
+    <Anchor />,
+    <Celebration />,
+    <Bell />,
+    <Beach />,
+    <Diamond />,
+    <Token />,
+    <BubbleChart />,
+    <Blender />,
+    <Casino />,
+    <Science />,
+    <LunchDining />,
+    <HealthAndSafety />,
+    <Traffic />,
+    <Balance />,
+    <Cup />,
+]
