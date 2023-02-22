@@ -4,7 +4,7 @@ import {ToggleSection} from "./toggle-section"
 
 export const IconToggleSection = ({iconIndexState, isEasterEggFound}) => {
     const rows = []
-    const length = isEasterEggFound ? icons.length : icons.length - 1
+    const length = isEasterEggFound ? icons.length : icons.length - 10
     for (var i = 0; i * 10 < length; ++i) {
         const values = []
         for (var k = 0; k < 10 && i * 10 + k < length; ++k) {
