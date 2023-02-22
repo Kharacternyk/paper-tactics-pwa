@@ -107,7 +107,7 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
     const message = isWebSocketDead
         ? "Cannot connect to the server"
         : isAgainstBot
-        ? "Powering up the bot…"
+        ? "Powering on the bot…"
         : "Waiting for someone else to connect…"
 
     return (
