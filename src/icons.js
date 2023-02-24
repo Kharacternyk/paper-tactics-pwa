@@ -34,10 +34,10 @@ import Science from "@mui/icons-material/ScienceOutlined"
 import Soup from "@mui/icons-material/SoupKitchenOutlined"
 import Beer from "@mui/icons-material/SportsBarOutlined"
 import Football from "@mui/icons-material/SportsFootballOutlined"
-import Storm from "@mui/icons-material/StormOutlined"
 import Hash from "@mui/icons-material/TagOutlined"
 import Token from "@mui/icons-material/TokenOutlined"
 import Traffic from "@mui/icons-material/TrafficOutlined"
+import Check from "@mui/icons-material/VerifiedOutlined"
 
 export const icons = [
     <Cross />,
@@ -72,7 +72,7 @@ export const icons = [
     <Balance />,
     <Cup />,
     <Bolt />,
-    <Storm />,
+    <Check />,
     <Book />,
     <Breakfast />,
     <ColorLens />,
