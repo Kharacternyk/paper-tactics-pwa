@@ -1,17 +1,15 @@
-import MyIcon from "@mui/icons-material/Close"
-import OpponentIcon from "@mui/icons-material/FiberManualRecordOutlined"
 import LearnIcon from "@mui/icons-material/School"
 import PlayIcon from "@mui/icons-material/SportsEsports"
 import AppBar from "@mui/material/AppBar"
-import Paper from "@mui/material/Paper"
 import Stack from "@mui/material/Stack"
+import SvgIcon from "@mui/material/SvgIcon"
 import Tab from "@mui/material/Tab"
 import Tabs from "@mui/material/Tabs"
 import Typography from "@mui/material/Typography"
 import {useStorage} from "../hooks/use-storage"
+import Logo from "../logo.svg"
 import {Footer} from "./footer"
 import {GameLobby} from "./game-lobby"
-import {GameMap} from "./game-map"
 import {Tutorial} from "./tutorial"
 
 export const Navigation = () => {
@@ -22,26 +20,6 @@ export const Navigation = () => {
         sessionStorage
     )
 
-    const logoGame = {
-        myTurn: true,
-        me: {
-            units: [[1, 1]],
-            walls: isEasterEggFound
-                ? [
-                      [1, 2],
-                      [2, 2],
-                  ]
-                : [[1, 2]],
-            reachable: isEasterEggFound ? [] : [[2, 2]],
-        },
-        opponent: {
-            units: isEasterEggFound ? [] : [[2, 2]],
-            walls: [[2, 1]],
-            reachable: [],
-        },
-        trenches: [],
-    }
-
     return (
         <>
             <AppBar position="sticky" color="inherit" sx={sx}>
@@ -51,18 +29,11 @@ export const Navigation = () => {
                     width="100%"
                     alignItems="center"
                 >
-                    <Paper
-                        elevation={2}
-                        square
-                        sx={{width: "2.5rem", flex: "initial"}}
-                    >
-                        <GameMap
-                            game={logoGame}
-                            icons={logoIcons}
-                            gamePreferences={{size: 2}}
-                            onTurnMade={() => setIsEasterEggFound(true)}
-                        />
-                    </Paper>
+                    <SvgIcon
+                        component={Logo}
+                        inheritViewBox
+                        sx={{height: "3rem", width: "3rem"}}
+                    />
                     <Typography
                         component="h1"
                         fontFamily="IBM Plex Mono"
@@ -87,7 +58,12 @@ export const Navigation = () => {
                 </Stack>
             </AppBar>
             <Stack gap={2} alignItems="center" px={2} py={2}>
-                {currentPage === 0 && <Tutorial />}
+                {currentPage === 0 && (
+                    <Tutorial
+                        findEasterEgg={() => setIsEasterEggFound(true)}
+                        isEasterEggFound={isEasterEggFound}
+                    />
+                )}
                 {currentPage === 1 && (
                     <GameLobby isEasterEggFound={isEasterEggFound} />
                 )}
@@ -95,11 +71,6 @@ export const Navigation = () => {
             </Stack>
         </>
     )
-}
-
-const logoIcons = {
-    me: <MyIcon />,
-    opponent: <OpponentIcon />,
 }
 
 const sx = {

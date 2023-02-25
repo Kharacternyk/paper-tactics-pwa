@@ -5,7 +5,51 @@ import Typography from "@mui/material/Typography"
 import {GameMap} from "./game-map"
 import {Section} from "./section"
 
-export const Tutorial = () => {
+export const Tutorial = ({findEasterEgg, isEasterEggFound}) => {
+    const exampleGame = {
+        myTurn: true,
+        me: {
+            units: [
+                [2, 1],
+                [4, 1],
+                [1, 1],
+            ],
+            walls: [
+                [1, 2],
+                [1, 3],
+            ].concat(isEasterEggFound ? [[2, 4]] : []),
+            reachable: [
+                [2, 2],
+                [1, 3],
+                [2, 3],
+                [1, 4],
+                [1, 1],
+                [3, 1],
+                [3, 2],
+                [4, 2],
+            ].concat(
+                isEasterEggFound
+                    ? [
+                          [3, 3],
+                          [3, 4],
+                      ]
+                    : [[2, 4]]
+            ),
+        },
+        opponent: {
+            units: [
+                [3, 4],
+                [4, 4],
+            ].concat(isEasterEggFound ? [] : [[2, 4]]),
+            walls: [
+                [3, 2],
+                [4, 3],
+            ],
+            reachable: [],
+        },
+        trenches: [],
+    }
+
     return (
         <>
             <Paragraph>
@@ -57,6 +101,11 @@ export const Tutorial = () => {
                     game={exampleGame}
                     icons={gameIcons}
                     gamePreferences={{size: 4}}
+                    onTurnMade={(x, y) => {
+                        if (x == 2 && y == 4) {
+                            findEasterEgg()
+                        }
+                    }}
                 />
             </Section>
             <Paragraph>
@@ -108,42 +157,4 @@ const Paragraph = ({children}) => (
 const gameIcons = {
     me: <MyIcon />,
     opponent: <OpponentIcon />,
-}
-
-const exampleGame = {
-    me: {
-        units: [
-            [2, 1],
-            [4, 1],
-            [1, 1],
-        ],
-        walls: [
-            [1, 2],
-            [1, 3],
-        ],
-        reachable: [
-            [2, 2],
-            [1, 3],
-            [2, 3],
-            [1, 4],
-            [2, 4],
-            [1, 1],
-            [3, 1],
-            [3, 2],
-            [4, 2],
-        ],
-    },
-    opponent: {
-        units: [
-            [2, 4],
-            [3, 4],
-            [4, 4],
-        ],
-        walls: [
-            [3, 2],
-            [4, 3],
-        ],
-        reachable: [],
-    },
-    trenches: [],
 }
