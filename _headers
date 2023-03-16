@@ -1,3 +1,8 @@
-/*
-    x-header-test: Working
-    Cache-Control: max-age=100
+/*.js
+    cache-control: max-age=604800, immutable
+
+/*.css
+    cache-control: max-age=604800, immutable
+
+/*.woff2
+    cache-control: max-age=604800, immutable
