@@ -1,3 +1,4 @@
 build:
 	yarn run parcel build src/index.html
-	cp _headers dist/
+	cp src/headers.txt dist/_headers
+	cp src/robots.txt dist/
