@@ -1,4 +1,7 @@
-build:
+.PHONY: dist
+
+dist: dist/robots.txt dist/_headers
 	yarn run parcel build src/index.html
-	cp src/headers.txt dist/_headers
-	cp src/robots.txt dist/
+
+dist/%: src/%
+	install -DT $< $@
