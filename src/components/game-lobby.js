@@ -13,7 +13,7 @@ import {RatingSection} from "./rating-section"
 import {Section} from "./section"
 import {ToggleSection} from "./toggle-section"
 
-export const GameLobby = ({isEasterEggFound}) => {
+export default ({isEasterEggFound}) => {
     const [awaiting, setAwaiting] = useState(false)
     const [apiUrl, setApiUrl] = useState(servers[0].url)
     const iconIndex = useStorage("icon", 0)

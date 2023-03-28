@@ -5,7 +5,7 @@ import Typography from "@mui/material/Typography"
 import {GameMap} from "./game-map"
 import {Section} from "./section"
 
-export const Tutorial = ({findEasterEgg, isEasterEggFound}) => {
+export default ({findEasterEgg, isEasterEggFound}) => {
     const exampleGame = {
         myTurn: true,
         me: {
