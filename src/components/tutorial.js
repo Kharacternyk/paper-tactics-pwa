@@ -54,29 +54,25 @@ export default ({findEasterEgg, isEasterEggFound}) => {
         <>
             <Paragraph>
                 <strong>Paper Tactics</strong> is a turn-based pen-and-paper
-                game played on a square grid. The goal of the game is to outlive
-                your opponent—a player that cannot make a turn is defeated. A
-                turn consists of moves. On your move, you must place either a
-                unit or a wall. Units are placed only on empty cells, while
-                walls are placed only on opponent's units. You cannot place
-                anything on walls or your own units.
+                game played on a grid. The goal of the game is to outlive the
+                opponent—a player that cannot make a turn is defeated. A turn
+                consists of moves. Each move, either a unit is placed on an
+                empty cell or a wall is placed on an opponent's unit. Players
+                begin with a single unit in a corner of the grid.
             </Paragraph>
             <Paragraph>
                 Units and walls can only be placed on cells that are reachable.
-                A cell is reachable by a certain player either if there is a
-                player's unit that is adjacent to the cell or if there is a
-                continuous chain of adjacent player's walls that connects the
-                cell and a player's unit. Two cells are adjacent if they share a
-                side or a corner. Each player has a starting unit at the
-                beginning of the game. Starting units are located in the top
-                left and bottom right cells.
+                A cell is reachable for a player if there is a player's unit
+                that is adjacent to the cell or if there is a continuous chain
+                of player's adjacent walls that connects the cell and a player's
+                unit. Cells are adjacent if they share a side or a corner.
             </Paragraph>
             <Paragraph>
-                The sample below showcases how a game looks like.
+                A sample game is depicted below.
                 <MyIcon sx={{verticalAlign: "bottom"}} />
                 and
                 <OpponentIcon sx={{verticalAlign: "bottom"}} />
-                are your and opponent's units, respectively.{" "}
+                are your and your opponent's units, respectively.{" "}
                 <MyIcon
                     sx={{
                         verticalAlign: "bottom",
@@ -92,9 +88,8 @@ export default ({findEasterEgg, isEasterEggFound}) => {
                         color: "white",
                     }}
                 />{" "}
-                are opponent's and your walls, respectively. Cells with a white
-                background are reachable for you, while the ones with a grey
-                background are not.
+                are your opponent's and your walls, respectively. White cells
+                are reachable for you. Gray cells are not reachable.
             </Paragraph>
             <Section>
                 <GameMap
@@ -109,27 +104,26 @@ export default ({findEasterEgg, isEasterEggFound}) => {
                 />
             </Section>
             <Paragraph>
-                In the <strong>«Play»</strong> tab, you can choose a game mode,
-                the count of moves per turn, the size of the grid, and an icon
-                for your units. The usual setup is a 10×10 grid with 3 moves per
-                turn. You will then be connected with another player to play,
-                but remember that the more unusual your preferences (except for
-                the icon) are, the more unlikely it is that an opponent with the
-                same preferences will be found. If there are no other players to
-                play with, you can play against a bot.
+                In the <strong>«Play»</strong> tab at the top of this page, you
+                can choose a game mode, a number of moves per turn, a size of
+                the grid, and an icon for your units. The usual setup is a 10×10
+                grid with 3 moves per turn. You will then be connected with
+                another player. You cannot be connected with a player that has
+                different preferences (except for the icon). If there are no
+                other players to play with, you can play against a bot.
             </Paragraph>
             <Paragraph>
                 The <strong>«With visibility rules»</strong> game mode is a
-                modification where players cannot see trenches and each other's
-                units until they are reachable. <strong>«Trenches»</strong> are
-                neutral units. Anybody can place walls on these units as if they
-                were opponent's units. Trenches are always placed symmetrically.
-                Please note that the trench percentage defines the chance a
-                trench will spawn in a particular cell, not the overall amount
-                of trenches.
+                modification where players cannot see units until they are
+                reachable. Neutral units can be added to the grid if you choose
+                so. Anybody can place walls on neutral units as if they were
+                opponent's units. Neutral units are always placed symmetrically.
+                Please note that the neutral unit percentage defines the
+                probability of a neutral unit to appear in a cell, not the
+                overall amount of neutral units.
             </Paragraph>
             <Paragraph>
-                This concludes the rules of the game. The source code of{" "}
+                The source code of{" "}
                 <Link href="https://github.com/Kharacternyk/paper-tactics-pwa">
                     this website
                 </Link>{" "}

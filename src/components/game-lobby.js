@@ -64,8 +64,8 @@ export default ({isEasterEggFound}) => {
             />
             <ToggleSection
                 state={trenchDensityPercent}
-                values={[0, 15, 25, 35, 50, 75]}
-                labeler={value => (value ? `${value}%` : "No trenches")}
+                values={[0, 15, 25, 35]}
+                labeler={value => (value ? `${value}%` : "No neutral units")}
             />
             <ToggleSection
                 state={isDoubleBase}
