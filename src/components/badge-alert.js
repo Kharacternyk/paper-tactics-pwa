@@ -1,8 +1,8 @@
-import {Section} from "./section"
-import Box from "@mui/material/Box"
-import CircularProgress from "@mui/material/CircularProgress"
 import Alert from "@mui/material/Alert"
 import AlertTitle from "@mui/material/AlertTitle"
+import Box from "@mui/material/Box"
+import CircularProgress from "@mui/material/CircularProgress"
+import {Section} from "./section"
 
 export const BadgeAlert = ({children, subtitle, icon, color, progress}) => {
     const badge = (
