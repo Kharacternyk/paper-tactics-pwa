@@ -9,6 +9,10 @@ export const Footer = () => {
 
     return (
         <>
+            <BadgeAlert color="primary" progress={100} icon={sponsorLogo}>
+                Paper Tactics is sponsored by{" "}
+                <Link href="https://depauth.com">DepAuth</Link>
+            </BadgeAlert>
             <BadgeAlert
                 subtitle="Bug reports, feature requests, or just thanks"
                 color="primary"
@@ -17,18 +21,6 @@ export const Footer = () => {
             >
                 You can{" "}
                 <Link href="https://vinnich.uk">contact the developer</Link>
-            </BadgeAlert>
-            <BadgeAlert
-                subtitle={
-                    "Keep track of your digital life by visualizing " +
-                    "connections between your online accounts, devices and other assets"
-                }
-                color="primary"
-                progress={100}
-                icon={sponsorLogo}
-            >
-                Paper Tactics is sponsored by{" "}
-                <Link href="https://depauth.com">DepAuth</Link>
             </BadgeAlert>
         </>
     )
