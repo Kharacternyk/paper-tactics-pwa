@@ -10,7 +10,7 @@ export const Footer = () => {
     return (
         <>
             <BadgeAlert color="primary" progress={100} icon={sponsorLogo}>
-                Paper Tactics is sponsored by{" "}
+                Paper Tactics is sponsored by&nbsp;
                 <Link href="https://depauth.com">DepAuth</Link>
             </BadgeAlert>
             <BadgeAlert
