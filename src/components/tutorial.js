@@ -123,6 +123,10 @@ export default ({findEasterEgg, isEasterEggFound}) => {
                 overall amount of neutral units.
             </Paragraph>
             <Paragraph>
+                If you specify a <strong>«Game code»</strong>, you can only be
+                connected with someone who has entered the same game code.
+            </Paragraph>
+            <Paragraph>
                 The source code of{" "}
                 <Link href="https://github.com/Kharacternyk/paper-tactics-pwa">
                     this website

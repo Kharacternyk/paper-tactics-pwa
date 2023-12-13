@@ -16,8 +16,12 @@ const GameLobby = lazy(() => import("./game-lobby"))
 const Tutorial = lazy(() => import("./tutorial"))
 
 export const Navigation = () => {
-    const [currentPage, setCurrentPage] = useStorage("tab", 0)
-    const [isEasterEggFound, setIsEasterEggFound] = useStorage(":-)", false)
+    const [currentPage, setCurrentPage] = useStorage("tab", 0, localStorage)
+    const [isEasterEggFound, setIsEasterEggFound] = useStorage(
+        ":-)",
+        false,
+        localStorage
+    )
 
     return (
         <>

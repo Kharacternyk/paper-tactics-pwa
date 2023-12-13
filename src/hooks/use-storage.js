@@ -1,6 +1,6 @@
 import {useState} from "react"
 
-export const useStorage = (key, defaultValue, storage = localStorage) => {
+export const useStorage = (key, defaultValue, storage = sessionStorage) => {
     const getInitialValue = () => {
         let storedString = null
         try {

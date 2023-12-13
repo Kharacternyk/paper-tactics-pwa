@@ -15,8 +15,9 @@ import {ToggleSection} from "./toggle-section"
 
 export default ({isEasterEggFound}) => {
     const [awaiting, setAwaiting] = useState(false)
-    const [apiUrl, setApiUrl] = useState(servers[0].url)
-    const iconIndex = useStorage("icon", 0)
+    const [apiUrl, setApiUrl] = useStorage("url", servers[0].url)
+    const [gameCode, setGameCode] = useStorage("game-code", "")
+    const iconIndex = useStorage("icon", 0, localStorage)
     const gameSize = useStorage("game-size", 10)
     const turnCount = useStorage("turn-count", 3)
     const isVisibilityApplied = useStorage("visibility", false)
@@ -34,6 +35,7 @@ export default ({isEasterEggFound}) => {
                 is_against_bot: isAgainstBot[0],
                 trench_density_percent: trenchDensityPercent[0],
                 is_double_base: isDoubleBase[0],
+                code: gameCode,
             }}
             iconIndex={iconIndex[0]}
             onQuit={() => setAwaiting(false)}
@@ -84,10 +86,21 @@ export default ({isEasterEggFound}) => {
                 isEasterEggFound={isEasterEggFound}
             />
             <Section>
+                <TextField
+                    label="Game code"
+                    variant="filled"
+                    value={gameCode}
+                    onChange={event => setGameCode(event.target.value)}
+                />
+            </Section>
+            <Section>
                 <Autocomplete
                     freeSolo
                     options={servers}
-                    defaultValue={servers[0]}
+                    defaultValue={
+                        servers.find(server => server.url == apiUrl)?.label ??
+                        servers[0].label
+                    }
                     onInputChange={(_, value) => {
                         const server = servers.find(
                             server => server.label == value
