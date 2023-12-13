@@ -17,11 +17,7 @@ const Tutorial = lazy(() => import("./tutorial"))
 
 export const Navigation = () => {
     const [currentPage, setCurrentPage] = useStorage("tab", 0)
-    const [isEasterEggFound, setIsEasterEggFound] = useStorage(
-        ":-)",
-        false,
-        sessionStorage
-    )
+    const [isEasterEggFound, setIsEasterEggFound] = useStorage(":-)", false)
 
     return (
         <>
