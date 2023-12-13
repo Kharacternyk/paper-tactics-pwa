@@ -1,6 +1,6 @@
 import "@fontsource/ibm-plex-mono/latin-500-italic.css"
 import "@fontsource/roboto/latin.css"
-import ReactDOM from "react-dom"
+import {createRoot} from "react-dom/client"
 import {App} from "./components/app"
 
 if (navigator.serviceWorker) {
@@ -9,6 +9,6 @@ if (navigator.serviceWorker) {
     })
 }
 
-const root = document.getElementById("root")
+const root = createRoot(document.getElementById("root"))
 
-ReactDOM.render(<App />, root)
+root.render(<App />)
