@@ -24,8 +24,8 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
     )
     const notificationsSupported = agent.getPlatformType(true) == "desktop"
     const notificationsEnabled = notificationsSupported
-        ? [false, null]
-        : useStorage("notifications-enabled", false)
+        ? useStorage("notifications-enabled", false)
+        : [false, null]
 
     const concede = () =>
         sendJsonMessage({
