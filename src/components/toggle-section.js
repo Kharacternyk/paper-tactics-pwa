@@ -2,7 +2,7 @@ import ToggleButton from "@mui/material/ToggleButton"
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
 import {Section} from "./section"
 
-export const ToggleSection = ({state, values, labeler}) => {
+export const ToggleSection = ({state, values, labeler, callback}) => {
     const [value, setValue] = state
 
     const toggleButtons = values.map(value => (
@@ -17,7 +17,11 @@ export const ToggleSection = ({state, values, labeler}) => {
                 color="primary"
                 exclusive
                 value={value}
-                onChange={(_, value) => setValue(value)}
+                onChange={async (_, value) => {
+                    if (!callback || (await callback(value))) {
+                        setValue(value)
+                    }
+                }}
                 sx={{display: "flex"}}
             >
                 {toggleButtons}

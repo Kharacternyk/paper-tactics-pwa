@@ -7,15 +7,18 @@ import Bowser from "bowser"
 import camelcaseKeys from "camelcase-keys"
 import {useEffect, useState} from "react"
 import useWebSocket from "react-use-websocket"
+import {useStorage} from "../hooks/use-storage"
 import {icons} from "../icons"
 import {BadgeAlert} from "./badge-alert"
 import {GameFooter} from "./game-footer"
 import {GameHeader} from "./game-header"
 import {GameMap} from "./game-map"
 import {Section} from "./section"
+import {ToggleSection} from "./toggle-section"
 
 export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
     const [game, setGame] = useState()
+    const notificationsEnabled = useStorage("notifications-enabled", false)
 
     const concede = () =>
         sendJsonMessage({
@@ -50,6 +53,17 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
             preferences: gamePreferences,
         })
     }, [])
+    useEffect(() => {
+        if (
+            game &&
+            !gamePreferences.is_against_bot &&
+            notificationsEnabled[0]
+        ) {
+            new Notification("An opponent has been found!", {
+                icon: new URL("../logo-192.png", import.meta.url),
+            })
+        }
+    }, [!!game])
 
     if (game) {
         const onTurnMade = (x, y) => {
@@ -109,6 +123,18 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
         : isAgainstBot
         ? "Powering on the bot…"
         : "Waiting for someone else to connect…"
+    const notificationSection = (
+        <ToggleSection
+            state={notificationsEnabled}
+            values={[false, true]}
+            labeler={value => (value ? "Notify me" : "No notifications")}
+            callback={async value =>
+                !value ||
+                Notification.permission == "granted" ||
+                (await Notification.requestPermission()) == "granted"
+            }
+        />
+    )
 
     return (
         <>
@@ -118,6 +144,7 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
             <BadgeAlert color={color} icon={icon} progress={progress}>
                 {message}
             </BadgeAlert>
+            {notificationSection}
         </>
     )
 }
