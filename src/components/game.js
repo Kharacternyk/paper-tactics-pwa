@@ -5,7 +5,7 @@ import Button from "@mui/material/Button"
 import match from "babel-plugin-proposal-pattern-matching/match"
 import Bowser from "bowser"
 import camelcaseKeys from "camelcase-keys"
-import {useEffect, useState} from "react"
+import {useEffect, useMemo, useState} from "react"
 import useWebSocket from "react-use-websocket"
 import {useStorage} from "../hooks/use-storage"
 import {icons} from "../icons"
@@ -18,7 +18,14 @@ import {ToggleSection} from "./toggle-section"
 
 export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
     const [game, setGame] = useState()
-    const notificationsEnabled = useStorage("notifications-enabled", false)
+    const agent = useMemo(
+        () => Bowser.getParser(window.navigator.userAgent),
+        []
+    )
+    const notificationsSupported = agent.getPlatformType(true) == "desktop"
+    const notificationsEnabled = notificationsSupported
+        ? [false, null]
+        : useStorage("notifications-enabled", false)
 
     const concede = () =>
         sendJsonMessage({
@@ -45,7 +52,7 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
     )
     useEffect(() => {
         const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
-        const os = Bowser.getParser(window.navigator.userAgent).getOSName()
+        const os = agent.getOSName()
 
         sendJsonMessage({
             action: "create-game",
@@ -123,18 +130,6 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
         : isAgainstBot
         ? "Powering on the bot…"
         : "Waiting for someone else to connect…"
-    const notificationSection = (
-        <ToggleSection
-            state={notificationsEnabled}
-            values={[false, true]}
-            labeler={value => (value ? "Notify me" : "No notifications")}
-            callback={async value =>
-                !value ||
-                Notification.permission == "granted" ||
-                (await Notification.requestPermission()) == "granted"
-            }
-        />
-    )
 
     return (
         <>
@@ -144,7 +139,20 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
             <BadgeAlert color={color} icon={icon} progress={progress}>
                 {message}
             </BadgeAlert>
-            {notificationSection}
+            {notificationsSupported ? (
+                <ToggleSection
+                    state={notificationsEnabled}
+                    values={[false, true]}
+                    labeler={value =>
+                        value ? "Notify me" : "No notifications"
+                    }
+                    callback={async value =>
+                        !value ||
+                        Notification.permission == "granted" ||
+                        (await Notification.requestPermission()) == "granted"
+                    }
+                />
+            ) : null}
         </>
     )
 }
