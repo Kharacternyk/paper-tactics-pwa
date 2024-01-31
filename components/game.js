@@ -67,7 +67,7 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
             notificationsEnabled[0]
         ) {
             new Notification("An opponent has been found!", {
-                icon: new URL("../logo-192.png", import.meta.url),
+                icon: new URL("../images/logo-192.png", import.meta.url),
             })
         }
     }, [!!game])

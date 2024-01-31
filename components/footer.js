@@ -1,8 +1,8 @@
 import ContactIcon from "@mui/icons-material/Mail"
 import Link from "@mui/material/Link"
 import SvgIcon from "@mui/material/SvgIcon"
-import DiscordLogo from "../logo-discord.svg"
-import SponsorLogo from "../logo-sponsor.svg"
+import DiscordLogo from "../images/logo-discord.svg"
+import SponsorLogo from "../images/logo-sponsor.svg"
 import {BadgeAlert} from "./badge-alert"
 
 export const Footer = () => {

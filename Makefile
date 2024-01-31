@@ -1,7 +1,7 @@
 .PHONY: dist
 
 dist: dist/robots.txt dist/_headers
-	yarn run parcel build src/index.html
+	yarn run parcel build index.html
 
-dist/%: src/%
+dist/%: %
 	install -DTm0644 $< $@

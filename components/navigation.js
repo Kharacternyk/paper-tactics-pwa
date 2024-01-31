@@ -9,7 +9,7 @@ import Tabs from "@mui/material/Tabs"
 import Typography from "@mui/material/Typography"
 import {lazy, Suspense} from "react"
 import {useStorage} from "../hooks/use-storage"
-import Logo from "../logo.svg"
+import Logo from "../images/logo.svg"
 import {Footer} from "./footer"
 
 const GameLobby = lazy(() => import("./game-lobby"))
