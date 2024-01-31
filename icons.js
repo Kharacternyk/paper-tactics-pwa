@@ -22,7 +22,6 @@ import Flag from "@mui/icons-material/FlagOutlined"
 import Star from "@mui/icons-material/GradeOutlined"
 import HealthAndSafety from "@mui/icons-material/HealthAndSafetyOutlined"
 import Hive from "@mui/icons-material/HiveOutlined"
-import Hourglass from "@mui/icons-material/HourglassEmptyOutlined"
 import Cart from "@mui/icons-material/LocalGroceryStoreOutlined"
 import LunchDining from "@mui/icons-material/LunchDiningOutlined"
 import Movie from "@mui/icons-material/MovieOutlined"
@@ -38,6 +37,8 @@ import Hash from "@mui/icons-material/TagOutlined"
 import Token from "@mui/icons-material/TokenOutlined"
 import Traffic from "@mui/icons-material/TrafficOutlined"
 import Check from "@mui/icons-material/VerifiedOutlined"
+import SvgIcon from "@mui/material/SvgIcon"
+import Pawn from "./images/pawn.svg"
 
 export const icons = [
     <Cross />,
@@ -76,7 +77,7 @@ export const icons = [
     <Book />,
     <Breakfast />,
     <ColorLens />,
-    <Hourglass />,
+    <SvgIcon inheritViewBox component={Pawn} />,
     <Movie />,
     <Chair />,
     <Soup />,
