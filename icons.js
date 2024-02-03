@@ -5,7 +5,6 @@ import Balance from "@mui/icons-material/BalanceOutlined"
 import Beach from "@mui/icons-material/BeachAccessOutlined"
 import Blender from "@mui/icons-material/BlenderOutlined"
 import Bolt from "@mui/icons-material/BoltOutlined"
-import Book from "@mui/icons-material/BookOutlined"
 import Breakfast from "@mui/icons-material/BreakfastDiningOutlined"
 import BubbleChart from "@mui/icons-material/BubbleChartOutlined"
 import Casino from "@mui/icons-material/CasinoOutlined"
@@ -39,6 +38,7 @@ import Traffic from "@mui/icons-material/TrafficOutlined"
 import Check from "@mui/icons-material/VerifiedOutlined"
 import SvgIcon from "@mui/material/SvgIcon"
 import Pawn from "./images/pawn.svg"
+import Xmas from "./images/xmas.svg"
 
 export const icons = [
     <Cross />,
@@ -74,7 +74,7 @@ export const icons = [
     <Cup />,
     <Bolt />,
     <Check />,
-    <Book />,
+    <SvgIcon inheritViewBox component={Xmas} />,
     <Breakfast />,
     <ColorLens />,
     <SvgIcon inheritViewBox component={Pawn} />,
