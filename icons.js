@@ -37,8 +37,8 @@ import Token from "@mui/icons-material/TokenOutlined"
 import Traffic from "@mui/icons-material/TrafficOutlined"
 import Check from "@mui/icons-material/VerifiedOutlined"
 import SvgIcon from "@mui/material/SvgIcon"
+import Hat from "./images/hat.svg"
 import Pawn from "./images/pawn.svg"
-import Xmas from "./images/xmas.svg"
 
 export const icons = [
     <Cross />,
@@ -74,7 +74,7 @@ export const icons = [
     <Cup />,
     <Bolt />,
     <Check />,
-    <SvgIcon inheritViewBox component={Xmas} />,
+    <SvgIcon inheritViewBox component={Hat} />,
     <Breakfast />,
     <ColorLens />,
     <SvgIcon inheritViewBox component={Pawn} />,
