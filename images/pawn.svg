@@ -37,9 +37,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="33.623087"
-     inkscape:cx="18.69379"
-     inkscape:cy="11.869841"
+     inkscape:zoom="25.234642"
+     inkscape:cx="17.008659"
+     inkscape:cy="8.6995959"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -48,9 +48,9 @@
      width="24mm"
      showguides="false"
      inkscape:snap-page="true"
-     inkscape:snap-object-midpoints="false"
+     inkscape:snap-object-midpoints="true"
      inkscape:snap-center="false"
-     inkscape:snap-midpoints="false"
+     inkscape:snap-midpoints="true"
      inkscape:snap-smooth-nodes="true"
      inkscape:snap-intersection-paths="true"
      inkscape:object-paths="true"
@@ -60,12 +60,14 @@
      inkscape:window-height="1137"
      inkscape:window-x="-8"
      inkscape:window-y="-8"
-     inkscape:window-maximized="1">
+     inkscape:window-maximized="1"
+     inkscape:snap-others="true">
     <inkscape:grid
        type="xygrid"
        id="grid835"
        visible="true"
-       enabled="false" />
+       enabled="false"
+       dotted="false" />
   </sodipodi:namedview>
   <metadata
      id="metadata5">
@@ -84,19 +86,19 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       id="path857"
-       style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:inherit;fill-opacity:1;fill-rule:evenodd;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:inherit;stop-opacity:1"
-       d="M 9 9 L 9 11 L 10 11 L 10 14 A 0.99999995 0.99999995 0 0 1 9 15 A 3 3 0 0 0 8.9492188 15 A 3 3 0 0 0 6 18 L 6 20 L 6 22 L 18 22 L 18 20 L 18 18 A 3 3 0 0 0 15.050781 15 A 3 3 0 0 0 15 15 A 0.99999995 0.99999995 0 0 1 14 14 L 14 11 L 15 11 L 15 9 L 9 9 z M 12 14.037109 A 3 3 0 0 0 14.949219 17 A 3 3 0 0 0 15 17 A 0.99999995 0.99999995 0 0 1 16 18 L 16 20 L 8 20 L 8 18 A 0.99999995 0.99999995 0 0 1 9 17 A 3 3 0 0 0 9.0507812 17 A 3 3 0 0 0 12 14.037109 z "
-       transform="scale(0.26458333)" />
-    <path
        style="fill:inherit;fill-rule:evenodd;stroke:inherit;stroke-width:0.529167;stroke-linecap:square;stroke-miterlimit:4;stroke-dasharray:none;stop-color:inherit"
        d="M 1.8520833,5.5562499 Z"
        id="path841"
        inkscape:path-effect="#path-effect843"
        inkscape:original-d="m 1.8520833,5.5562499 c 0,0 0,0 0,0 z" />
+    <path
+       id="rect14"
+       style="fill:inherit;fill-opacity:1;fill-rule:evenodd;stroke-width:0.188976;stop-color:inherit"
+       d="M 8.5 9 L 8.5 11 L 9.5 11 L 9.5 15 A 0.50000013 0.50000013 0 0 1 9 15.5 A 2.4999999 2.4999999 0 0 0 6.5 18 L 6.5 20 L 6.5 22 L 17.5 22 L 17.5 20 L 17.5 18 A 2.4999999 2.4999999 0 0 0 15 15.5 A 0.50000013 0.50000013 0 0 1 14.5 15 L 14.5 11 L 15.5 11 L 15.5 9 L 8.5 9 z M 11.5 11 L 12.5 11 L 12.5 15 A 2.4999999 2.4999999 0 0 0 15 17.5 A 0.50000013 0.50000013 0 0 1 15.5 18 L 15.5 20 L 8.5 20 L 8.5 18 A 0.50000013 0.50000013 0 0 1 9 17.5 A 2.4999999 2.4999999 0 0 0 11.5 15 L 11.5 11 z "
+       transform="scale(0.26458333)" />
     <circle
        style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:inherit;fill-opacity:1;fill-rule:evenodd;stroke-width:0.330729;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:inherit;stop-opacity:1"
-       id="path897"
+       id="path41"
        cx="3.175"
        cy="1.3229166"
        r="0.79374999" />
