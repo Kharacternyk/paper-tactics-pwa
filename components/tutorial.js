@@ -1,6 +1,5 @@
 import MyIcon from "@mui/icons-material/Close"
 import OpponentIcon from "@mui/icons-material/FiberManualRecordOutlined"
-import Link from "@mui/material/Link"
 import Typography from "@mui/material/Typography"
 import {GameMap} from "./game-map"
 import {Section} from "./section"
@@ -124,19 +123,9 @@ export default ({findEasterEgg, isEasterEggFound}) => {
             </Paragraph>
             <Paragraph>
                 If you specify a <strong>«Game code»</strong>, you can only be
-                connected with someone who has entered the same game code.
-            </Paragraph>
-            <Paragraph>
-                The source code of{" "}
-                <Link href="https://github.com/Kharacternyk/paper-tactics-pwa">
-                    this website
-                </Link>{" "}
-                and{" "}
-                <Link href="https://github.com/Kharacternyk/paper-tactics">
-                    the game server
-                </Link>{" "}
-                is open. In case you host your own game server, players on this
-                website can connect to it by pasting its WebSocket URL into the{" "}
+                connected with someone who has entered the same game code. In
+                case you host your own game server, players on this website can
+                connect to it by pasting its WebSocket URL into the{" "}
                 <strong>«Server»</strong> field in the <strong>«Play»</strong>{" "}
                 tab.
             </Paragraph>
