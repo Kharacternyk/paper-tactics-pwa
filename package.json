@@ -1,9 +1,6 @@
 {
     "name": "paper-tactics-pwa",
-    "version": "0.1.0",
-    "repository": "git@github.com:Kharacternyk/paper-tactics-pwa.git",
-    "author": "Nazar Vinnichuk <nazar@vinnich.uk>",
-    "license": "GPL-3.0-or-later",
+    "version": "0.0.0",
     "private": true,
     "scripts": {
         "start": "parcel index.html",
