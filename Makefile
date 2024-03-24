@@ -1,7 +1,7 @@
 .PHONY: dist
 
 dist: dist/robots.txt dist/_headers
-	pnpm build
+	pnpm exec parcel build index.html
 
 dist/%: %
 	install -DTm0644 $< $@
