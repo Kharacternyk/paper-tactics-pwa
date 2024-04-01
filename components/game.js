@@ -81,10 +81,16 @@ export const Game = ({apiUrl, gamePreferences, iconIndex, onQuit}) => {
             })
         }
 
+        let opponentIconIndex = Number(game.opponent.viewData.iconIndex ?? 0)
+
+        if (!(opponentIconIndex >= 0 && opponentIconIndex < icons.length)) {
+            opponentIconIndex = 0
+        }
+
         const gameIcons = {
             me: icons[iconIndex],
             opponent: match({
-                opponentIndex: Number(game.opponent.viewData.iconIndex ?? 0),
+                opponentIndex: opponentIconIndex,
                 iconIndex,
             })(
                 ({opponentIndex = 0, iconIndex = 0}) => icons[1],
