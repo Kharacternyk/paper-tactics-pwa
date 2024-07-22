@@ -7,10 +7,6 @@ import GitHubLogo from "../images/github.svg"
 import {BadgeAlert} from "./badge-alert"
 
 export const Footer = () => {
-    const depauthLogo = <SvgIcon inheritViewBox component={DepAuthLogo} />
-    const discordLogo = <SvgIcon inheritViewBox component={DiscordLogo} />
-    const githubLogo = <SvgIcon inheritViewBox component={GitHubLogo} />
-
     return (
         <>
             <BadgeAlert color="primary" progress={100} icon={discordLogo}>
@@ -52,3 +48,7 @@ export const Footer = () => {
         </>
     )
 }
+
+const depauthLogo = <SvgIcon inheritViewBox component={DepAuthLogo} />
+const discordLogo = <SvgIcon inheritViewBox component={DiscordLogo} />
+const githubLogo = <SvgIcon inheritViewBox component={GitHubLogo} />
