@@ -19,6 +19,7 @@ import Heart from "@mui/icons-material/FavoriteBorderOutlined"
 import Circle from "@mui/icons-material/FiberManualRecordOutlined"
 import FireTruck from "@mui/icons-material/FireTruckOutlined"
 import Flag from "@mui/icons-material/FlagOutlined"
+import Golf from "@mui/icons-material/GolfCourseOutlined"
 import Star from "@mui/icons-material/GradeOutlined"
 import HealthAndSafety from "@mui/icons-material/HealthAndSafetyOutlined"
 import Hive from "@mui/icons-material/HiveOutlined"
@@ -94,7 +95,7 @@ export const icons = [
     <Fire />,
     <FireTruck />,
     <PushPin />,
-    <ComingSoon />,
+    <Golf />,
     <ComingSoon />,
     <ComingSoon />,
     <ComingSoon />,
