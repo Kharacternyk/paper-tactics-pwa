@@ -14,7 +14,7 @@ export const GameFooter = ({game, gamePreferences}) => {
     )
     const os = game.opponent.viewData.os
 
-    let opponent = botName
+    let opponent = `Mr. ${botName}`
     if (!isBot) {
         if (region && city) {
             if (!os) {
@@ -69,4 +69,15 @@ const breakId = id =>
         .join(" ")
         .toUpperCase()
 
-const botNames = ["Mr. Paperbot", "Mr. Pickle", "Mr. Tacticus", "Mr. Teapot"]
+const botNames = [
+    "Paperbot",
+    "Pickle",
+    "Pinky",
+    "Pretzel",
+    "Peppermint",
+    "Tacticus",
+    "Teapot",
+    "Trench",
+    "Tulip",
+    "Thinker",
+]

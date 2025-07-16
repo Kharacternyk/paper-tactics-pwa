@@ -1,8 +1,9 @@
 import ToggleButton from "@mui/material/ToggleButton"
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup"
+import Tooltip from "@mui/material/Tooltip"
 import {Section} from "./section"
 
-export const ToggleSection = ({state, values, labeler, callback}) => {
+export const ToggleSection = ({state, values, labeler, callback, tooltip}) => {
     const [value, setValue] = state
 
     const toggleButtons = values.map(value => (
@@ -17,19 +18,21 @@ export const ToggleSection = ({state, values, labeler, callback}) => {
 
     return (
         <Section>
-            <ToggleButtonGroup
-                color="primary"
-                exclusive
-                value={value}
-                onChange={async (_, value) => {
-                    if (!callback || (await callback(value))) {
-                        setValue(value)
-                    }
-                }}
-                sx={{display: "flex"}}
-            >
-                {toggleButtons}
-            </ToggleButtonGroup>
+            <Tooltip title={tooltip}>
+                <ToggleButtonGroup
+                    color="primary"
+                    exclusive
+                    value={value}
+                    onChange={async (_, value) => {
+                        if (!callback || (await callback(value))) {
+                            setValue(value)
+                        }
+                    }}
+                    sx={{display: "flex"}}
+                >
+                    {toggleButtons}
+                </ToggleButtonGroup>
+            </Tooltip>
         </Section>
     )
 }

@@ -13,7 +13,7 @@ import {RatingSection} from "./rating-section"
 import {Section} from "./section"
 import {ToggleSection} from "./toggle-section"
 
-export default ({isEasterEggFound, highlightFX, animateFX}) => {
+export default ({isEasterEggFound, highlightFX, animateFX, showTooltips}) => {
     const [awaiting, setAwaiting] = useState(false)
     const [apiUrl, setApiUrl] = useStorage("url", servers[0].url)
     const [gameCode, setGameCode] = useStorage("game-code", "")
@@ -28,7 +28,8 @@ export default ({isEasterEggFound, highlightFX, animateFX}) => {
 
     return awaiting ? (
         <Game
-            animateFX={animateFX[0]}
+            animateFX={animateFX}
+            showTooltips={showTooltips}
             apiUrl={apiUrl}
             gamePreferences={{
                 size: gameSize[0],
@@ -66,31 +67,56 @@ export default ({isEasterEggFound, highlightFX, animateFX}) => {
                 state={isVisibilityApplied}
                 values={[false, true]}
                 labeler={value => (value ? "With visibility rules" : "Classic")}
+                tooltip={
+                    showTooltips ? "Conceal cells that are not reachable" : null
+                }
             />
             <ToggleSection
                 state={trenchDensityPercent}
                 values={[0, 15, 25, 35]}
                 labeler={value => (value ? `${value}%` : "No neutral units")}
+                tooltip={
+                    showTooltips
+                        ? "Generate neutral units that can be captured by any player"
+                        : null
+                }
             />
             <ToggleSection
                 state={isDoubleBase}
                 values={[false, true]}
                 labeler={value => (value ? "Double base" : "Single base")}
+                tooltip={
+                    showTooltips
+                        ? "Generate two bases per player instead of one"
+                        : null
+                }
             />
             <ToggleSection
                 state={isWithRandomBases}
                 values={[false, true]}
                 labeler={value => (value ? "Random bases" : "Corner bases")}
+                tooltip={
+                    showTooltips
+                        ? "Generate the bases on random edge cells"
+                        : null
+                }
             />
-            <RatingSection state={turnCount} icon={<TurnIcon />} max={7} />
+            <RatingSection
+                state={turnCount}
+                icon={<TurnIcon />}
+                max={7}
+                tooltip={showTooltips ? "Amount of moves per turn" : null}
+            />
             <RatingSection
                 state={gameSize}
                 icon={<ArchitectureIcon />}
                 min={3}
                 max={12}
+                tooltip={showTooltips ? "Map size" : null}
             />
             <IconToggleSection
-                highlightFX={highlightFX[0]}
+                highlightFX={highlightFX}
+                showTooltips={showTooltips}
                 iconIndexState={iconIndex}
                 isEasterEggFound={isEasterEggFound}
             />

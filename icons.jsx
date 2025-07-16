@@ -60,8 +60,8 @@ import Football from "@mui/icons-material/SportsFootballOutlined"
 import Soccer from "@mui/icons-material/SportsSoccerOutlined"
 import UmbrellaOpen from "@mui/icons-material/BeachAccessOutlined"
 import UmbrellaClosed from "@mui/icons-material/UmbrellaOutlined"
-import Password from"@mui/icons-material/PasswordOutlined"
-import BadPassword from"@mui/icons-material/PinOutlined"
+import Password from "@mui/icons-material/PasswordOutlined"
+import BadPassword from "@mui/icons-material/PinOutlined"
 
 export const icons = [
     <Cross />,

@@ -20,6 +20,7 @@ const Settings = lazy(() => import("./settings"))
 export const Navigation = () => {
     const highlightFX = useStorage("highlight-fx", true)
     const animateFX = useStorage("animate-fx", true)
+    const showTooltips = useStorage("show-tooltips", true)
     const [currentPage, setCurrentPage] = useStorage("tab", 0, localStorage)
     const [isEasterEggFound, setIsEasterEggFound] = useStorage(
         ":-)",
@@ -82,14 +83,16 @@ export const Navigation = () => {
                     {currentPage === 1 && (
                         <GameLobby
                             isEasterEggFound={isEasterEggFound}
-                            highlightFX={highlightFX}
-                            animateFX={animateFX}
+                            highlightFX={highlightFX[0]}
+                            animateFX={animateFX[0]}
+                            showTooltips={showTooltips[0]}
                         />
                     )}
                     {currentPage === 2 && (
                         <Settings
                             highlightFX={highlightFX}
                             animateFX={animateFX}
+                            showTooltips={showTooltips}
                         />
                     )}
                     <Footer />
