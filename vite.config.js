@@ -3,5 +3,12 @@ import {defineConfig} from "vite"
 import svgr from "vite-plugin-svgr"
 
 export default defineConfig({
-    plugins: [react(), svgr()],
+    plugins: [
+        react(),
+        svgr({
+            svgrOptions: {
+                plugins: ["@svgr/plugin-svgo", "@svgr/plugin-jsx"],
+            },
+        }),
+    ],
 })
