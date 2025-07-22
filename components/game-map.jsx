@@ -1,7 +1,7 @@
-import {GameMapCell} from "./game-map-cell"
 import Table from "@mui/material/Table"
 import TableBody from "@mui/material/TableBody"
 import TableRow from "@mui/material/TableRow"
+import {GameMapCell} from "./game-map-cell"
 
 export const GameMap = ({
     game,
@@ -9,6 +9,7 @@ export const GameMap = ({
     onTurnMade,
     icons,
     animateFX,
+    doInvertReachable,
 }) => {
     const cellProps = Array(gamePreferences.size)
         .fill()
@@ -32,13 +33,13 @@ export const GameMap = ({
     setPropsForEach(game.me.units, {unit: true, mine: true})
     setPropsForEach(game.me.walls, {wall: true, mine: true})
     setPropsForEach(game.trenches, {trench: true})
+    setPropsForEach(game.me.reachable, {reachable: true})
+    setPropsForEach(game.opponent.reachable, {opponentReachable: true})
 
     if (game.myTurn) {
-        setPropsForEach(game.me.reachable, {reachable: true}, (x, y) => ({
+        setPropsForEach(game.me.reachable, {}, (x, y) => ({
             onClick: () => onTurnMade(x, y),
         }))
-    } else {
-        setPropsForEach(game.me.reachable, {reachable: true})
     }
 
     const renderedRows = cellProps.map((row, y) => {
@@ -55,6 +56,7 @@ export const GameMap = ({
                     {...props}
                     icons={icons}
                     key={x}
+                    doInvertReachable={doInvertReachable}
                 />
             )
         })

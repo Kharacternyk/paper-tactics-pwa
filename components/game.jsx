@@ -23,6 +23,7 @@ export const Game = ({
     animateFX,
 }) => {
     const [game, setGame] = useState()
+    const doInvertReachable = useStorage("invert-reachable", false)
     const agent = useMemo(
         () => Bowser.getParser(window.navigator.userAgent),
         []
@@ -117,8 +118,18 @@ export const Game = ({
                         onTurnMade={onTurnMade}
                         icons={gameIcons}
                         gamePreferences={gamePreferences}
+                        doInvertReachable={doInvertReachable[0]}
                     />
                 </Section>
+                <ToggleSection
+                    state={doInvertReachable}
+                    values={[false, true]}
+                    labeler={value =>
+                        value
+                            ? "Show opponent's reachable cells"
+                            : "Show my reachable cells"
+                    }
+                />
                 <GameFooter game={game} gamePreferences={gamePreferences} />
             </>
         )
