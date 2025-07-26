@@ -68,7 +68,7 @@ export const Game = ({
     useEffect(() => {
         if (
             game &&
-            !gamePreferences.is_against_bot &&
+            (!gamePreferences || !gamePreferences.is_against_bot) &&
             notificationsEnabled[0]
         ) {
             new Notification("An opponent has been found!", {
@@ -106,7 +106,7 @@ export const Game = ({
             <>
                 <GameHeader
                     game={game}
-                    gamePreferences={gamePreferences}
+                    gamePreferences={game.preferences}
                     onQuit={onQuit}
                     concede={concede}
                 />
@@ -116,16 +116,16 @@ export const Game = ({
                         game={game}
                         onTurnMade={onTurnMade}
                         icons={gameIcons}
-                        gamePreferences={gamePreferences}
+                        gamePreferences={game.preferences}
                     />
                 </Section>
-                <GameFooter game={game} gamePreferences={gamePreferences} />
+                <GameFooter game={game} gamePreferences={game.preferences} />
             </>
         )
     }
 
     const isWebSocketDead = readyState === -1 || readyState === 3
-    const isAgainstBot = gamePreferences.is_against_bot
+    const isAgainstBot = gamePreferences?.is_against_bot
     const color = isWebSocketDead ? "secondary" : "primary"
     const progress = isWebSocketDead ? 100 : undefined
     const icon = isWebSocketDead ? (

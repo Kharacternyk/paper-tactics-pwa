@@ -67,7 +67,7 @@ export const GameHeader = ({
                 {icon}
             </Badge>
         )
-        progress = (turnsLeft * 100) / gamePreferences.turn_count
+        progress = (turnsLeft * 100) / gamePreferences.turnCount
         topButton = (
             <>
                 <Button

@@ -5,7 +5,7 @@ import OpponentIcon from "@mui/icons-material/ConnectWithoutContact"
 import IdIcon from "@mui/icons-material/Fingerprint"
 
 export const GameFooter = ({game, gamePreferences}) => {
-    const isBot = gamePreferences.is_against_bot
+    const isBot = gamePreferences.isAgainstBot
     const [region, city] = fixTimeZone(game.opponent.viewData.timeZone)?.split(
         "/"
     ) ?? [null, null]
