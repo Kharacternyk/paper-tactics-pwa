@@ -46,7 +46,7 @@ export default ({
     const [awaiting, setAwaiting] = useState(false)
     const [apiUrl, setApiUrl] = useStorage("url", defaults.apiUrl)
     const [gameCode, setGameCode] = useStorage("game-code", defaults.gameCode)
-    const iconIndex = useStorage("icon", defaults.iconIndex, localStorage)
+    const iconIndex = useStorage("icon", 0, localStorage)
     const gameSize = useStorage("game-size", defaults.gameSize)
     const turnCount = useStorage("turn-count", defaults.turnCount)
     const isVisibilityApplied = useStorage(
