@@ -28,7 +28,6 @@ const servers = [
 const defaults = {
     apiUrl: servers[0].url,
     gameCode: "",
-    iconIndex: 0,
     gameSize: 10,
     turnCount: 3,
     isVisibilityApplied: false,
@@ -182,7 +181,6 @@ export default ({
                         disableElevation
                         onClick={() => {
                             setGameCode(defaults.gameCode)
-                            iconIndex[1](defaults.iconIndex)
                             gameSize[1](defaults.gameSize)
                             turnCount[1](defaults.turnCount)
                             isVisibilityApplied[1](defaults.isVisibilityApplied)

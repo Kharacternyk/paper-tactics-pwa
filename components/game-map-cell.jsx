@@ -13,6 +13,20 @@ export const GameMapCell = ({
     turnCount,
     animateFX,
 }) => {
+    const iconDisplay = icon => {
+        if (Array.isArray(icon)) {
+            if (animateFX) {
+                if (wall) {
+                    return icon[icon.length - 1]
+                } else {
+                    return icon[turnCount % (icon.length - 1)]
+                }
+            } else {
+                return icon[0]
+            }
+        }
+    }
+
     let colorStyle
 
     if (mine && unit) {
@@ -81,28 +95,16 @@ export const GameMapCell = ({
         icon = icons.opponent
     }
 
-    if (Array.isArray(icon)) {
-        if (animateFX) {
-            if (wall) {
-                icon = icon[icon.length - 1]
-            } else {
-                icon = icon[turnCount % (icon.length - 1)]
-            }
-        } else {
-            icon = icon[0]
-        }
-    }
-
     const overlayIcon =
         trench && !wall ? (
             <GameUnitIcon sx={{position: "absolute", left: 0, top: 0}}>
-                {icons.opponent}
+                {iconDisplay(icons.opponent)}
             </GameUnitIcon>
         ) : null
 
     return (
         <TableCell onClick={onClick} sx={sx}>
-            <GameUnitIcon>{icon}</GameUnitIcon>
+            <GameUnitIcon>{iconDisplay(icon)}</GameUnitIcon>
             {overlayIcon}
         </TableCell>
     )
