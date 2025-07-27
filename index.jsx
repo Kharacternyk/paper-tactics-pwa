@@ -3,12 +3,6 @@ import "@fontsource/roboto/latin.css"
 import {createRoot} from "react-dom/client"
 import {App} from "./components/app"
 
-if (navigator.serviceWorker) {
-    navigator.serviceWorker.register(new URL("worker.js?no-inline", import.meta.url), {
-        type: "module",
-    })
-}
-
 const root = createRoot(document.getElementById("root"))
 
 root.render(<App />)
