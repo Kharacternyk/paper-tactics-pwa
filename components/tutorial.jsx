@@ -52,12 +52,13 @@ export default ({findEasterEgg, isEasterEggFound}) => {
     return (
         <>
             <Paragraph>
-                <strong>Paper Tactics</strong> is a turn-based pen-and-paper
-                game played on a grid. The goal of the game is to outlive the
-                opponent—a player that cannot make a turn is defeated. A turn
-                consists of moves. Each move, either a unit is placed on an
-                empty cell or a wall is placed on an opponent's unit. Players
-                begin with a single unit in a corner of the grid.
+                <strong>Paper Tactics</strong> is a turn-based duel
+                pen-and-paper game played on a square grid. The goal of the game
+                is to outlive the opponent — a player that cannot make a turn is
+                defeated. A turn consists of moves. Each move, either a unit is
+                placed on an empty cell or a wall is placed on an opponent's
+                unit. Players begin with a single unit in a corner of the grid,
+                often called the <strong>«base»</strong>.
             </Paragraph>
             <Paragraph>
                 Units and walls can only be placed on cells that are reachable.
@@ -104,22 +105,36 @@ export default ({findEasterEgg, isEasterEggFound}) => {
             </Section>
             <Paragraph>
                 In the <strong>«Play»</strong> tab at the top of this page, you
-                can choose a game mode, a number of moves per turn, a size of
-                the grid, and an icon for your units. The usual setup is a 10×10
-                grid with 3 moves per turn. You will then be connected with
-                another player. You cannot be connected with a player that has
-                different preferences (except for the icon). If there are no
-                other players to play with, you can play against a bot.
+                can either choose to play with any settings (
+                <strong>«Quick play»</strong>) or create your own game with
+                custom settings (<strong>«Custom»</strong>). The «Custom» option
+                offers plenty of ways to modify your game by adding game modes,
+                neutral units, and more; all modifications are explained here
+                and in their tooltips. Keep in mind that if you choose custom
+                preferences, you will only be able to play with people who have
+                «Quick play» enabled or have the exact same preferences. You can
+                also change the appearance of your units (this is purely
+                cosmetic). If you want to practice or there are no other players
+                to play with, you can play against a bot.
             </Paragraph>
             <Paragraph>
                 The <strong>«With visibility rules»</strong> game mode is a
-                modification where players cannot see units until they are
-                reachable. Neutral units can be added to the grid if you choose
-                so. Anybody can place walls on neutral units as if they were
-                opponent's units. Neutral units are always placed symmetrically.
-                Please note that the neutral unit percentage defines the
-                probability of a neutral unit to appear in a cell, not the
-                overall amount of neutral units.
+                modification where players cannot see their opponent's units
+                until they are reachable. The <strong>«Deathmatch»</strong> game
+                mode increments the amount of moves per turn by 1 after a player
+                has made their turn. For example, player A makes 1 move, then
+                player B makes 2 moves, then player A makes 3 moves, and so on.{" "}
+                <strong>Neutral units</strong> can be captured by any player as
+                if they were opponent's units. Neutral units are always placed
+                symmetrically. Please note that the neutral unit percentage
+                defines the probability of a neutral unit to appear in a cell,
+                not the overall amount of neutral units. The{" "}
+                <strong>«Double base»</strong> option generates two bases per
+                player instead of one. The <strong>«Random bases»</strong>{" "}
+                option generates the bases in random cells on the edge of the
+                grid rather than always in the corners. You can also change the{" "}
+                <strong>size of the grid</strong> and the{" "}
+                <strong>amount of moves per turn</strong>.
             </Paragraph>
             <Paragraph>
                 If you specify a <strong>«Game code»</strong>, you can only be

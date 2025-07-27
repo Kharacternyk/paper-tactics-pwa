@@ -24,6 +24,8 @@ export const GameMapCell = ({
             } else {
                 return icon[0]
             }
+        } else {
+            return icon
         }
     }
 

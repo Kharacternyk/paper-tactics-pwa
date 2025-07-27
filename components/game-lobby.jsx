@@ -34,6 +34,7 @@ const defaults = {
     trenchDensityPercent: 0,
     isDoubleBase: false,
     isWithRandomBases: false,
+    isDeathmatch: false,
 }
 
 export default ({
@@ -62,6 +63,7 @@ export default ({
         "random-bases",
         defaults.isWithRandomBases
     )
+    const isDeathmatch = useStorage("deathmatch", defaults.isDeathmatch)
     const isAgainstBot = useStorage("bot", false)
     const isReallyQuickPlay = isQuickPlay[0] && !isAgainstBot[0]
 
@@ -81,6 +83,7 @@ export default ({
                           trench_density_percent: trenchDensityPercent[0],
                           is_double_base: isDoubleBase[0],
                           is_with_random_bases: isWithRandomBases[0],
+                          is_deathmatch: isDeathmatch[0],
                           code: gameCode,
                       }
             }
@@ -120,9 +123,20 @@ export default ({
             <ToggleSection
                 state={isVisibilityApplied}
                 values={[false, true]}
-                labeler={value => (value ? "With visibility rules" : "Classic")}
+                labeler={value => (value ? "Fog" : "Classic visibility")}
                 tooltip={
                     showTooltips ? "Conceal cells that are not reachable" : null
+                }
+                isHidden={isReallyQuickPlay}
+            />
+            <ToggleSection
+                state={isDeathmatch}
+                values={[false, true]}
+                labeler={value => (value ? "Deathmatch" : "Classic game")}
+                tooltip={
+                    showTooltips
+                        ? "Increase the amount of moves per turn by 1 every turn"
+                        : null
                 }
                 isHidden={isReallyQuickPlay}
             />
@@ -189,6 +203,7 @@ export default ({
                             )
                             isDoubleBase[1](defaults.isDoubleBase)
                             isWithRandomBases[1](defaults.isWithRandomBases)
+                            isDeathmatch[1](defaults.isDeathmatch)
                         }}
                         startIcon={<ResetIcon />}
                     >
