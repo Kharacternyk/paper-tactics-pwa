@@ -49,7 +49,14 @@ export const Game = ({
         }
     }, [game?.id])
 
-    const {sendJsonMessage, lastJsonMessage, readyState} = useWebSocket(apiUrl)
+    const {sendJsonMessage, lastJsonMessage, readyState} = useWebSocket(apiUrl, {
+        heartbeat: {
+            message: '{"action": "concede", "gameId": null}',
+            returnMessage: "pong",
+            timeout: 20000,
+            interval: 20000,
+        },
+    })
 
     useEffect(
         () => setGame(camelcaseKeys(lastJsonMessage, {deep: true})),
@@ -77,7 +84,9 @@ export const Game = ({
         }
     }, [!!game])
 
-    if (game) {
+    const isWebSocketDead = readyState === -1 || readyState === 3
+
+    if (game && !isWebSocketDead) {
         const onTurnMade = (x, y) => {
             sendJsonMessage({
                 action: "make-turn",
@@ -124,7 +133,6 @@ export const Game = ({
         )
     }
 
-    const isWebSocketDead = readyState === -1 || readyState === 3
     const isAgainstBot = gamePreferences?.is_against_bot
     const color = isWebSocketDead ? "secondary" : "primary"
     const progress = isWebSocketDead ? 100 : undefined
@@ -140,11 +148,13 @@ export const Game = ({
         : isAgainstBot
           ? "Powering on the bot…"
           : "Waiting for someone else to connect…"
+    const buttonText = isWebSocketDead ? "Change preferences and try again" : "Cancel"
+    const buttonVariant = isWebSocketDead ? "contained" : undefined
 
     return (
         <>
             <Section>
-                <Button onClick={onQuit}>Cancel</Button>
+                <Button onClick={onQuit} variant={buttonVariant}>{buttonText}</Button>
             </Section>
             <BadgeAlert color={color} icon={icon} progress={progress}>
                 {message}
