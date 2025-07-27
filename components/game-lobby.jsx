@@ -115,7 +115,7 @@ export default ({
                 labeler={value => (value ? "Quick play" : "Custom")}
                 tooltip={
                     showTooltips
-                        ? "Play with any settings or choose your own"
+                        ? "Play with any preferences or choose your own"
                         : null
                 }
                 isHidden={isAgainstBot[0]}
