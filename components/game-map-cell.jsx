@@ -16,17 +16,11 @@ export const GameMapCell = ({
     const iconDisplay = icon => {
         if (Array.isArray(icon)) {
             if (animateFX) {
-                if (wall) {
-                    return icon[icon.length - 1]
-                } else {
-                    return icon[turnCount % (icon.length - 1)]
-                }
-            } else {
-                return icon[0]
+                return wall ? icon[icon.length - 1] : icon[turnCount % (icon.length - 1)]
             }
-        } else {
-            return icon
+            return icon[0]
         }
+        return icon
     }
 
     let colorStyle
