@@ -217,14 +217,17 @@ export default ({
                 iconIndexState={iconIndex}
                 isEasterEggFound={isEasterEggFound}
             />
-            <Section>
-                <TextField
-                    label="Game code"
-                    variant="filled"
-                    value={gameCode}
-                    onChange={event => setGameCode(event.target.value)}
-                />
-            </Section>
+            {
+                isReallyQuickPlay || isAgainstBot[0] ? null :
+                <Section>
+                    <TextField
+                        label="Game code"
+                        variant="filled"
+                        value={gameCode}
+                        onChange={event => setGameCode(event.target.value)}
+                    />
+                </Section>
+            }
             <Section>
                 <Autocomplete
                     freeSolo
